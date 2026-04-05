@@ -348,11 +348,16 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("project_id", help="UUID of the project")
     parser.add_argument("url", help="Video source URL")
-    # Flags opcionales (ignorados por ahora en esta version simplificada del wrapper, pero mantenidos para compatibilidad)
-    parser.add_argument("--audio-pro", action="store_true")
-    parser.add_argument("--smart-reframe", action="store_true")
-    parser.add_argument("--clean-speech", action="store_true")
-    parser.add_argument("--b-roll", action="store_true")
+    # Opciones enterprise activadas por defecto; se pueden desactivar explícitamente con --no-*
+    parser.add_argument("--audio-pro", dest="audio_pro", action="store_true")
+    parser.add_argument("--no-audio-pro", dest="audio_pro", action="store_false")
+    parser.add_argument("--smart-reframe", dest="smart_reframe", action="store_true")
+    parser.add_argument("--no-smart-reframe", dest="smart_reframe", action="store_false")
+    parser.add_argument("--clean-speech", dest="clean_speech", action="store_true")
+    parser.add_argument("--no-clean-speech", dest="clean_speech", action="store_false")
+    parser.add_argument("--b-roll", dest="b_roll", action="store_true")
+    parser.add_argument("--no-b-roll", dest="b_roll", action="store_false")
+    parser.set_defaults(audio_pro=True, smart_reframe=True, clean_speech=True, b_roll=True)
     
     args = parser.parse_args()
     

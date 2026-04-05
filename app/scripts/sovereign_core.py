@@ -1012,7 +1012,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         ]
         
         try:
-            sp.run(cmd, check=True, stdout=sp.DEVNULL, stderr=sp.PIPE)
+            subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE)
             logger.info(f"   ✅ Clip renderizado exitosamente")
         except sp.CalledProcessError as e:
             logger.error(f"   ❌ Error en FFmpeg ({self.ffmpeg_path}): {e.stderr.decode() if e.stderr else 'Unknown'}")
@@ -1058,7 +1058,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             restore_script = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'scripts', 'audio_processor.py'))
             
             try:
-                sp.run([sys.executable, restore_script, '--input', audio_path, '--output', restored_audio], check=True)
+                subprocess.run([sys.executable, restore_script, '--input', audio_path, '--output', restored_audio], check=True)
                 logger.info(f"✅ Audio restored and normalized: {restored_audio}")
                 
                 # Merge restored audio back into a master video for quality consistency during crops
@@ -1073,7 +1073,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                     "-c:a", "aac",
                     master_video
                 ]
-                sp.run(merge_cmd, check=True)
+                subprocess.run(merge_cmd, check=True)
                 
                 video_path = master_video
                 audio_path = restored_audio
@@ -1149,67 +1149,137 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         # 4. Análisis de viralidad con Gemini
         report("Analizando viralidad (Gemini AI)...", 70)
         viral_candidates = self.analyze_virality(full_text)
+
+        # Si el LLM no devuelve candidatos, crear candidatos semánticos básicos desde la transcripción.
+        if not viral_candidates:
+            logger.warning("⚠️ Gemini no devolvió candidatos. Generando candidatos heurísticos desde transcript...")
+            timed_words = [w for w in (words or []) if isinstance(w, dict) and ('start' in w) and ('end' in w)]
+            if timed_words:
+                total_words = len(timed_words)
+                anchors = [0.10, 0.35, 0.60]
+                generated = []
+                for a_i, anchor in enumerate(anchors):
+                    start_idx = max(0, min(total_words - 1, int(total_words * anchor)))
+                    start_t = float(timed_words[start_idx].get('start', 0.0))
+                    target_end_t = start_t + 40.0
+
+                    end_idx = start_idx
+                    while end_idx < total_words - 1 and float(timed_words[end_idx].get('end', start_t)) < target_end_t:
+                        end_idx += 1
+
+                    if end_idx - start_idx < 20:
+                        continue
+
+                    start_text = " ".join(str(w.get('word', '')).strip() for w in timed_words[start_idx:start_idx + 10]).strip()
+                    end_text = " ".join(str(w.get('word', '')).strip() for w in timed_words[max(start_idx, end_idx - 10):end_idx]).strip()
+                    if not start_text or not end_text:
+                        continue
+
+                    generated.append({
+                        'start_text': start_text,
+                        'end_text': end_text,
+                        'title': f'Clip {a_i + 1}: Segmento con potencial',
+                        'hook': 'Este bloque concentra una idea clave con alto potencial de retención.',
+                        'payoff': 'El cierre del segmento deja una conclusión clara y accionable.',
+                        'category': 'Educational',
+                        'virality_metrics': {
+                            'hook_power': 7,
+                            'emotional_impact': 7,
+                            'value_density': 7,
+                            'trend_potential': 7,
+                        },
+                        'broll_inserts': [],
+                    })
+
+                if generated:
+                    viral_candidates = generated
+                    logger.info(f"✅ Candidatos heurísticos generados: {len(viral_candidates)}")
         
         results = []
         
         # 5. Pre-pass: Validate and Tournament Scoring
         logger.info(f"Se encontraron {len(viral_candidates)} candidatos virales. Iniciando Torneo Virality...")
         
-        valid_candidates = []
-        for clip in viral_candidates:
-            # Snap-to-word boundaries para calcular el WPM y check de duración
-            start, end, clip_words = self.snap_to_word_boundaries(
-                words, clip['start_text'], clip['end_text']
-            )
-            if not start:
-                continue
-
-            duration = end - start
-            strict_semantic = bool(self.options.get('strict_semantic_hooks', True))
-            if strict_semantic:
-                if duration < 30.0 or duration > 60.0:
+        def _collect_valid_candidates(strict_semantic: bool):
+            collected = []
+            for clip in viral_candidates:
+                # Snap-to-word boundaries para calcular el WPM y check de duración
+                start, end, clip_words = self.snap_to_word_boundaries(
+                    words, clip['start_text'], clip['end_text']
+                )
+                if not start:
                     continue
-            elif duration < 20.0 or duration > 240.0:
-                continue
 
-            hook_txt = str(clip.get('hook', '') or '').strip()
-            payoff_txt = str(clip.get('payoff', '') or '').strip()
-            if strict_semantic and (len(hook_txt.split()) < 4 or len(payoff_txt.split()) < 4):
-                continue
-                
-            clip['_start'] = start
-            clip['_end'] = end
-            clip['_clip_words'] = clip_words
-            clip['_duration'] = duration
-            
-            # WPM Analysis
-            word_count = len(clip_words)
-            wpm = (word_count / duration) * 60 if duration > 0 else 0
-            clip['wpm'] = wpm
-            
-            # AI Base Score
-            metrics = clip.get('virality_metrics', {})
-            if isinstance(metrics, dict) and metrics:
-                base = sum([
-                    metrics.get('hook_power', 7),
-                    metrics.get('emotional_impact', 7),
-                    metrics.get('value_density', 7),
-                    metrics.get('trend_potential', 7)
-                ]) / 40.0 * 100
-            else:
-                base = 75.0
-                
-            # WPM Bonus
-            pacing_bonus = 0
-            if 140 <= wpm <= 175: pacing_bonus = 15
-            elif 120 <= wpm < 140 or 175 < wpm <= 190: pacing_bonus = 5
-            else: pacing_bonus = -10
-            
-            # Hook short bonus
-            hook_bonus = 5 if len(clip.get('hook', '').split()) <= 12 else 0
+                duration = end - start
+                if strict_semantic:
+                    if duration < 30.0 or duration > 60.0:
+                        continue
+                elif duration < 20.0 or duration > 240.0:
+                    continue
 
-            clip['_raw_score'] = min(max(base + pacing_bonus + hook_bonus, 10), 99)
-            valid_candidates.append(clip)
+                hook_txt = str(clip.get('hook', '') or '').strip()
+                payoff_txt = str(clip.get('payoff', '') or '').strip()
+                if strict_semantic and (len(hook_txt.split()) < 4 or len(payoff_txt.split()) < 4):
+                    continue
+
+                clip['_start'] = start
+                clip['_end'] = end
+                clip['_clip_words'] = clip_words
+                clip['_duration'] = duration
+
+                # WPM Analysis
+                word_count = len(clip_words)
+                wpm = (word_count / duration) * 60 if duration > 0 else 0
+                clip['wpm'] = wpm
+
+                # AI Base Score
+                metrics = clip.get('virality_metrics', {})
+                if isinstance(metrics, dict) and metrics:
+                    base = sum([
+                        metrics.get('hook_power', 7),
+                        metrics.get('emotional_impact', 7),
+                        metrics.get('value_density', 7),
+                        metrics.get('trend_potential', 7)
+                    ]) / 40.0 * 100
+                else:
+                    base = 75.0
+
+                # WPM Bonus
+                pacing_bonus = 0
+                if 140 <= wpm <= 175:
+                    pacing_bonus = 15
+                elif 120 <= wpm < 140 or 175 < wpm <= 190:
+                    pacing_bonus = 5
+                else:
+                    pacing_bonus = -10
+
+                # Hook short bonus
+                hook_bonus = 5 if len(clip.get('hook', '').split()) <= 12 else 0
+
+                clip['_raw_score'] = min(max(base + pacing_bonus + hook_bonus, 10), 99)
+                collected.append(clip)
+            return collected
+
+        strict_semantic = bool(self.options.get('strict_semantic_hooks', True))
+        valid_candidates = _collect_valid_candidates(strict_semantic=strict_semantic)
+        if not valid_candidates and strict_semantic:
+            logger.warning("⚠️ Filtro estricto dejó 0 candidatos. Reintentando con validación relajada...")
+            valid_candidates = _collect_valid_candidates(strict_semantic=False)
+            if valid_candidates:
+                logger.info(f"✅ Candidatos recuperados con validación relajada: {len(valid_candidates)}")
+        elif strict_semantic and len(valid_candidates) < 3:
+            logger.warning(f"⚠️ Solo {len(valid_candidates)} candidatos tras filtro estricto. Mezclando con pase relajado...")
+            relaxed_candidates = _collect_valid_candidates(strict_semantic=False)
+            merged = {}
+            for c in valid_candidates + relaxed_candidates:
+                key = (round(float(c.get('_start', 0.0)), 2), round(float(c.get('_end', 0.0)), 2))
+                prev = merged.get(key)
+                if prev is None or float(c.get('_raw_score', 0)) > float(prev.get('_raw_score', 0)):
+                    merged[key] = c
+            valid_candidates = list(merged.values())
+            valid_candidates.sort(key=lambda x: x.get('_raw_score', 0), reverse=True)
+            valid_candidates = valid_candidates[:5]
+            logger.info(f"✅ Candidatos finales tras mezcla estricta+relajada: {len(valid_candidates)}")
             
         # Ejecutar el Torneo
         valid_candidates.sort(key=lambda x: x.get('_raw_score', 0), reverse=True)
