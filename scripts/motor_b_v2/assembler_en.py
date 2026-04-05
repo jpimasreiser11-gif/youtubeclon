@@ -12,6 +12,25 @@ COLOR_GRADES = {
 }
 
 
+def _run_and_require_output(cmd: List[str], expected_output: str):
+    proc = subprocess.run(cmd, check=False, capture_output=True, text=True, encoding="utf-8", errors="replace")
+    if not os.path.exists(expected_output) or os.path.getsize(expected_output) == 0:
+        ffmpeg_error = (proc.stderr or proc.stdout or "").strip()
+        if len(ffmpeg_error) > 1200:
+            ffmpeg_error = ffmpeg_error[-1200:]
+        raise RuntimeError(
+            f"FFmpeg step failed, output not generated: {expected_output}\n"
+            f"Command: {' '.join(cmd)}\n"
+            f"FFmpeg output: {ffmpeg_error}"
+        )
+
+
+def _ass_filter_path(path: str) -> str:
+    # Prefer relative forward-slash paths to avoid Windows drive-letter parsing issues in ass filter.
+    p = os.path.relpath(path, start=os.getcwd()).replace("\\", "/")
+    return p
+
+
 def _probe_duration(audio_path: str) -> float:
     p = subprocess.run([
         "ffprobe", "-v", "quiet", "-print_format", "json", "-show_format", audio_path
@@ -27,42 +46,42 @@ def _concat_clips(clips: List[str], out_path: str):
     with open(list_file, "w", encoding="utf-8") as f:
         for c in clips:
             f.write(f"file '{os.path.abspath(c)}'\n")
-    subprocess.run([
+    _run_and_require_output([
         "ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", list_file,
         "-c:v", "libx264", "-preset", "fast", "-crf", "22", "-an", out_path,
-    ], check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    ], out_path)
 
 
 def _process_video_clip(input_path: str, output_path: str, duration: float):
-    subprocess.run([
+    _run_and_require_output([
         "ffmpeg", "-y", "-i", input_path, "-t", str(duration),
         "-vf", "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30",
         "-an", "-c:v", "libx264", "-preset", "fast", "-crf", "22", output_path,
-    ], check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    ], output_path)
 
 
 def _image_to_ken_burns(input_path: str, output_path: str, duration: float):
     frames = max(40, int(duration * 30))
     zoom = f"zoompan=z='min(zoom+0.0006,1.12)':d={frames}:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1080x1920"
-    subprocess.run([
+    _run_and_require_output([
         "ffmpeg", "-y", "-loop", "1", "-i", input_path, "-t", str(duration),
         "-vf", f"scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,{zoom}",
         "-r", "30", "-an", "-c:v", "libx264", "-preset", "fast", output_path,
-    ], check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    ], output_path)
 
 
 def _build_audio_mix(narration: str, music: str, duration: float, out_path: str):
     if music and os.path.exists(music):
         filter_complex = f"[1:a]volume=0.15,aloop=loop=-1:size=2e+09,atrim=duration={duration:.2f}[music];[0:a][music]amix=inputs=2:duration=first:dropout_transition=2[mix]"
-        subprocess.run([
+        _run_and_require_output([
             "ffmpeg", "-y", "-i", narration, "-i", music,
             "-filter_complex", filter_complex,
             "-map", "[mix]", "-ac", "2", "-ar", "44100", "-c:a", "aac", out_path,
-        ], check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        ], out_path)
     else:
-        subprocess.run([
+        _run_and_require_output([
             "ffmpeg", "-y", "-i", narration, "-c:a", "aac", out_path,
-        ], check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        ], out_path)
 
 
 def assemble_mystery_video(
@@ -103,28 +122,29 @@ def assemble_mystery_video(
     _build_audio_mix(narration_path, music_path, duration, mixed_audio)
 
     no_subs = os.path.join(temp_dir, "no_subs.mp4")
-    subprocess.run([
+    _run_and_require_output([
         "ffmpeg", "-y", "-i", concat_video, "-i", mixed_audio,
         "-map", "0:v", "-map", "1:a",
         "-c:v", "libx264", "-preset", "fast", "-crf", "20",
         "-c:a", "aac", "-b:a", "192k", "-t", str(duration),
         "-movflags", "+faststart", no_subs,
-    ], check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    ], no_subs)
 
     subs = os.path.join(temp_dir, "subs.ass")
     generate_documentary_subs_en(narration_path, subs)
 
     with_subs = os.path.join(temp_dir, "with_subs.mp4")
-    subprocess.run([
-        "ffmpeg", "-y", "-i", no_subs, "-vf", f"ass={subs}",
+    subs_filter_path = _ass_filter_path(subs)
+    _run_and_require_output([
+        "ffmpeg", "-y", "-i", no_subs, "-vf", f"ass={subs_filter_path}",
         "-c:v", "libx264", "-preset", "fast", "-crf", "20",
         "-c:a", "copy", with_subs,
-    ], check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    ], with_subs)
 
     grade = COLOR_GRADES.get(category, COLOR_GRADES["mystery"])
-    subprocess.run([
+    _run_and_require_output([
         "ffmpeg", "-y", "-i", with_subs, "-vf", grade,
         "-c:v", "libx264", "-crf", "18", "-c:a", "copy", output_path,
-    ], check=False, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    ], output_path)
 
     return output_path
