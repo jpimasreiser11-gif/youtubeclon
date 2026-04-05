@@ -48,3 +48,24 @@ postgres_data/
 .gemini/
 redis_data/
 _old_project_v1_backup/
+
+# Claude/LLM analysis scope - exclude heavy/generated artifacts
+app/.next/
+app/node_modules/
+app/data/
+app/storage/
+app/output/
+app/logs/
+output_test/
+output/
+data/
+data_test/
+postgres_data/
+redis_data/
+venv_sovereign/
+openrouter/
+Flujo_Viral_Pro/database/
+Flujo_Viral_Pro/assets/
+_old_project_backup/
+_old_project_v1_backup/
+app - copia/
