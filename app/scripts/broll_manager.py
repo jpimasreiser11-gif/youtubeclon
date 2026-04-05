@@ -3,6 +3,8 @@ import random
 import requests
 import json
 from pathlib import Path
+import re
+from collections import Counter
 
 class BRollManager:
     def __init__(self, api_key: str, data_dir: str = None):
@@ -19,6 +21,17 @@ class BRollManager:
         
         os.makedirs(self.broll_dir, exist_ok=True)
         os.makedirs(self.fallback_dir, exist_ok=True)
+
+    @staticmethod
+    def extract_keywords_from_text(text: str, limit: int = 5) -> list[str]:
+        stop = {
+            'the', 'and', 'for', 'with', 'that', 'this', 'from', 'you', 'your', 'are', 'was', 'were', 'have',
+            'que', 'para', 'con', 'por', 'como', 'esta', 'este', 'pero', 'una', 'unos', 'unas', 'sobre', 'entre'
+        }
+        tokens = re.findall(r"[a-zA-Z0-9áéíóúñü]{4,}", (text or '').lower())
+        filtered = [t for t in tokens if t not in stop]
+        counts = Counter(filtered)
+        return [w for w, _ in counts.most_common(limit)]
 
     def _get_fallback_video(self) -> str | None:
         """Returns a random satisfying video from the fallback folder if available."""
@@ -100,10 +113,52 @@ class BRollManager:
             print(f"❌ Pexels fetch failed: {str(e)}")
             
         # Fallback mechanism if Pexels fails or throws error
+        pixabay_path = self._fetch_from_pixabay(keyword, project_id, clip_index)
+        if pixabay_path:
+            print(f"✅ Usando B-Roll de Pixabay: {pixabay_path}")
+            return pixabay_path
+
         fallback_path = self._get_fallback_video()
         if fallback_path:
             print(f"✅ Usando video B-Roll de fallback: {fallback_path}")
             return fallback_path
             
         print("❌ No hay videos Pexels ni fallback disponibles.")
+        return None
+
+    def _fetch_from_pixabay(self, keyword: str, project_id: str, clip_index: int) -> str | None:
+        api_key = os.getenv("PIXABAY_API_KEY", "").strip()
+        if not api_key:
+            return None
+
+        try:
+            params = {
+                'key': api_key,
+                'q': keyword,
+                'video_type': 'all',
+                'per_page': 3,
+            }
+            resp = requests.get("https://pixabay.com/api/videos/", params=params, timeout=12)
+            resp.raise_for_status()
+            data = resp.json() or {}
+            hits = data.get('hits') or []
+            if not hits:
+                return None
+
+            first = hits[0]
+            videos = first.get('videos') or {}
+            for quality in ("medium", "small", "tiny", "large"):
+                item = videos.get(quality)
+                if item and item.get('url'):
+                    safe_kw = keyword.replace(" ", "_").replace("/", "").replace("\\", "")
+                    out_path = os.path.join(self.broll_dir, f"{project_id}_clip{clip_index}_{safe_kw}_pixabay.mp4")
+                    dl = requests.get(item['url'], stream=True, timeout=30)
+                    dl.raise_for_status()
+                    with open(out_path, 'wb') as f:
+                        for chunk in dl.iter_content(chunk_size=8192):
+                            if chunk:
+                                f.write(chunk)
+                    return out_path
+        except Exception as e:
+            print(f"⚠️ Pixabay fallback failed: {e}")
         return None

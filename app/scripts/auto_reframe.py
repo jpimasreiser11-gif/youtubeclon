@@ -1,237 +1,240 @@
+"""Dynamic auto-reframe with MediaPipe nose tracking.
+
+Tracks the active speaker's nose frame-by-frame and keeps it near the
+upper-center area of a 9:16 frame.
 """
-Auto-Reframe: Crop Dinámico Siguiendo la Cara
-Usa MediaPipe para detectar caras y mantenerlas centradas en el frame
-Ideal para convertir videos horizontales en verticales (9:16)
-"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+from typing import List, Optional, Tuple
 
 import cv2
 import mediapipe as mp
 import numpy as np
-from typing import List, Tuple, Dict
-import subprocess
-import json
-from pathlib import Path
 
-mp_face_detection = mp.solutions.face_detection
 
-class FaceKeyframe:
-    """Representa la posición de una cara en un frame específico"""
-    def __init__(self, time: float, center_x: float, center_y: float, width: float, height: float):
-        self.time = time
-        self.center_x = center_x  # 0-1 (normalized)
-        self.center_y = center_y  # 0-1
-        self.width = width
-        self.height = height
+mp_face_mesh = mp.solutions.face_mesh
 
-def detect_face_keyframes(video_path: str, sample_rate: int = 10) -> List[FaceKeyframe]:
-    """
-    Detecta caras en el video y genera keyframes de posición
-    
-    Args:
-        video_path: Path al video
-        sample_rate: Analizar 1 de cada N frames (default: 10)
-    
-    Returns:
-        Lista de keyframes con posición de cara
-    """
-    print(f"🔍 Detectando caras en {video_path}...")
-    
+
+@dataclass
+class TrackingPoint:
+    time: float
+    x: float
+    y: float
+    score: float
+
+
+def _clamp(v: float, lo: float, hi: float) -> float:
+    return max(lo, min(hi, v))
+
+
+def _mouth_openness(face_landmarks) -> float:
+    top_lip = face_landmarks.landmark[13]
+    bot_lip = face_landmarks.landmark[14]
+    return abs(bot_lip.y - top_lip.y)
+
+
+def _face_size_proxy(face_landmarks) -> float:
+    l = face_landmarks.landmark[234]
+    r = face_landmarks.landmark[454]
+    return abs(r.x - l.x)
+
+
+def _pick_active_speaker(faces) -> Optional[Tuple[float, float, float]]:
+    best = None
+    best_score = -1.0
+    for face in faces:
+        nose = face.landmark[1]
+        openness = _mouth_openness(face)
+        size = _face_size_proxy(face)
+        score = (openness * 3.0) + size
+        if score > best_score:
+            best_score = score
+            best = (nose.x, nose.y, score)
+    return best
+
+
+def detect_nose_tracking_path(
+    video_path: str,
+    sample_every_n_frames: int = 1,
+    min_detection_confidence: float = 0.55,
+    min_tracking_confidence: float = 0.55,
+    smooth_alpha: float = 0.25,
+) -> List[TrackingPoint]:
     cap = cv2.VideoCapture(video_path)
-    fps = cap.get(cv2.CAP_PROP_FPS)
-    total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-    
-    keyframes = []
-    frame_idx = 0
-    
-    with mp_face_detection.FaceDetection(
-        model_selection=1,  # 1 = full range, 0 = short range
-        min_detection_confidence=0.5
-    ) as face_detection:
-        
+    fps = cap.get(cv2.CAP_PROP_FPS) or 30.0
+    total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT) or 0)
+
+    points: List[TrackingPoint] = []
+    prev_x = 0.5
+    prev_y = 0.35
+
+    with mp_face_mesh.FaceMesh(
+        static_image_mode=False,
+        max_num_faces=4,
+        refine_landmarks=True,
+        min_detection_confidence=min_detection_confidence,
+        min_tracking_confidence=min_tracking_confidence,
+    ) as face_mesh:
+        frame_idx = 0
         while cap.isOpened():
-            ret, frame = cap.read()
-            if not ret:
+            ok, frame = cap.read()
+            if not ok:
                 break
-            
-            # Analizar solo cada N frames
-            if frame_idx % sample_rate == 0:
-                # Convertir a RGB (MediaPipe requiere RGB)
-                rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-                results = face_detection.process(rgb_frame)
-                
-                if results.detections:
-                    # Tomar la primera cara detectada
-                    detection = results.detections[0]
-                    bbox = detection.location_data.relative_bounding_box
-                    
-                    center_x = bbox.xmin + bbox.width / 2
-                    center_y = bbox.ymin + bbox.height / 2
-                    
-                    time = frame_idx / fps
-                    
-                    keyframes.append(FaceKeyframe(
-                        time=time,
-                        center_x=center_x,
-                        center_y=center_y,
-                        width=bbox.width,
-                        height=bbox.height
-                    ))
-                    
-                    if len(keyframes) % 10 == 0:
-                        print(f"  Procesado {frame_idx}/{total_frames} frames ({len(keyframes)} caras detectadas)")
-            
+
+            if sample_every_n_frames > 1 and frame_idx % sample_every_n_frames != 0:
+                frame_idx += 1
+                continue
+
+            rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            result = face_mesh.process(rgb)
+
+            t = frame_idx / fps
+            if result.multi_face_landmarks:
+                active = _pick_active_speaker(result.multi_face_landmarks)
+                if active is not None:
+                    x, y, score = active
+                    # EMA smoothing to avoid jitter when subject moves.
+                    x = (smooth_alpha * x) + ((1.0 - smooth_alpha) * prev_x)
+                    y = (smooth_alpha * y) + ((1.0 - smooth_alpha) * prev_y)
+                    prev_x, prev_y = x, y
+                    points.append(TrackingPoint(time=t, x=x, y=y, score=score))
+                else:
+                    points.append(TrackingPoint(time=t, x=prev_x, y=prev_y, score=0.0))
+            else:
+                points.append(TrackingPoint(time=t, x=prev_x, y=prev_y, score=0.0))
+
             frame_idx += 1
-    
+
     cap.release()
-    
-    print(f"✓ {len(keyframes)} keyframes de cara detectados")
-    return keyframes
 
-def smooth_keyframes(keyframes: List[FaceKeyframe], window_size: int = 5) -> List[FaceKeyframe]:
-    """
-    Suaviza los keyframes para evitar movimientos bruscos
-    Usa promedio móvil
-    """
-    if len(keyframes) < window_size:
-        return keyframes
-    
-    smoothed = []
-    
-    for i, kf in enumerate(keyframes):
-        # Tomar ventana de keyframes alrededor del actual
-        start = max(0, i - window_size // 2)
-        end = min(len(keyframes), i + window_size // 2 + 1)
-        window = keyframes[start:end]
-        
-        # Calcular promedio
-        avg_x = sum(k.center_x for k in window) / len(window)
-        avg_y = sum(k.center_y for k in window) / len(window)
-        
-        smoothed.append(FaceKeyframe(
-            time=kf.time,
-            center_x=avg_x,
-            center_y=avg_y,
-            width=kf.width,
-            height=kf.height
-        ))
-    
-    return smoothed
+    if not points and total_frames > 0:
+        duration = max(1.0, total_frames / fps)
+        points = [TrackingPoint(time=0.0, x=0.5, y=0.35, score=0.0), TrackingPoint(time=duration, x=0.5, y=0.35, score=0.0)]
 
-def generate_crop_filter(keyframes: List[FaceKeyframe], target_width: int = 720, target_height: int = 1280) -> str:
-    """
-    Genera filtro FFmpeg para crop dinámico
-    
-    Args:
-        keyframes: Lista de posiciones de cara
-        target_width: Ancho objetivo (default: 720 para 9:16)
-        target_height: Alto objetivo (default: 1280 para 9:16)
-    
-    Returns:
-        String del filtro FFmpeg
-    """
-    if not keyframes:
-        # Fallback: crop centrado estático
-        return f"crop={target_width}:{target_height}"
-    
-    # Generar expresiones para x e y que cambian con el tiempo
-    # FFmpeg permite expresiones basadas en tiempo usando 't'
-    
-    # Crear interpolación lineal entre keyframes
-    x_expr = "iw/2-w/2"  # Default: centro
-    y_expr = "ih/2-h/2"
-    
-    if len(keyframes) > 1:
-        # Construir expresión complex con 'if' statements basados en tiempo
-        x_conditions = []
-        y_conditions = []
-        
-        for i, kf in enumerate(keyframes):
-            if i < len(keyframes) - 1:
-                next_kf = keyframes[i + 1]
-                
-                # Calcular posición del crop basado en centro de cara
-                # Queremos que la cara esté centrada en el crop
-                crop_x = f"iw*{kf.center_x}-{target_width}/2"
-                crop_y = f"ih*{kf.center_y}-{target_height}/2"
-                
-                x_conditions.append(f"if(lt(t,{next_kf.time}),{crop_x}")
-                y_conditions.append(f"if(lt(t,{next_kf.time}),{crop_y}")
-        
-        # Cerrar todos los if's
-        x_expr = "".join(x_conditions) + f",iw/2-{target_width}/2" + ")" * len(x_conditions)
-        y_expr = "".join(y_conditions) + f",ih/2-{target_height}/2" + ")" * len(y_conditions)
-    
-    # Limitar x e y para no salir del frame
-    filter_str = f"crop=w={target_width}:h={target_height}:x='min(max(0,{x_expr}),iw-{target_width})':y='min(max(0,{y_expr}),ih-{target_height})'"
-    
-    return filter_str
+    return points
 
-def apply_auto_reframe(
+
+def _interpolate_tracking(points: List[TrackingPoint], t: float) -> TrackingPoint:
+    if not points:
+        return TrackingPoint(time=t, x=0.5, y=0.35, score=0.0)
+    if t <= points[0].time:
+        return points[0]
+    if t >= points[-1].time:
+        return points[-1]
+
+    lo = 0
+    hi = len(points) - 1
+    while lo + 1 < hi:
+        mid = (lo + hi) // 2
+        if points[mid].time <= t:
+            lo = mid
+        else:
+            hi = mid
+
+    a = points[lo]
+    b = points[hi]
+    dt = max(1e-6, b.time - a.time)
+    p = (t - a.time) / dt
+    return TrackingPoint(
+        time=t,
+        x=(a.x + (b.x - a.x) * p),
+        y=(a.y + (b.y - a.y) * p),
+        score=(a.score + (b.score - a.score) * p),
+    )
+
+
+def render_dynamic_reframe(
     input_video: str,
     output_video: str,
-    target_width: int = 720,
-    target_height: int = 1280,
-    ffmpeg_path: str = r"ffmpeg"
+    start_time: float = 0.0,
+    duration: Optional[float] = None,
+    target_width: int = 1080,
+    target_height: int = 1920,
+    nose_anchor_y: float = 0.32,
 ) -> str:
-    """
-    Aplica auto-reframe completo al video
-    
-    Args:
-        input_video: Video de entrada
-        output_video: Video de salida
-        target_width: Ancho objetivo (default: 720)
-        target_height: Alto objetivo (default: 1280)
-    
-    Returns:
-        Path del video procesado
-    """
-    print(f"\n🎬 AUTO-REFRAME: {input_video} → {output_video}\n")
-    
-    # 1. Detectar caras
-    keyframes = detect_face_keyframes(input_video, sample_rate=10)
-    
-    if not keyframes:
-        print("⚠️ No se detectaron caras, usando crop centrado estático")
+    cap = cv2.VideoCapture(input_video)
+    src_w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH) or 0)
+    src_h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT) or 0)
+    fps = cap.get(cv2.CAP_PROP_FPS) or 30.0
+    total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT) or 0)
+
+    if src_w <= 0 or src_h <= 0:
+        cap.release()
+        raise RuntimeError(f"Invalid video dimensions for {input_video}")
+
+    start_frame = int(max(0.0, start_time) * fps)
+    if duration is None:
+        end_frame = total_frames
     else:
-        # 2. Suavizar movimientos
-        keyframes = smooth_keyframes(keyframes, window_size=5)
-        print(f"✓ Keyframes suavizados")
-    
-    # 3. Generar filtro FFmpeg
-    crop_filter = generate_crop_filter(keyframes, target_width, target_height)
-    
-    # 4. Aplicar con FFmpeg
-    print("🔧 Aplicando crop dinámico...")
-    
-    cmd = [
-        ffmpeg_path,
-        '-y',
-        '-i', input_video,
-        '-vf', crop_filter,
-        '-c:v', 'libx264',
-        '-preset', 'medium',
-        '-crf', '23',
-        '-c:a', 'copy',
-        output_video
-    ]
-    
-    subprocess.run(cmd, check=True)
-    
-    print(f"\n✅ AUTO-REFRAME COMPLETADO: {output_video}\n")
+        end_frame = min(total_frames, start_frame + int(max(0.0, duration) * fps))
+
+    tracking = detect_nose_tracking_path(input_video, sample_every_n_frames=1)
+
+    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+    writer = cv2.VideoWriter(output_video, fourcc, fps, (target_width, target_height))
+
+    cap.set(cv2.CAP_PROP_POS_FRAMES, start_frame)
+    frame_idx = start_frame
+
+    target_ar = target_width / max(1, target_height)
+    src_ar = src_w / max(1, src_h)
+
+    while frame_idx < end_frame:
+        ok, frame = cap.read()
+        if not ok:
+            break
+
+        t = frame_idx / fps
+        p = _interpolate_tracking(tracking, t)
+
+        if src_ar >= target_ar:
+            crop_h = src_h
+            crop_w = int(crop_h * target_ar)
+        else:
+            crop_w = src_w
+            crop_h = int(crop_w / target_ar)
+
+        nose_px_x = int(p.x * src_w)
+        nose_px_y = int(p.y * src_h)
+
+        crop_x = int(nose_px_x - (crop_w * 0.5))
+        crop_y = int(nose_px_y - (crop_h * nose_anchor_y))
+        crop_x = int(_clamp(crop_x, 0, max(0, src_w - crop_w)))
+        crop_y = int(_clamp(crop_y, 0, max(0, src_h - crop_h)))
+
+        crop = frame[crop_y:crop_y + crop_h, crop_x:crop_x + crop_w]
+        if crop.size == 0:
+            crop = frame
+
+        out = cv2.resize(crop, (target_width, target_height), interpolation=cv2.INTER_LINEAR)
+        writer.write(out)
+
+        frame_idx += 1
+
+    cap.release()
+    writer.release()
     return output_video
 
-# CLI para testing
+
 if __name__ == "__main__":
-    import sys
-    
-    if len(sys.argv) < 3:
-        print("Usage: python auto_reframe.py <input_video> <output_video> [width] [height]")
-        print("Example: python auto_reframe.py video.mp4 output.mp4 720 1280")
-        sys.exit(1)
-    
-    input_vid = sys.argv[1]
-    output_vid = sys.argv[2]
-    width = int(sys.argv[3]) if len(sys.argv) > 3 else 720
-    height = int(sys.argv[4]) if len(sys.argv) > 4 else 1280
-    
-    apply_auto_reframe(input_vid, output_vid, width, height)
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Dynamic nose-tracking auto reframe")
+    parser.add_argument("input_video")
+    parser.add_argument("output_video")
+    parser.add_argument("--start", type=float, default=0.0)
+    parser.add_argument("--duration", type=float, default=None)
+    parser.add_argument("--width", type=int, default=1080)
+    parser.add_argument("--height", type=int, default=1920)
+    args = parser.parse_args()
+
+    render_dynamic_reframe(
+        input_video=args.input_video,
+        output_video=args.output_video,
+        start_time=args.start,
+        duration=args.duration,
+        target_width=args.width,
+        target_height=args.height,
+    )

@@ -88,22 +88,42 @@ class WordTimestamp:
 
 def transcribe_with_word_timestamps(audio_path: str) -> List[WordTimestamp]:
     """
-    Transcribe audio y extrae timestamps palabra por palabra usando Whisper
+    Transcribe audio y extrae timestamps palabra por palabra usando WhisperX
+    (fallback a faster-whisper si WhisperX no esta disponible)
     """
-    print("🎙️ Transcribiendo con Whisper (word-level timestamps)...")
-    
-    model = WhisperModel("medium", device="cpu", compute_type="int8")
-    segments, info = model.transcribe(audio_path, beam_size=5, word_timestamps=True)
-    
     words = []
-    for segment in segments:
-        if hasattr(segment, 'words'):
-            for word in segment.words:
-                words.append(WordTimestamp(
-                    text=word.word.strip(),
-                    start=word.start,
-                    end=word.end
-                ))
+
+    try:
+        import whisperx
+
+        print("🎙️ Transcribiendo con WhisperX (forced alignment)...")
+        device = "cpu"
+        audio = whisperx.load_audio(audio_path)
+        model = whisperx.load_model("small", device, compute_type="int8")
+        result = model.transcribe(audio, batch_size=16)
+        align_model, align_meta = whisperx.load_align_model(language_code=result["language"], device=device)
+        aligned = whisperx.align(result["segments"], align_model, align_meta, audio, device, return_char_alignments=False)
+
+        for segment in aligned.get("segments", []):
+            for word in segment.get("words", []):
+                if "start" in word and "end" in word:
+                    words.append(WordTimestamp(
+                        text=(word.get("word") or "").strip(),
+                        start=float(word["start"]),
+                        end=float(word["end"]),
+                    ))
+    except Exception:
+        print("⚠️ WhisperX no disponible. Fallback a faster-whisper...")
+        model = WhisperModel("medium", device="cpu", compute_type="int8")
+        segments, info = model.transcribe(audio_path, beam_size=5, word_timestamps=True)
+        for segment in segments:
+            if hasattr(segment, 'words'):
+                for word in segment.words:
+                    words.append(WordTimestamp(
+                        text=word.word.strip(),
+                        start=word.start,
+                        end=word.end
+                    ))
     
     print(f"✓ {len(words)} palabras transcritas")
     return words

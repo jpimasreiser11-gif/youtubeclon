@@ -5,6 +5,7 @@ import logging
 import subprocess
 import shutil
 import time
+import requests
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from dotenv import load_dotenv
@@ -91,10 +92,14 @@ class ViralEngine:
             # Auto-detect: verificar que el provider tenga API key configurada
             groq_key = os.getenv("GROQ_API_KEY")
             gemini_key = os.getenv("GEMINI_API_KEY")
+            github_models_key = os.getenv("GITHUB_MODELS_TOKEN") or os.getenv("GITHUB_TOKEN")
             
             if GROQ_AVAILABLE and groq_key:
                 self.provider = "groq"
                 api_key = groq_key
+            elif github_models_key:
+                self.provider = "github_models"
+                api_key = github_models_key
             elif GEMINI_AVAILABLE and gemini_key:
                 self.provider = "gemini"
                 api_key = gemini_key
@@ -124,8 +129,12 @@ class ViralEngine:
             else:
                 raise Exception("Gemini package not found. Run: pip install google-genai or google-generativeai")
             logger.info(f"⚠️  Usando Gemini API ({self.model_name})")
+        elif self.provider == "github_models":
+            self.github_models_token = api_key
+            self.model_name = os.getenv("GITHUB_MODELS_NAME", "openai/gpt-4.1-mini")
+            logger.info(f"🚀 Usando GitHub Models ({self.model_name})")
         else:
-            raise ValueError(f"Provider '{provider}' no soportado. Use 'groq', 'gemini' o 'auto'")
+            raise ValueError(f"Provider '{provider}' no soportado. Use 'groq', 'gemini', 'github_models' o 'auto'")
         
         # Cargar Whisper SOLO si WhisperX no está disponible (evita cargar 2 modelos)
         if WHISPERX_AVAILABLE:
@@ -525,21 +534,18 @@ class ViralEngine:
         
         system_prompt = """
         Eres un editor ELITE de videos (YouTube/TikTok/Reels) especializado en retención.
-        
-        CRITERIOS CRÍTICOS Y ESTRICTOS:
-        
-        1. **LÓGICA Y COHERENCIA TOTAL (PRIORIDAD ABSOLUTA)**: 
-           - El clip DEBE ser una idea, bloque o conversación COMPLETA.
-           - Debe empezar exactamente cuando se introduce un tema o historia nueva.
-           - Debe terminar EXACTAMENTE cuando la idea o conversación concluye de forma natural. 
-           - PROHIBIDO cortar a la mitad de una frase, explicación, o cuando alguien está a punto de responder.
-           - Si una historia o idea exige pasarse del límite de tiempo para tener sentido completo, HAZLO. LO MÁS IMPORTANTE ES QUE TENGA SENTIDO DE PRINCIPIO A FIN.
-           
-        2. **DURACIÓN OBJETIVO**: Lo ideal es MÍNIMO 30 segundos y máximo 3 minutos, pero NUNCA sacrifiques la regla #1 (Lógica) para cumplir el tiempo. Si necesitas hasta 4 minutos para cerrar la idea, hazlo.
-           
-        3. **GANCHO (0-5s)**: ¿Empieza con algo interesante que obligue a escuchar toda la historia?
-           
-        4. **AUTONOMÍA**: El espectador debe entender el clip al 100% SIN necesidad de haber visto el resto del video largo. Contexto completo contenido dentro del clip.
+
+        OBJETIVO ESTRICTO:
+        Selecciona SOLO clips de 30 a 60 segundos con estructura narrativa completa:
+        1) Gancho polemico en los primeros 3 segundos.
+        2) Desarrollo rapido y claro.
+        3) Remate/payoff explicitamente entendible al final.
+
+        CRITERIOS CRITICOS:
+        - El clip debe ser autosuficiente, con contexto completo.
+        - Prohibido cortar frases a mitad o terminar sin cierre.
+        - No seleccionar segmentos por volumen o gritos: prioriza semantica y narrativa.
+        - start_text y end_text deben existir literalmente en el transcript.
         
         FORMATO DE SALIDA (JSON puro, sin markdown):
         [
@@ -569,7 +575,8 @@ class ViralEngine:
             }
         ]
         
-        IMPORTANTE: 
+        IMPORTANTE:
+        - Duracion final esperada: 30-60s.
         - Puntúa las 4 virality_metrics de 1 al 10 con la máxima exigencia.
         - Máximo 5 clips
         - start_text y end_text (tanto del clip principal como de los b-rolls) deben coincidir PALABRA POR PALABRA con el transcript original.
@@ -612,6 +619,28 @@ class ViralEngine:
                                 response_text = response.text
                         else:
                             raise groq_err
+                elif self.provider == "github_models":
+                    endpoint = os.getenv("GITHUB_MODELS_ENDPOINT", "https://models.inference.ai.azure.com/chat/completions")
+                    headers = {
+                        "Authorization": f"Bearer {self.github_models_token}",
+                        "Content-Type": "application/json",
+                    }
+                    payload = {
+                        "model": self.model_name,
+                        "messages": [
+                            {"role": "system", "content": system_prompt},
+                            {"role": "user", "content": f"TRANSCRIPT FRAGMENT:\n{text_chunk}"}
+                        ],
+                        "temperature": 0.7,
+                        "max_tokens": 1500,
+                    }
+                    response = requests.post(endpoint, headers=headers, json=payload, timeout=120)
+                    response.raise_for_status()
+                    response_data = response.json() or {}
+                    choices = response_data.get("choices") or []
+                    if not choices:
+                        raise RuntimeError("GitHub Models returned empty choices")
+                    response_text = ((choices[0] or {}).get("message") or {}).get("content", "")
                 else:  # gemini
                     if GEMINI_NEW_AVAILABLE and hasattr(self, 'genai_client'):
                         response = self.genai_client.models.generate_content(
@@ -792,46 +821,74 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         logger.info(f"Renderizando clip: {output_path}")
         
         duration = end - start
+        use_dynamic_reframe = bool(self.options.get('smart_reframe', False) and self.options.get('dynamic_reframe', True))
+        dynamic_video_path = None
         
         # Si tenemos detección facial, usar esa coordenada; sino centro estático
         # ESTRATEGIA: 
         # - Videos grandes (≥1080px ancho): Crop 9:16 centrado en cara
         # - Videos pequeños (<1080px ancho): Scale+Pad a 1080x1920
         
-        if source_width >= 1080:
-            # Videos HD: usar crop tradicional centrado en cara
-            if face_center_x and source_width:
-                crop_width = min(int(source_width * (9/16)), source_width)
-                crop_x = max(0, min(face_center_x - crop_width // 2, source_width - crop_width))
-                vf_base = f"crop={crop_width}:ih:{crop_x}:0,scale=1080:1920"
-                logger.info(f"   Smart Crop HD: ancho={crop_width}px, x={crop_x}px (cara en {face_center_x}px)")
+        if use_dynamic_reframe:
+            try:
+                from auto_reframe import render_dynamic_reframe
+
+                dynamic_video_path = os.path.join(self.output_dir, f"dynamic_reframe_{int(start * 1000)}_{int(end * 1000)}.mp4")
+                logger.info("   Smart Reframe Dinamico: seguimiento de nariz/hablante activo")
+                render_dynamic_reframe(
+                    input_video=source_path,
+                    output_video=dynamic_video_path,
+                    start_time=start,
+                    duration=duration,
+                    target_width=1080,
+                    target_height=1920,
+                )
+                vf_base = "scale=1080:1920"
+            except Exception as reframe_err:
+                logger.warning(f"   Auto-reframe dinamico fallo ({reframe_err}). Usando crop estatico.")
+                use_dynamic_reframe = False
+
+        if not use_dynamic_reframe:
+            if source_width >= 1080:
+                # Videos HD: usar crop tradicional centrado en cara
+                if face_center_x and source_width:
+                    crop_width = min(int(source_width * (9/16)), source_width)
+                    crop_x = max(0, min(face_center_x - crop_width // 2, source_width - crop_width))
+                    vf_base = f"crop={crop_width}:ih:{crop_x}:0,scale=1080:1920"
+                    logger.info(f"   Smart Crop HD: ancho={crop_width}px, x={crop_x}px (cara en {face_center_x}px)")
+                else:
+                    vf_base = "crop=ih*(9/16):ih:(iw-ow)/2:0,scale=1080:1920"
+                    logger.info("   Usando crop estatico HD (sin deteccion facial)")
             else:
-                vf_base = "crop=ih*(9/16):ih:(iw-ow)/2:0,scale=1080:1920"
-                logger.info("   Usando crop estático HD (sin detección facial)")
-        else:
-            # Videos pequeños: escalar y rellenar a 1080x1920
-            vf_base = "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black"
-            logger.info(f"   Video pequeño ({source_width}px) → Scale+Pad a 1080x1920")
+                # Videos pequeños: escalar y rellenar a 1080x1920
+                vf_base = "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:black"
+                logger.info(f"   Video pequeño ({source_width}px) -> Scale+Pad a 1080x1920")
         
         # ------------------------------------------------------------------
         # FFMPEG PIpeline Construction (Base + B-Roll Overlays)
         # ------------------------------------------------------------------
         
-        ffmpeg_inputs = ['-ss', str(start), '-t', str(duration), '-i', source_path]
+        if use_dynamic_reframe and dynamic_video_path and os.path.exists(dynamic_video_path):
+            ffmpeg_inputs = ['-i', dynamic_video_path, '-ss', str(start), '-t', str(duration), '-i', source_path]
+            audio_map = '1:a'
+        else:
+            ffmpeg_inputs = ['-ss', str(start), '-t', str(duration), '-i', source_path]
+            audio_map = '0:a'
         
         # Prepare ASS path for FFmpeg (escape backslashes for Windows)
         safe_ass_path = ass_path.replace('\\', '/').replace(':', '\\:')
         
         if not broll_data:
-            filter_args = ['-vf', f"{vf_base},ass='{safe_ass_path}'"]
+            filter_args = ['-vf', f"{vf_base},ass='{safe_ass_path}'", '-map', '0:v', '-map', audio_map]
         else:
             # Burn ASS subtitles into the very last layer
             filter_complex = f"[0:v]{vf_base}[base];"
             last_layer = "base"
+            broll_input_offset = 2 if (use_dynamic_reframe and dynamic_video_path and os.path.exists(dynamic_video_path)) else 1
             
             for i, br in enumerate(broll_data):
                 # 1..N correspond to broll inputs because 0 is the main video
-                in_idx = i + 1
+                in_idx = i + broll_input_offset
                 ffmpeg_inputs.extend(['-i', br['path']])
                 
                 br_start = br['start']
@@ -840,26 +897,45 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 
                 # B-Roll Opus-killer floating picture-in-picture effect
                 frames = int(br_duration * 30) 
+                broll_mode = (br.get('mode') or 'overlay').lower()
                 
-                # FASE 1 - QA Fix: B-Roll PiP en el tercio superior, format=yuv420p, zoom suave y marco/drop shadow simulado con pad
-                fc_broll = (
-                    f"[{in_idx}:v]scale=960:540:force_original_aspect_ratio=increase,"
-                    f"crop=960:540,setsar=1,format=yuv420p,"
-                    f"zoompan=z='min(pzoom+0.0015,1.15)':d={frames}:s=960x540,"
-                    f"pad=980:560:10:10:white," # Borde blanco que simula marco
-                    f"setpts=PTS-STARTPTS+{br_start}/TB[broll_{in_idx}];"
-                )
+                if broll_mode == 'split':
+                    # Split-screen: mitad inferior para convertir el clip en contenido visualmente nuevo.
+                    fc_broll = (
+                        f"[{in_idx}:v]scale=1080:960:force_original_aspect_ratio=increase,"
+                        f"crop=1080:960,setsar=1,format=yuv420p,"
+                        f"zoompan=z='min(pzoom+0.0012,1.10)':d={frames}:s=1080x960,"
+                        f"setpts=PTS-STARTPTS+{br_start}/TB[broll_{in_idx}];"
+                    )
+                else:
+                    # Overlay mode (PiP)
+                    fc_broll = (
+                        f"[{in_idx}:v]scale=960:540:force_original_aspect_ratio=increase,"
+                        f"crop=960:540,setsar=1,format=yuv420p,"
+                        f"zoompan=z='min(pzoom+0.0015,1.15)':d={frames}:s=960x540,"
+                        f"pad=980:560:10:10:white,"
+                        f"setpts=PTS-STARTPTS+{br_start}/TB[broll_{in_idx}];"
+                    )
                 filter_complex += fc_broll
                 
-                # Overlay settings - (W-w)/2 centra horizontalmente, y=150 ubica en tercio superior real
-                fc_overlay = f"[{last_layer}][broll_{in_idx}]overlay=x=(W-w)/2:y=150:enable='between(t,{br_start},{br_end})'[layer_{in_idx}];"
-                filter_complex += fc_overlay
+                if broll_mode == 'split':
+                    split_base = f"[{last_layer}]crop=iw:960:0:0,setsar=1[top_{in_idx}];"
+                    split_stack = f"[top_{in_idx}][broll_{in_idx}]vstack=inputs=2[layer_{in_idx}_raw];"
+                    split_enable = (
+                        f"[{last_layer}][layer_{in_idx}_raw]overlay=0:0:"
+                        f"enable='between(t,{br_start},{br_end})'[layer_{in_idx}];"
+                    )
+                    filter_complex += split_base + split_stack + split_enable
+                else:
+                    # Overlay settings - (W-w)/2 centra horizontalmente, y=150 ubica en tercio superior real
+                    fc_overlay = f"[{last_layer}][broll_{in_idx}]overlay=x=(W-w)/2:y=150:enable='between(t,{br_start},{br_end})'[layer_{in_idx}];"
+                    filter_complex += fc_overlay
                 last_layer = f"layer_{in_idx}"
             
             # Apply subtitles to the final composited layer
             final_filter = f"[{last_layer}]ass='{safe_ass_path}'[v]"
             filter_complex += final_filter
-            filter_args = ['-filter_complex', filter_complex, '-map', '[v]', '-map', '0:a']
+            filter_args = ['-filter_complex', filter_complex, '-map', '[v]', '-map', audio_map]
 
         # Comando FFmpeg final multi-threading
         cmd = [self.ffmpeg_path, '-y'] + ffmpeg_inputs + filter_args + [
@@ -881,6 +957,12 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         except sp.CalledProcessError as e:
             logger.error(f"   ❌ Error en FFmpeg ({self.ffmpeg_path}): {e.stderr.decode() if e.stderr else 'Unknown'}")
             raise
+        finally:
+            if dynamic_video_path and os.path.exists(dynamic_video_path):
+                try:
+                    os.remove(dynamic_video_path)
+                except Exception:
+                    pass
 
     def run_pipeline(self, youtube_url, on_progress=None):
         """
@@ -1023,7 +1105,16 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                 continue
 
             duration = end - start
-            if duration < 20.0 or duration > 240.0:
+            strict_semantic = bool(self.options.get('strict_semantic_hooks', True))
+            if strict_semantic:
+                if duration < 30.0 or duration > 60.0:
+                    continue
+            elif duration < 20.0 or duration > 240.0:
+                continue
+
+            hook_txt = str(clip.get('hook', '') or '').strip()
+            payoff_txt = str(clip.get('payoff', '') or '').strip()
+            if strict_semantic and (len(hook_txt.split()) < 4 or len(payoff_txt.split()) < 4):
                 continue
                 
             clip['_start'] = start
@@ -1091,8 +1182,28 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             if self.options.get('b_roll', False):
                 from broll_manager import BRollManager
                 broll_manager = BRollManager(api_key=os.getenv("PEXELS_API_KEY"))
+                broll_style = (self.options.get('broll_style') or 'split').lower()
+                generated_inserts = list(clip.get('broll_inserts', []) or [])
+
+                if not generated_inserts:
+                    clip_text = " ".join([w.get('word', '') for w in clip_words if isinstance(w, dict)])
+                    auto_keywords = broll_manager.extract_keywords_from_text(clip_text, limit=2)
+                    if auto_keywords:
+                        seg_len = max(2.5, min(5.0, duration / 4.0))
+                        t0 = max(0.8, min(3.0, duration * 0.15))
+                        for kw_i, kw in enumerate(auto_keywords):
+                            s = min(duration - 1.0, t0 + (kw_i * (seg_len + 1.8)))
+                            e = min(duration - 0.2, s + seg_len)
+                            if e > s:
+                                broll_data.append({
+                                    'path': broll_manager.fetch_video(kw, self.project_id if hasattr(self, 'project_id') else "temp", i + kw_i),
+                                    'start': s,
+                                    'end': e,
+                                    'mode': broll_style,
+                                })
+                        broll_data = [b for b in broll_data if b.get('path')]
                 
-                for b_idx, b_insert in enumerate(clip.get('broll_inserts', [])):
+                for b_idx, b_insert in enumerate(generated_inserts):
                     b_start, b_end, b_words = self.snap_to_word_boundaries(
                         words, b_insert['start_text'], b_insert['end_text']
                     )
@@ -1106,7 +1217,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
                                 broll_data.append({
                                     'path': b_path,
                                     'start': rel_start,
-                                    'end': rel_end
+                                    'end': rel_end,
+                                    'mode': broll_style,
                                 })
 
             # Generar subtítulos karaoke

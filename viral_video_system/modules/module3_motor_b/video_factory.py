@@ -7,6 +7,7 @@ from pathlib import Path
 from viral_video_system.modules.module3_motor_b.tts_generator import tts_edge
 from viral_video_system.modules.module3_motor_b.visual_generator import generate_background_images, generate_background_media
 from viral_video_system.modules.module3_motor_b.music_mixer import get_royalty_free_music
+from viral_video_system.modules.module3_motor_b.depth_parallax import create_parallax_clip
 
 
 def _run(cmd):
@@ -101,6 +102,80 @@ def _generate_srt_with_whisper(audio_path, text_fallback, srt_path):
         return srt_path
 
 
+def _ass_ts(seconds):
+    h = int(seconds // 3600)
+    m = int((seconds % 3600) // 60)
+    s = int(seconds % 60)
+    cs = int((seconds - int(seconds)) * 100)
+    return f"{h}:{m:02d}:{s:02d}.{cs:02d}"
+
+
+def _generate_ass_pop_subtitles(audio_path, text_fallback, ass_path):
+    words = []
+    try:
+        import whisperx
+
+        device = "cpu"
+        audio = whisperx.load_audio(audio_path)
+        model = whisperx.load_model("small", device, compute_type="int8")
+        transcribed = model.transcribe(audio, batch_size=16)
+        align_model, align_meta = whisperx.load_align_model(language_code=transcribed["language"], device=device)
+        aligned = whisperx.align(transcribed["segments"], align_model, align_meta, audio, device, return_char_alignments=False)
+        for seg in aligned.get("segments", []):
+            for w in seg.get("words", []):
+                if "start" in w and "end" in w:
+                    words.append((str(w.get("word", "")).strip(), float(w["start"]), float(w["end"])))
+    except Exception:
+        try:
+            import whisper
+
+            model = whisper.load_model("base")
+            result = model.transcribe(audio_path, word_timestamps=True)
+            for seg in result.get("segments", []):
+                for w in seg.get("words", []):
+                    words.append((str(w.get("word", "")).strip(), float(w.get("start", 0)), float(w.get("end", 0))))
+        except Exception:
+            pass
+
+    if not words:
+        _write_fallback_srt(text_fallback, ass_path.replace(".ass", ".srt"))
+        return ""
+
+    header = """[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 1
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Base,Arial Black,92,&H00FFFFFF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,1,0,1,6,2,2,40,40,520,1
+Style: Pop,Arial Black,98,&H0000E5FF,&H000000FF,&H00000000,&H80000000,-1,0,0,0,100,100,1,0,1,8,2,2,40,40,520,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+"""
+    lines = [header]
+
+    for i in range(0, len(words), 3):
+        chunk = words[i:i + 3]
+        start = chunk[0][1]
+        end = chunk[-1][2]
+        base_text = " ".join(w[0].upper() for w in chunk if w[0])
+        lines.append(f"Dialogue: 0,{_ass_ts(start)},{_ass_ts(end)},Base,,0,0,0,,{base_text}")
+        for w_text, w_start, w_end in chunk:
+            if not w_text:
+                continue
+            dur_ms = int(max(80, (w_end - w_start) * 1000))
+            pop = min(120, int(dur_ms * 0.5))
+            anim = f"{{\\c&H0000E5FF&\\bord8\\t(0,{pop},\\fscx120\\fscy120)\\t({pop},{dur_ms},\\fscx100\\fscy100)}}"
+            lines.append(f"Dialogue: 1,{_ass_ts(w_start)},{_ass_ts(w_end)},Pop,,0,0,0,,{anim}{w_text.upper()}")
+
+    with open(ass_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+    return ass_path
+
+
 def _ensure_music(temp_dir, duration_seconds, dry_run):
     music = get_royalty_free_music(mood="motivational", duration_needed=int(duration_seconds), dry_run=dry_run)
     if music and os.path.exists(music):
@@ -176,13 +251,17 @@ def _assemble_part_video(media_assets, audio_path, out_video_path, dark_opacity=
 
 
 def _burn_subtitles(input_video, srt_path, out_video):
+    subtitle_filter = "subtitles=" + srt_path
+    if str(srt_path).lower().endswith(".ass"):
+        subtitle_filter = "ass=" + srt_path
+
     cmd = [
         "ffmpeg",
         "-y",
         "-i",
         input_video,
         "-vf",
-        "subtitles=" + srt_path + ":force_style='FontName=Arial,FontSize=22,Bold=1,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,Outline=3,MarginV=180'",
+        subtitle_filter + ("" if str(srt_path).lower().endswith(".ass") else ":force_style='FontName=Arial,FontSize=22,Bold=1,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,Outline=3,MarginV=180'"),
         "-c:v",
         "libx264",
         "-preset",
@@ -296,6 +375,32 @@ def build_motor_b_video_suite(script, keywords, out_dir, temp_dir, dry_run=False
             if os.path.exists(img_fallback):
                 media_assets = [{"type": "image", "path": img_fallback}]
 
+        # Upgrade static images to depth-parallax clips when possible.
+        parallax_assets = []
+        for a_idx, asset in enumerate(media_assets):
+            if asset.get("type") != "image":
+                parallax_assets.append(asset)
+                continue
+            src_img = asset.get("path")
+            if not src_img or not os.path.exists(src_img):
+                continue
+
+            parallax_out = os.path.join(part_dir, f"parallax_{idx}_{a_idx}.mp4")
+            parallax = create_parallax_clip(
+                image_path=src_img,
+                output_path=parallax_out,
+                duration=6.0,
+                fps=30,
+                width=1080,
+                height=1920,
+            )
+            if parallax and os.path.exists(parallax):
+                parallax_assets.append({"type": "video", "path": parallax})
+            else:
+                parallax_assets.append(asset)
+
+        media_assets = parallax_assets or media_assets
+
         part_video_raw = os.path.join(out_dir, f"parte_{idx}_video.mp4")
         dark_opacity = 0.55 if style_profile == "mystery" else 0.35
         built = _assemble_part_video(media_assets, audio_path, part_video_raw, dark_opacity=dark_opacity)
@@ -306,11 +411,14 @@ def build_motor_b_video_suite(script, keywords, out_dir, temp_dir, dry_run=False
                 "-shortest", "-c:v", "libx264", "-c:a", "aac", part_video_raw
             ])
 
-        srt_path = os.path.join(part_dir, f"parte_{idx}.srt")
-        _generate_srt_with_whisper(audio_path, part_text, srt_path)
+        subtitle_path = os.path.join(part_dir, f"parte_{idx}.ass")
+        subtitle_generated = _generate_ass_pop_subtitles(audio_path, part_text, subtitle_path)
+        if not subtitle_generated:
+            subtitle_path = os.path.join(part_dir, f"parte_{idx}.srt")
+            _generate_srt_with_whisper(audio_path, part_text, subtitle_path)
 
         part_video_subbed = os.path.join(out_dir, f"parte_{idx}_final.mp4")
-        if not _burn_subtitles(part_video_raw, srt_path, part_video_subbed):
+        if not _burn_subtitles(part_video_raw, subtitle_path, part_video_subbed):
             shutil.copy2(part_video_raw, part_video_subbed)
 
         duration = _audio_duration_seconds(audio_path)
@@ -328,7 +436,7 @@ def build_motor_b_video_suite(script, keywords, out_dir, temp_dir, dry_run=False
             "audio": audio_path,
             "images": [m.get("path") for m in media_assets],
             "video_raw": part_video_raw,
-            "subtitles": srt_path,
+            "subtitles": subtitle_path,
             "video_subbed": part_video_subbed,
             "video_music": part_video_music,
         })
