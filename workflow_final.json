@@ -1,0 +1,128 @@
+{
+    "nodes": [
+        {
+            "parameters": {
+                "path": "opus-clip",
+                "options": {}
+            },
+            "id": "1",
+            "name": "Webhook",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                250,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "language": "python",
+                "pythonCode": "import subprocess\nimport os\n\nurl = _input.item.json['body']['url']\noutput_template = 'data/%(id)s.%(ext)s'\nytdlp_path = r'C:\\Users\\jpima\\AppData\\Roaming\\Python\\Python312\\Scripts\\yt-dlp.exe'\n\n# Get ID\ncmd_id = [ytdlp_path, '--get-id', url]\nid_result = subprocess.run(cmd_id, capture_output=True, text=True).stdout.strip()\n\n# Download\ncmd_download = [ytdlp_path, '-f', 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]', '--output', output_template, url]\nsubprocess.run(cmd_download)\n\nreturn {'id': id_result}"
+            },
+            "id": "2",
+            "name": "Download Video",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                450,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "language": "python",
+                "pythonCode": "import subprocess\n\nvideo_id = _input.item.json['id']\ninput_file = f'data/{video_id}.mp4'\noutput_file = f'data/{video_id}.mp3'\nffmpeg_path = r'C:\\Users\\jpima\\Downloads\\edumind---ai-learning-guide\\bin\\ffmpeg.exe'\n\n# If ffmpeg is in path, use it directly, else use the binary in the project\ncmd = ['ffmpeg', '-y', '-i', input_file, '-vn', '-ar', '16000', '-ac', '1', '-c:a', 'libmp3lame', '-q:a', '4', output_file]\nsubprocess.run(cmd)\n\nreturn {'id': video_id, 'audio_path': output_file}"
+            },
+            "id": "3",
+            "name": "Extract Audio",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                650,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "language": "python",
+                "pythonCode": "import subprocess\nimport json\nimport os\n\nvideo_id = _input.item.json['id']\naudio_path = _input.item.json['audio_path']\nwhisper_path = r'C:\\Users\\jpima\\AppData\\Roaming\\Python\\Python312\\Scripts\\whisper.exe'\n\ncmd = [whisper_path, audio_path, '--model', 'base', '--output_format', 'json', '--output_dir', 'data/']\nsubprocess.run(cmd)\n\ntranscript_path = f'data/{video_id}.json'\nwith open(transcript_path, 'r', encoding='utf-8') as f:\n    data = json.load(f)\n\nreturn {'id': video_id, 'text': data['text']}"
+            },
+            "id": "4",
+            "name": "Transcribe",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                850,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "resource": "chat",
+                "model": "gemini-1.5-flash",
+                "messages": {
+                    "messageValues": [
+                        {
+                            "message": "Actúa como un editor de video experto en TikTok. Analiza la siguiente transcripción estructurada. Tu objetivo es identificar 3 segmentos autónomos que tengan alto potencial de retención.\n\nCriterios de Selección:\n1. Gancho Inmediato.\n2. Coherencia propia.\n3. Duración: 30-60 segundos.\n\nTranscripción: {{$node[\"Transcribe\"].json[\"text\"]}}\n\nResponde ÚNICAMENTE con un array JSON: [{\"title\": \"...\", \"start_time\": 0.0, \"end_time\": 0.0}]"
+                        }
+                    ]
+                },
+                "options": {}
+            },
+            "id": "5",
+            "name": "Google Gemini",
+            "type": "n8n-nodes-base.googleGemini",
+            "typeVersion": 1,
+            "position": [
+                1050,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "Webhook": {
+            "main": [
+                [
+                    {
+                        "node": "Download Video",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Download Video": {
+            "main": [
+                [
+                    {
+                        "node": "Extract Audio",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Extract Audio": {
+            "main": [
+                [
+                    {
+                        "node": "Transcribe",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Transcribe": {
+            "main": [
+                [
+                    {
+                        "node": "Google Gemini",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

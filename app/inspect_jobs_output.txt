@@ -1,0 +1,17 @@
+C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\inspect_jobs.js:9
+        const jobData = await redis.hgetall(ull:video-processing:);
+                                            ^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1638:18)
+    at Module._compile (node:internal/modules/cjs/loader:1680:20)
+    at Object.transformer (C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\node_modules\tsx\dist\register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at cjsLoader (node:internal/modules/esm/translators:268:5)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:202:7)
+    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)
+
+Node.js v22.19.0

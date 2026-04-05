@@ -1,0 +1,56 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: edumind-db
+    restart: always
+    environment:
+      - POSTGRES_USER=n8n
+      - POSTGRES_PASSWORD=n8n
+      - POSTGRES_DB=antigravity
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+      - ./migrations:/docker-entrypoint-initdb.d
+
+  # Redis Cache & Queue
+  redis:
+    image: redis:alpine
+    container_name: edumind-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis_data:/data
+
+  # Optional automation stack (disabled by default)
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: edumind-n8n
+    restart: unless-stopped
+    profiles: ["automation"]
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=admin
+      - N8N_BASIC_AUTH_PASSWORD=change_me
+      - GENERIC_TIMEZONE=Europe/Madrid
+    volumes:
+      - ./data/n8n:/home/node/.n8n
+      - ./scripts:/scripts
+      - ./viral_video_system:/viral_video_system
+    depends_on:
+      - postgres
+      - redis
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: edumind-ollama
+    restart: unless-stopped
+    profiles: ["automation"]
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./data/ollama:/root/.ollama

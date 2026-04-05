@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "data": {
+    "status": "ok",
+    "authenticated": true,
+    "notebook_url": "not configured",
+    "active_sessions": 0,
+    "max_sessions": 10,
+    "session_timeout": 900,
+    "total_messages": 0,
+    "headless": true,
+    "auto_login_enabled": false,
+    "stealth_enabled": true
+  }
+}

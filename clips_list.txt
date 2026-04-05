@@ -1,0 +1,53 @@
+
+=== CLIPS EN BASE DE DATOS ===
+
+Clip ID: b7fa6495-2823-4733-bbcd-ac4f88f00283
+Project ID: 4358ba66-9f4a-4a10-aeac-36372ecfc3ef
+User ID: e7b33fe8-2a49-45be-99c8-181d064d5e1b
+Status: pending
+--------------------------------------------------
+Clip ID: d4d2f51b-bf31-4f58-a6fe-a9a7081452b0
+Project ID: 4358ba66-9f4a-4a10-aeac-36372ecfc3ef
+User ID: e7b33fe8-2a49-45be-99c8-181d064d5e1b
+Status: pending
+--------------------------------------------------
+Clip ID: 729d5387-ba84-41bd-ac87-0c2aa1ef3f79
+Project ID: 4358ba66-9f4a-4a10-aeac-36372ecfc3ef
+User ID: e7b33fe8-2a49-45be-99c8-181d064d5e1b
+Status: pending
+--------------------------------------------------
+Clip ID: ce09efe5-c737-497e-a945-020a188c946a
+Project ID: 4358ba66-9f4a-4a10-aeac-36372ecfc3ef
+User ID: e7b33fe8-2a49-45be-99c8-181d064d5e1b
+Status: pending
+--------------------------------------------------
+Clip ID: 9b8190dc-cd2b-4731-a20d-428c5fc32766
+Project ID: 4358ba66-9f4a-4a10-aeac-36372ecfc3ef
+User ID: e7b33fe8-2a49-45be-99c8-181d064d5e1b
+Status: pending
+--------------------------------------------------
+Clip ID: 44c605f9-882e-4bc8-b82a-9a101299b452
+Project ID: 4358ba66-9f4a-4a10-aeac-36372ecfc3ef
+User ID: e7b33fe8-2a49-45be-99c8-181d064d5e1b
+Status: pending
+--------------------------------------------------
+Clip ID: 5a287262-9d5e-4e38-bc12-29099f8624c9
+Project ID: 4358ba66-9f4a-4a10-aeac-36372ecfc3ef
+User ID: e7b33fe8-2a49-45be-99c8-181d064d5e1b
+Status: pending
+--------------------------------------------------
+Clip ID: e4ea5b95-274e-4789-a093-d2077ebae7cb
+Project ID: 4358ba66-9f4a-4a10-aeac-36372ecfc3ef
+User ID: e7b33fe8-2a49-45be-99c8-181d064d5e1b
+Status: pending
+--------------------------------------------------
+Clip ID: ea63b679-9394-4a27-b11d-4aeb3159586c
+Project ID: 4358ba66-9f4a-4a10-aeac-36372ecfc3ef
+User ID: e7b33fe8-2a49-45be-99c8-181d064d5e1b
+Status: pending
+--------------------------------------------------
+Clip ID: e40b4b4e-888a-4167-9531-72cf94cfaea4
+Project ID: 4358ba66-9f4a-4a10-aeac-36372ecfc3ef
+User ID: e7b33fe8-2a49-45be-99c8-181d064d5e1b
+Status: pending
+--------------------------------------------------

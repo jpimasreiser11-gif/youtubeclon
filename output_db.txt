@@ -1,0 +1,5 @@
+21bdd6e6-c5e6-49f5-934f-770a4d36afa3 | %: 100 | ETA: 0 | STEP: Completado | DATE: 2026-02-23 15:48:43.139005+00:00
+c5c713ae-4139-4afd-92ef-facd7b248771 | %: 100 | ETA: 0 | STEP: Completado | DATE: 2026-02-23 15:37:08.194770+00:00
+e345ecd5-2cb0-473b-83b3-337852a3512a | %: 0 | ETA: 0 | STEP: Iniciando... | DATE: 2026-02-21 16:27:00.179057+00:00
+7d57f458-7ad1-4ba1-b118-1c00335b9edf | %: 0 | ETA: 0 | STEP: Iniciando... | DATE: 2026-02-15 14:58:04.235621+00:00
+2cbaeca8-e923-4150-9d37-7d80c1945f1d | %: 0 | ETA: 0 | STEP: Iniciando... | DATE: 2026-01-31 17:14:02.309987+00:00

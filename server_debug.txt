@@ -1,0 +1,29 @@
+ÔòöÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòù
+Ôòæ                                                          Ôòæ
+Ôòæ           NotebookLM MCP Server v1.0.0                   Ôòæ
+Ôòæ                                                          Ôòæ
+Ôòæ   Chat with Gemini 2.5 through NotebookLM via MCP       Ôòæ
+Ôòæ                                                          Ôòæ
+ÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòØ
+
+Ôä╣´©Å  [14:51:07] ­ƒîÉ SharedContextManager initialized (PERSISTENT MODE)
+Ôä╣´©Å  [14:51:07]   Chrome Profile: C:\Users\jpima\AppData\Local\notebooklm-mcp\Data\chrome_profile
+Ô£à  [14:51:07]   Fingerprint: PERSISTENT across restarts! ­ƒÄ»
+Ôä╣´©Å  [14:51:07] ­ƒÄ» SessionManager initialized
+Ôä╣´©Å  [14:51:07]   Max sessions: 10
+Ôä╣´©Å  [14:51:07]   Timeout: 900s (15 minutes)
+Ô£à  [14:51:07]   Ô£à Loaded library with 1 notebooks
+Ôä╣´©Å  [14:51:07] ­ƒôÜ NotebookLibrary initialized
+Ôä╣´©Å  [14:51:07]   Library path: C:\Users\jpima\AppData\Local\notebooklm-mcp\Data\library.json
+Ôä╣´©Å  [14:51:07]   Notebooks: 1
+Ôä╣´©Å  [14:51:07]   Active: opusclips-clone-improvements-g
+ÔØî  [14:51:07] ­ƒÆÑ Fatal error starting server: TypeError: Cannot read properties of undefined (reading 'join')
+ÔØî  [14:51:07] TypeError: Cannot read properties of undefined (reading 'join')
+    at buildAskQuestionDescription (file:///C:/Users/jpima/AppData/Local/npm-cache/_npx/16baa19dd5d31de6/node_modules/notebooklm-mcp/dist/tools/definitions/ask-question.js:8:38)
+    at buildToolDefinitions (file:///C:/Users/jpima/AppData/Local/npm-cache/_npx/16baa19dd5d31de6/node_modules/notebooklm-mcp/dist/tools/definitions.js:17:22)
+    at new NotebookLMMCPServer (file:///C:/Users/jpima/AppData/Local/npm-cache/_npx/16baa19dd5d31de6/node_modules/notebooklm-mcp/dist/index.js:79:26)
+    at main (file:///C:/Users/jpima/AppData/Local/npm-cache/_npx/16baa19dd5d31de6/node_modules/notebooklm-mcp/dist/index.js:312:24)
+    at file:///C:/Users/jpima/AppData/Local/npm-cache/_npx/16baa19dd5d31de6/node_modules/notebooklm-mcp/dist/index.js:324:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:651:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)

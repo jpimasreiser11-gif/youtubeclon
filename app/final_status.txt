@@ -1,0 +1,1 @@
+('f4ca43dd-6928-43e6-93bf-b2fdba88fdce', 'PROCESSING', 'Completado clip 4 de 5', 90, datetime.datetime(2026, 3, 15, 12, 55, 54, 546702, tzinfo=datetime.timezone.utc))

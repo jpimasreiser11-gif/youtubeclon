@@ -1,0 +1,23 @@
+C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\scripts\sovereign_core.py:37: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+2026-02-28 19:40:16,811 - INFO - Start processing project test-id with URL https://youtu.be/dn-16Ol2eb8?si=XKEcQDPiBKkVFAGv
+2026-02-28 19:40:16,811 - ERROR - Error guardando clips en DB: name 'FFMPEG_PATH' is not defined
+Traceback (most recent call last):
+  File "C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\scripts\ingest.py", line 199, in main
+    ffmpeg_path=FFMPEG_PATH if os.path.exists(FFMPEG_PATH) else "ffmpeg",
+                                             ^^^^^^^^^^^
+NameError: name 'FFMPEG_PATH' is not defined. Did you mean: 'FFMPEG_EXE'?
+2026-02-28 19:40:16,883 - ERROR - Error updating status: invalid input syntax for type uuid: "test-id"
+LINE 1: ... project_status = 'FAILED'::job_status WHERE id = 'test-id':...
+                                                             ^
+
+2026-02-28 19:40:16,883 - ERROR - ÔØî Proyecto test-id fall├│ durante guardado de clips o no gener├│ resultados
+DEBUG: Using DB Config: {'user': 'n8n', 'password': '******', 'host': '127.0.0.1', 'port': '5432', 'database': 'antigravity'}
+­ƒÜÇ Iniciando Sovereign Engine para Proyecto test-id

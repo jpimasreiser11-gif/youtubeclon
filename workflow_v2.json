@@ -1,0 +1,144 @@
+{
+    "nodes": [
+        {
+            "parameters": {
+                "path": "opus-clip",
+                "options": {}
+            },
+            "id": "1",
+            "name": "Webhook",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                250,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "command": "yt-dlp -f \"bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]\" --output \"data/%(id)s.%(ext)s\" {{$node[\"Webhook\"].json[\"body\"][\"url\"]}}"
+            },
+            "id": "2",
+            "name": "Download Video",
+            "type": "n8n-nodes-base.executeCommand",
+            "typeVersion": 1,
+            "position": [
+                450,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "command": "ffmpeg -y -i data/{{$node[\"Download Video\"].json[\"executable\"]}}.mp4 -vn -ar 16000 -ac 1 -c:a libmp3lame -q:a 4 data/{{$node[\"Download Video\"].json[\"executable\"]}}.mp3"
+            },
+            "id": "3",
+            "name": "Extract Audio",
+            "type": "n8n-nodes-base.executeCommand",
+            "typeVersion": 1,
+            "position": [
+                650,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "command": "python -m whisper data/{{$node[\"Download Video\"].json[\"id\"]}}.mp3 --model base --output_format json --output_dir data/"
+            },
+            "id": "4",
+            "name": "Transcribe",
+            "type": "n8n-nodes-base.executeCommand",
+            "typeVersion": 1,
+            "position": [
+                850,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "model": "gemini-1.5-flash",
+                "prompt": "Actúa como un editor de video experto en TikTok. Analiza la siguiente transcripción estructurada (con timestamps). Tu objetivo es identificar 3 segmentos autónomos que tengan alto potencial de retención.\n\nCriterios de Selección:\n1. Gancho Inmediato.\n2. Coherencia propia.\n3. Duración: 30-60 segundos.\n\nTranscripción: {{$node[\"Transcribe\"].json[\"text\"]}}\n\nResponde ÚNICAMENTE con un array JSON: [{\"title\": \"...\", \"start_time\": 0.0, \"end_time\": 0.0}]",
+                "options": {
+                    "responseFormat": "json"
+                }
+            },
+            "id": "5",
+            "name": "Gemini 1.5 Flash",
+            "type": "n8n-nodes-base.googleGemini",
+            "typeVersion": 1,
+            "position": [
+                1050,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "command": "python scripts/clipper.py --input data/{{$node[\"Download Video\"].json[\"id\"]}}.mp4 --output data/clip_{{$node[\"Gemini 1.5 Flash\"].json[\"start_time\"]}}.mp4 --start {{$node[\"Gemini 1.5 Flash\"].json[\"start_time\"]}} --end {{$node[\"Gemini 1.5 Flash\"].json[\"end_time\"]}}"
+            },
+            "id": "6",
+            "name": "Clipper",
+            "type": "n8n-nodes-base.executeCommand",
+            "typeVersion": 1,
+            "position": [
+                1250,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "Webhook": {
+            "main": [
+                [
+                    {
+                        "node": "Download Video",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Download Video": {
+            "main": [
+                [
+                    {
+                        "node": "Extract Audio",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Extract Audio": {
+            "main": [
+                [
+                    {
+                        "node": "Transcribe",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Transcribe": {
+            "main": [
+                [
+                    {
+                        "node": "Gemini 1.5 Flash",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Gemini 1.5 Flash": {
+            "main": [
+                [
+                    {
+                        "node": "Clipper",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

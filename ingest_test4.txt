@@ -1,0 +1,46 @@
+C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\scripts\sovereign_core.py:37: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+2026-02-28 20:02:04,836 - INFO - Start processing project test-id with URL https://youtu.be/dn-16Ol2eb8?si=XKEcQDPiBKkVFAGv
+2026-02-28 20:02:05,425 - INFO - 🚀 Usando Groq API con llama-3.3-70b-versatile (FREE - 14,400 requests/día)
+2026-02-28 20:02:05,425 - INFO - Cargando modelo Whisper (small)...
+2026-02-28 20:02:10,049 - WARNING - MediaPipe no disponible - usando Smart Crop estático (centro)
+2026-02-28 20:02:10,049 - INFO - Using FFmpeg at: C:\Users\jpima\Downloads\edumind---ai-learning-guide\data\ffmpeg.exe
+2026-02-28 20:02:10,050 - INFO - 🚀 Iniciando Pipeline 2026 con opciones: {'audio_pro': False, 'smart_reframe': False, 'clean_speech': False, 'b_roll': False}
+2026-02-28 20:02:10,155 - INFO - Progress: [10%] Descargando video...
+2026-02-28 20:02:10,155 - INFO - Descargando video en calidad MÁXIMA: https://youtu.be/dn-16Ol2eb8?si=XKEcQDPiBKkVFAGv
+WARNING: [youtube] [jsc] Remote components challenge solver script (deno) and NPM package (deno) were skipped. These may be required to solve JS challenges. You can enable these downloads with  --remote-components ejs:github  (recommended) or  --remote-components ejs:npm , respectively. For more information and alternatives, refer to  https://github.com/yt-dlp/yt-dlp/wiki/EJS
+WARNING: [youtube] dn-16Ol2eb8: n challenge solving failed: Some formats may be missing. Ensure you have a supported JavaScript runtime and challenge solver script distribution installed. Review any warnings presented before this message. For more details, refer to  https://github.com/yt-dlp/yt-dlp/wiki/EJS
+WARNING: [youtube] dn-16Ol2eb8: android client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=android.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide
+WARNING: [youtube] dn-16Ol2eb8: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide
+WARNING: [youtube] dn-16Ol2eb8: ios client hls formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide
+
+[download] 100% of  195.84MiBDEBUG: Using DB Config: {'user': 'n8n', 'password': '******', 'host': '127.0.0.1', 'port': '5432', 'database': 'antigravity'}
+🚀 Iniciando Sovereign Engine para Proyecto test-id
+⚠️ Error actualizando progreso: invalid input syntax for type uuid: "test-id"
+LINE 6:                 WHERE id = 'test-id'::uuid
+                                   ^
+
+
+                             
+2026-02-28 20:02:13,939 - INFO -    Calidad: 640x360 @ 25fps (avc1.42001E) - 195.8 MB
+2026-02-28 20:02:13,939 - INFO -    Video descargado: C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\storage\temp\test-id\source_video.mp4
+2026-02-28 20:02:14,049 - INFO - Progress: [20%] Video descargado
+2026-02-28 20:02:14,159 - INFO - Progress: [25%] Analizando video (cara + audio en paralelo)...
+2026-02-28 20:02:14,161 - INFO - Detectando posición facial (12 frames)...
+2026-02-28 20:02:14,204 - INFO - Extrayendo audio (WAV 16kHz)...
+2026-02-28 20:02:14,281 - INFO -    Utilizando método: Haar Cascade
+2026-02-28 20:02:14,931 - WARNING - ⚠️ No se detectaron caras, usando centro del frame
+2026-02-28 20:02:17,587 - INFO -    ✓ Audio extraído correctamente
+2026-02-28 20:02:17,711 - INFO - Progress: [35%] Seguimiento configurado (X:320px) + Audio listo
+2026-02-28 20:02:17,825 - INFO - Progress: [40%] Transcribiendo audio (Whisper)...
+2026-02-28 20:02:17,825 - INFO - Transcribiendo con faster-whisper (CTranslate2)...
+2026-02-28 20:02:19,970 - INFO - HTTP Request: GET https://huggingface.co/api/models/Systran/faster-whisper-small/revision/main "HTTP/1.1 200 OK"
+2026-02-28 20:02:24,400 - INFO - Processing audio with duration 39:33.103
+2026-02-28 20:02:33,886 - INFO - Detected language 'es' with probability 0.99

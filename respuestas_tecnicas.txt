@@ -1,0 +1,21 @@
+Aquí tienes las respuestas técnicas basadas en el análisis del código actual (scripts/full_pipeline.py y scripts/clipper.py):
+
+1. **¿Estás usando alguna herramienta de transcripción o modelo de lenguaje para identificar los cortes?**
+   - **Transcripción:** Sí, utilizamos **Faster-Whisper** (versión optimizada de OpenAI Whisper) para obtener el texto y los "timestamps" precisos a nivel de palabra.
+   - **Identificación de Cortes (Inteligencia):** Utilizamos **Gemini 2.0 Flash (Google Generative AI)**. Le enviamos la transcripción completa junto con un mapa de "silencios naturales" (detectados por análisis de audio) para que la IA seleccione los mejores segmentos.
+
+2. **¿Qué criterio actual usa tu app para decidir cuándo empieza y termina un clip?**
+   - La app utiliza un enfoque híbrido **IA + Procesamiento de Señal**:
+     1. **IA (Gemini):** Selecciona el segmento basándose en el contenido semántico (busca historias completas, chistes, consejos).
+     2. **Ajuste Fino (Boundary Adjustment):** Un algoritmo secundario (`adjust_clip_boundaries.py`) toma los tiempos sugeridos por la IA y los mueve ligeramente para que coincidan con **silencios detectados** en el audio. Esto evita que los clips se corten a mitad de una palabra o respiración.
+
+3. **¿Tienes un límite de duración para cada clip o puede variar?**
+   - Sí, hay una instrucción explícita en el "prompt" del sistema para que los clips duren **idealmente entre 30 y 60 segundos**.
+   - Sin embargo, es una guía "blanda", por lo que pueden variar ligeramente si la historia lo requiere, pero el objetivo está centrado en el formato de Shorts/Reels/TikTok.
+
+4. **¿Quieres que los clips se generen automáticamente con lógica narrativa (inicio, desarrollo y cierre) o que solo terminen en momentos coherentes del discurso?**
+   - **Lógica Narrativa Completa.**
+   - El sistema está configurado explícitamente (en el prompt del sistema hacia Gemini) con los siguientes criterios narrativos:
+     - **Gancho Inmediato:** Los primeros 2 segundos deben capturar la atención.
+     - **Mini-Historia:** Cada clip debe tener "inicio, desarrollo y cierre natural".
+     - **Autonomía:** El clip debe tener sentido por sí mismo sin necesitar el contexto del video completo.

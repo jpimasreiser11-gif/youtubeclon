@@ -1,0 +1,170 @@
+{
+  "name": "Flujo Viral Pro (Docker)",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ],
+      "id": "start"
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/ideation",
+        "method": "POST",
+        "options": {}
+      },
+      "name": "Generar Idea (API)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        470,
+        300
+      ],
+      "id": "ideation"
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/tts",
+        "method": "POST",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "text",
+              "value": "={{ .script_text }}"
+            },
+            {
+              "name": "output",
+              "value": "temp/audio_{{ .format('YYYYMMDD_HHmmss') }}.mp3"
+            }
+          ]
+        }
+      },
+      "name": "Generar Audio (API)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        690,
+        300
+      ],
+      "id": "tts"
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/fetch",
+        "method": "POST",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "keywords",
+              "value": "={{ [\"Generar Idea (API)\"].json.keywords }}"
+            },
+            {
+              "name": "output",
+              "value": "temp/video_{{ .format('YYYYMMDD_HHmmss') }}.mp4"
+            }
+          ]
+        }
+      },
+      "name": "Descargar Video Stock (API)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        910,
+        300
+      ],
+      "id": "fetch"
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/render",
+        "method": "POST",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersUi": {
+          "parameter": [
+            {
+              "name": "audio",
+              "value": "={{ [\"Generar Audio (API)\"].json.file }}"
+            },
+            {
+              "name": "video",
+              "value": "={{ [\"Descargar Video Stock (API)\"].json.file }}"
+            },
+            {
+              "name": "output",
+              "value": "final_video_{{ .format('YYYYMMDD_HHmmss') }}.mp4"
+            }
+          ]
+        }
+      },
+      "name": "Renderizar Video Final (API)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        1130,
+        300
+      ],
+      "id": "render"
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Generar Idea (API)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generar Idea (API)": {
+      "main": [
+        [
+          {
+            "node": "Generar Audio (API)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Descargar Video Stock (API)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generar Audio (API)": {
+      "main": [
+        [
+          {
+            "node": "Renderizar Video Final (API)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Descargar Video Stock (API)": {
+      "main": [
+        [
+          {
+            "node": "Renderizar Video Final (API)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

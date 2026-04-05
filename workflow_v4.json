@@ -1,0 +1,322 @@
+{
+    "nodes": [
+        {
+            "parameters": {
+                "path": "antigravity/start",
+                "options": {}
+            },
+            "id": "1",
+            "name": "Webhook",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                100,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "update",
+                "schema": "public",
+                "table": "jobs",
+                "columns": [
+                    "status"
+                ],
+                "updateKey": "id",
+                "values": {
+                    "status": "PROCESSING"
+                }
+            },
+            "id": "2",
+            "name": "DB: Set Processing",
+            "type": "n8n-nodes-base.postgres",
+            "typeVersion": 1,
+            "position": [
+                300,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "command": "powershell -Command \".\\venv_sovereign\\Scripts\\yt-dlp.exe -f 'bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]' --output 'data/{{$json['body']['jobId']}}.%(ext)s' {{$json['body']['url']}}; echo '{\\\"id\\\": \\\"{{$json['body']['jobId']}}\\\"}'\""
+            },
+            "id": "3",
+            "name": "Download Video",
+            "type": "n8n-nodes-base.executeCommand",
+            "typeVersion": 1,
+            "position": [
+                500,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "command": "ffmpeg -y -i data/{{$json['id']}}.mp4 -vn -ar 16000 -ac 1 data/{{$json['id']}}.wav"
+            },
+            "id": "4",
+            "name": "Extract Audio",
+            "type": "n8n-nodes-base.executeCommand",
+            "typeVersion": 1,
+            "position": [
+                700,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "command": ".\\venv_sovereign\\Scripts\\python scripts\\transcribe_fast.py --input data/{{$node['Download Video'].json['id']}}.wav"
+            },
+            "id": "5",
+            "name": "Transcribe (Fast)",
+            "type": "n8n-nodes-base.executeCommand",
+            "typeVersion": 1,
+            "position": [
+                900,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "resource": "chat",
+                "model": "gemini-1.5-flash",
+                "messages": {
+                    "messageValues": [
+                        {
+                            "message": "Analiza esta transcripción y selecciona los 3 mejores momentos virales (30-60s).\n\nTranscripción: {{$json['words']}}\n\nResponde SOLO con un array JSON: [{\"title\": \"...\", \"start\": 0.0, \"end\": 0.0}]"
+                        }
+                    ]
+                }
+            },
+            "id": "6",
+            "name": "Gemini: Select Viral",
+            "type": "n8n-nodes-base.googleGemini",
+            "typeVersion": 1,
+            "position": [
+                1100,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "fieldToSplitOut": "={{$json}}"
+            },
+            "id": "7",
+            "name": "Split Out Clips",
+            "type": "n8n-nodes-base.splitOut",
+            "typeVersion": 1,
+            "position": [
+                1300,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "command": ".\\venv_sovereign\\Scripts\\python scripts\\smart_crop.py --input data/{{$node['Download Video'].json['id']}}.mp4 --output data/{{$node['Download Video'].json['id']}}_crop_{{$json['index']}}.mp4"
+            },
+            "id": "8",
+            "name": "Smart Crop",
+            "type": "n8n-nodes-base.executeCommand",
+            "typeVersion": 1,
+            "position": [
+                1500,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "command": ".\\venv_sovereign\\Scripts\\python scripts\\render_viral.py --video data/{{$node['Download Video'].json['id']}}_crop_{{$json['index']}}.mp4 --transcript data/{{$node['Download Video'].json['id']}}.json --output app/public/clips/{{$node['Download Video'].json['id']}}_{{$json['index']}}.mp4; echo '{\\\"path\\\": \\\"/clips/{{$node['Download Video'].json['id']}}_{{$json['index']}}.mp4\\\", \\\"title\\\": \\\"{{$json['title']}}\\\"}'"
+            },
+            "id": "9",
+            "name": "Render Viral",
+            "type": "n8n-nodes-base.executeCommand",
+            "typeVersion": 1,
+            "position": [
+                1700,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "table": "clips",
+                "columns": [
+                    "job_id",
+                    "title",
+                    "video_path",
+                    "virality_score"
+                ],
+                "values": {
+                    "job_id": "={{$node['Download Video'].json['id']}}",
+                    "title": "={{$json['title']}}",
+                    "video_path": "={{$json['path']}}",
+                    "virality_score": 95
+                }
+            },
+            "id": "11",
+            "name": "DB: Insert Clip",
+            "type": "n8n-nodes-base.postgres",
+            "typeVersion": 1,
+            "position": [
+                1900,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "mode": "wait"
+            },
+            "id": "12",
+            "name": "Wait for All Clips",
+            "type": "n8n-nodes-base.merge",
+            "typeVersion": 1,
+            "position": [
+                2100,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "update",
+                "schema": "public",
+                "table": "jobs",
+                "columns": [
+                    "status"
+                ],
+                "updateKey": "id",
+                "values": {
+                    "status": "COMPLETED"
+                }
+            },
+            "id": "10",
+            "name": "DB: Set Completed",
+            "type": "n8n-nodes-base.postgres",
+            "typeVersion": 1,
+            "position": [
+                2300,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "Webhook": {
+            "main": [
+                [
+                    {
+                        "node": "DB: Set Processing",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "DB: Set Processing": {
+            "main": [
+                [
+                    {
+                        "node": "Download Video",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Download Video": {
+            "main": [
+                [
+                    {
+                        "node": "Extract Audio",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Extract Audio": {
+            "main": [
+                [
+                    {
+                        "node": "Transcribe (Fast)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Transcribe (Fast)": {
+            "main": [
+                [
+                    {
+                        "node": "Gemini: Select Viral",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Gemini: Select Viral": {
+            "main": [
+                [
+                    {
+                        "node": "Split Out Clips",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Split Out Clips": {
+            "main": [
+                [
+                    {
+                        "node": "Smart Crop",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Smart Crop": {
+            "main": [
+                [
+                    {
+                        "node": "Render Viral",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Render Viral": {
+            "main": [
+                [
+                    {
+                        "node": "DB: Insert Clip",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "DB: Insert Clip": {
+            "main": [
+                [
+                    {
+                        "node": "Wait for All Clips",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Wait for All Clips": {
+            "main": [
+                [
+                    {
+                        "node": "DB: Set Completed",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

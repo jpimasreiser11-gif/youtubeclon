@@ -1,0 +1,49 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   app/app/api/delete-job/route.ts
+	modified:   app/app/page.tsx
+	modified:   app/components/SubtitleEditor.tsx
+	modified:   app/lib/queue.ts
+	modified:   app/scripts/broll_manager.py
+	modified:   app/scripts/ingest.py
+	modified:   app/scripts/run-worker.ts
+	modified:   app/scripts/sovereign_core.py
+	modified:   scripts/automation_orchestrator.py
+	modified:   scripts/full_pipeline.py
+	modified:   scripts/upload_scheduler.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	app/check_all_status.py
+	app/cleanup_log.txt
+	app/clear_queue.ts
+	app/error_debug.txt
+	app/final_status.txt
+	app/final_status_v2.txt
+	app/recover_project.py
+	app/reset_db.py
+	app/scripts/cleanup_storage.py
+	app/scripts/cleanup_stuck.py
+	app/scripts/get_recent_errors.py
+	app/scripts/get_recent_errors2.py
+	app/scripts/upload_tiktok_playwright.py
+	app/temp_audit.txt
+	app/temp_check.txt
+	app/temp_errors.txt
+	app/temp_files.txt
+	app/temp_files_list.txt
+	app/temp_files_list_full.txt
+	app/temp_files_names.txt
+	app/temp_files_time.txt
+	app/temp_state.txt
+	app/temp_state2.txt
+	app/trigger_job.ts
+	app/worker_log.txt
+	git_status.txt
+	status.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")

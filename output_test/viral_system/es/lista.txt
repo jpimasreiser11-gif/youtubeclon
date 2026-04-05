@@ -1,0 +1,3 @@
+file 'C:\Users\jpima\Downloads\edumind---ai-learning-guide\output_test\viral_system\es\parte_1_con_musica.mp4'
+file 'C:\Users\jpima\Downloads\edumind---ai-learning-guide\output_test\viral_system\es\parte_2_con_musica.mp4'
+file 'C:\Users\jpima\Downloads\edumind---ai-learning-guide\output_test\viral_system\es\parte_3_con_musica.mp4'

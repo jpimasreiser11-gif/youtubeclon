@@ -1,0 +1,6 @@
+Projects for this video:
+  ID: 8c3896d8-61c8-43cc-ba7b-23a084a2e496, Title: ELEFANTES: ┬íLO QUE NADIE TE DIJO!, Status: COMPLETED
+    Clip: b5b2d5d3-473e-471b-ba51-5493be3da397, 0.4s-18.58s, Score: 92, Title: ELEFANTES: ┬íLO QUE NADIE TE DIJO!
+    Path: c:\Users\jpima\Downloads\edumind---ai-learning-guide\app\storage\processed\b5b2d5d3-473e-471b-ba51-5493be3da397.mp4
+    Version: preview, Path: c:\Users\jpima\Downloads\edumind---ai-learning-guide\app\storage\processed\b5b2d5d3-473e-471b-ba51-5493be3da397.mp4
+    File exists: True

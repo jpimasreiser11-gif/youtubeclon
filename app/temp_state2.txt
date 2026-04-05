@@ -1,0 +1,1 @@
+('PROCESSING', 'Transcribiendo audio (Whisper)...', 69, None)

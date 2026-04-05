@@ -1,0 +1,2 @@
+('f4ca43dd-6928-43e6-93bf-b2fdba88fdce', 'PROCESSING', 'Completado clip 4 de 5', 90, datetime.datetime(2026, 3, 15, 12, 55, 54, 546702, tzinfo=datetime.timezone.utc))
+('0403dd6b-3874-4b35-8dbd-3abf3862ba7c', 'COMPLETED', '✅ Completado: 6 clips generados', 1, datetime.datetime(2026, 3, 6, 20, 16, 32, 367653, tzinfo=datetime.timezone.utc))

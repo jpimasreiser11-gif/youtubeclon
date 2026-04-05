@@ -1,0 +1,15 @@
+node_modules
+.next
+*.log
+.env
+storage/**/*
+!storage/.gitkeep
+*.mp4
+*.mov
+*.avi
+temp_*
+__pycache__
+*.pyc
+venv_sovereign
+.git
+.gitignore

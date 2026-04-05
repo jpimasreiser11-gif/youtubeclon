@@ -1,0 +1,23 @@
+Exception in thread Thread-1 (_readerthread):
+Traceback (most recent call last):
+  File "C:\Users\jpima\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1075, in _bootstrap_inner
+    self.run()
+  File "C:\Users\jpima\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1012, in run
+    self._target(*self._args, **self._kwargs)
+  File "C:\Users\jpima\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 1599, in _readerthread
+    buffer.append(fh.read())
+                  ^^^^^^^^^
+  File "C:\Users\jpima\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x8d in position 3: character maps to <undefined>
+Running command: C:\Users\jpima\Downloads\edumind---ai-learning-guide\venv_sovereign\Scripts\python.exe c:\Users\jpima\Downloads\edumind---ai-learning-guide\scripts\render_with_subtitles.py --video c:\Users\jpima\Downloads\edumind---ai-learning-guide\app\storage\clips\44c605f9-882e-4bc8-b82a-9a101299b452.mp4 --output c:\Users\jpima\Downloads\edumind---ai-learning-guide\app\storage\subtitled\44c605f9-882e-4bc8-b82a-9a101299b452.mp4 --clip-id 44c605f9-882e-4bc8-b82a-9a101299b452 --style hormozi --db-password n8n --db-name antigravity --db-user n8n
+
+--- STDOUT ---
+None
+
+--- STDERR ---
+{"success": false, "error": "No transcription found for clip 44c605f9-882e-4bc8-b82a-9a101299b452 in tables 'transcriptions' or 'clips'"}
+
+
+Exit code: 1

@@ -1,0 +1,14 @@
+.git
+.gitignore
+*.log
+*.md
+.env
+venv_sovereign
+__pycache__
+*.pyc
+_old_project*
+data_test
+output_test
+*.exe
+*.bat
+*.ps1

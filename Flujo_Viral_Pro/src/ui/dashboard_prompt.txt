@@ -1,0 +1,9 @@
+Genera una aplicación React simple de una sola página para gestionar la base de datos viral_factory.db.
+
+## Características:
+1. **Tabla de Videos**: Muestra ID, Título, Nicho, Estado y Fecha.
+2. **Acciones**: Botones para 'Aprobar Guion' (cambia estado a scripted), 'Renderizar' y 'Subir'.
+3. **Vista Previa**: Si el estado es 'scripted', muestra el JSON del guion en un modal editable.
+4. **Conexión**: Usa un servidor Python simple (Flask/FastAPI) en src/ui/app.py para servir los datos de SQLite a este frontend.
+
+Nota: Asume que el backend corre en http://localhost:8000.

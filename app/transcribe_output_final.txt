@@ -1,0 +1,6 @@
+[DEBUG] Final Video Path: c:\Users\jpima\Downloads\edumind---ai-learning-guide\app\storage\source\4358ba66-9f4a-4a10-aeac-363372ecfc3ef.mp4
+[DEBUG] Final Command: "C:\Users\jpima\Downloads\edumind---ai-learning-guide\venv_sovereign\Scripts\python.exe" "c:\Users\jpima\Downloads\edumind---ai-learning-guide\scripts\transcribe_v2.py" --video "c:\Users\jpima\Downloads\edumind---ai-learning-guide\app\storage\source\4358ba66-9f4a-4a10-aeac-363372ecfc3ef.mp4" --clip-id "24d43931-ffed-4911-a2a3-0455c71901c8" --model large-v3 --db-password "n8n" --db-name "antigravity" --db-user "n8n"
+[DEBUG] stdout: ­ƒÜÇ Using device: cpu with model: large-v3
+Ô£à Transcription saved to DB (ID: 7)
+{"status": "success", "metadata": {"language": "en", "duration": 19.06, "device": "cpu", "model": "large-v3", "word_count": 38}}
+

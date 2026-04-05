@@ -1,0 +1,102 @@
+{
+    "nodes": [
+        {
+            "parameters": {
+                "path": "antigravity/start",
+                "responseMode": "lastNode",
+                "options": {}
+            },
+            "id": "1",
+            "name": "Webhook Start",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                250,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "executeQuery",
+                "query": "UPDATE jobs SET status = 'PROCESSING', progress = 10, updated_at = NOW() WHERE id = $1;",
+                "additionalFields": {
+                    "queryParams": "={{$json.jobId}}"
+                }
+            },
+            "id": "2",
+            "name": "DB: Set Processing",
+            "type": "n8n-nodes-base.postgres",
+            "typeVersion": 1,
+            "position": [
+                450,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "language": "python",
+                "pythonCode": "import subprocess\n\nurl = _input.item.json['body']['url']\noutput_template = 'data/%(id)s.%(ext)s'\nytdlp_path = r'C:\\Users\\jpima\\AppData\\Roaming\\Python\\Python312\\Scripts\\yt-dlp.exe'\n\n# Get ID\ncmd_id = [ytdlp_path, '--get-id', url]\nid_result = subprocess.run(cmd_id, capture_output=True, text=True).stdout.strip()\n\nreturn {'id': id_result, 'jobId': _input.item.json['body']['jobId']}"
+            },
+            "id": "3",
+            "name": "Download Video",
+            "type": "n8n-nodes-base.code",
+            "typeVersion": 2,
+            "position": [
+                650,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "operation": "executeQuery",
+                "query": "UPDATE jobs SET status = 'PROCESSING', progress = 100, updated_at = NOW() WHERE id = $1;",
+                "additionalFields": {
+                    "queryParams": "={{$json.jobId}}"
+                }
+            },
+            "id": "99",
+            "name": "DB: Set Completed",
+            "type": "n8n-nodes-base.postgres",
+            "typeVersion": 1,
+            "position": [
+                1400,
+                300
+            ]
+        }
+    ],
+    "connections": {
+        "Webhook Start": {
+            "main": [
+                [
+                    {
+                        "node": "DB: Set Processing",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "DB: Set Processing": {
+            "main": [
+                [
+                    {
+                        "node": "Download Video",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Download Video": {
+            "main": [
+                [
+                    {
+                        "node": "DB: Set Completed",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

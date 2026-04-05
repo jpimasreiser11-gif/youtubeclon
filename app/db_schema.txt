@@ -1,0 +1,47 @@
+=== CLIPS COLUMNS ===
+  id                             uuid
+  project_id                     uuid
+  start_time                     real
+  end_time                       real
+  virality_score                 integer
+  transcript_json                jsonb
+  video_path                     text
+  created_at                     timestamp with time zone
+  end_confidence                 integer
+  auto_adjusted                  boolean
+  title_generated                text
+  description_generated          text
+  hashtags                       ARRAY
+
+=== PROJECTS COLUMNS ===
+  id                             uuid
+  user_id                        uuid
+  source_video_url               text
+  title                          text
+  thumbnail_url                  text
+  project_status                 USER-DEFINED
+  progress                       integer
+  estimated_time_remaining       integer
+  created_at                     timestamp with time zone
+  updated_at                     timestamp with time zone
+
+=== RECENT PROJECTS ===
+  ('7d57f458-7ad1-4ba1-b118-1c00335b9edf', 'COMPLETED', 'e7b33fe8-2a49-45be-99c8-181d064d5e1b')
+  ('2cbaeca8-e923-4150-9d37-7d80c1945f1d', 'COMPLETED', 'e7b33fe8-2a49-45be-99c8-181d064d5e1b')
+  ('4d732f97-0fb3-4d2f-895e-5eed0aede5a9', 'COMPLETED', 'e7b33fe8-2a49-45be-99c8-181d064d5e1b')
+
+=== SAMPLE CLIP (first row, all cols) ===
+  Columns: ['id', 'project_id', 'start_time', 'end_time', 'virality_score', 'transcript_json', 'video_path', 'created_at', 'end_confidence', 'auto_adjusted', 'title_generated', 'description_generated', 'hashtags']
+  id                             = '124b15ee-f966-42fc-9f86-bb54017f1407'
+  project_id                     = '91fcf9d4-7f68-436c-b4a7-49e08942e408'
+  start_time                     = 15.0
+  end_time                       = 55.0
+  virality_score                 = 88
+  transcript_json                = [{'end': 19.86, 'text': ' And that million dollars!', 'start': 18.78, 'words': [
+  video_path                     = None
+  created_at                     = datetime.datetime(2026, 1, 24, 22, 32, 27, 940639, tzinfo=datetime.timezone.utc)
+  end_confidence                 = 100
+  auto_adjusted                  = False
+  title_generated                = None
+  description_generated          = None
+  hashtags                       = None

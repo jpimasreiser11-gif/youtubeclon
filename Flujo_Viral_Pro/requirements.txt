@@ -1,0 +1,17 @@
+moviepy
+edge-tts
+openai-whisper
+faster-whisper
+requests
+playwright
+pydub
+numpy<2.0.0
+pandas
+sqlalchemy
+python-dotenv
+imageio
+imageio-ffmpeg
+google-generativeai
+rich
+customtkinter
+# whisperx

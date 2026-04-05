@@ -1,0 +1,50 @@
+# Environment
+.env
+.env.local
+*.log
+
+# Python
+venv*/
+__pycache__/
+*.pyc
+.ipynb_checkpoints
+
+# Large Data & Output (Project Specific)
+data/
+output/
+storage/
+*.mp4
+*.mp3
+*.m4a
+*.json
+!workflow_*.json
+
+# Frontend
+node_modules/
+.next/
+out/
+app/out.txt
+build/
+dist/
+
+# Viral pipeline temp artifacts
+viral_video_system/temp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large binaries (GitHub rejects files >100MB)
+*.exe
+*.dll
+bin/
+ffmpeg*
+Flujo_Viral_Pro/bin/
+Flujo_Viral_Pro/venv*/
+app/venv*/
+venv*/
+
+postgres_data/
+.gemini/
+redis_data/
+_old_project_v1_backup/

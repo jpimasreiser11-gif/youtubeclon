@@ -1,0 +1,11 @@
+18196: "C:\Program Files\nodejs\node.exe" "C:\Program Files\nodejs/node_modules/npm/bin/npm-cli.js" run dev
+10584: "node"   "C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\node_modules\.bin\\..\next\dist\bin\next" dev
+6840: "C:\Program Files\nodejs\node.exe" C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\node_modules\next\dist\server\lib\start-server.js
+22676: C:\Users\jpima\AppData\Local\ms-playwright-go\1.50.1\node.exe C:\Users\jpima\AppData\Local\ms-playwright-go\1.50.1\package\cli.js run-driver
+24268: "C:\Program Files\nodejs\node.exe" "C:\Program Files\nodejs/node_modules/npm/bin/npm-cli.js" run worker
+23256: "node"   "C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\node_modules\.bin\\..\tsx\dist\cli.mjs" scripts/run-worker.ts
+1120: "C:\Program Files\nodejs\node.exe" --require C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\node_modules\tsx\dist\preflight.cjs --import file:///C:/Users/jpima/Downloads/edumind---ai-learning-guide/app/node_modules/tsx/dist/loader.mjs scripts/run-worker.ts
+15408: c:\Users\jpima\Downloads\edumind---ai-learning-guide\venv_sovereign\Scripts\python.exe c:\Users\jpima\.antigravity\extensions\ms-python.python-2026.2.0-universal\python_files\run-jedi-language-server.py
+1912: "C:\Users\jpima\AppData\Local\Programs\Python\Python312\python.exe" c:\Users\jpima\.antigravity\extensions\ms-python.python-2026.2.0-universal\python_files\run-jedi-language-server.py
+21924: C:\Users\jpima\Downloads\edumind---ai-learning-guide\venv_sovereign\Scripts\python.exe C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\scripts\ingest.py 2f9ee858-6d0e-4eda-bdc7-25463362acbf https://youtu.be/dn-16Ol2eb8?si=XKEcQDPiBKkVFAGv --audio-pro --smart-reframe --clean-speech
+24444: "C:\Users\jpima\AppData\Local\Programs\Python\Python312\python.exe" C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\scripts\ingest.py 2f9ee858-6d0e-4eda-bdc7-25463362acbf https://youtu.be/dn-16Ol2eb8?si=XKEcQDPiBKkVFAGv --audio-pro --smart-reframe --clean-speech

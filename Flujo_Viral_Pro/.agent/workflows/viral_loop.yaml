@@ -1,0 +1,23 @@
+name: Viral Video Production Loop
+description: Ciclo completo de producción desde concepto hasta publicación.
+
+steps:
+  - name: 1. Ideación y Guion
+    skill: script-writer
+    input: "Genera un guion para el nicho '${niche_input}'."
+
+  - name: 2. Revisión Humana (Opcional)
+    action: pause
+    description: "Revisa el guion en la DB o Dashboard. Continúa para generar activos."
+
+  - name: 3. Producción de Activos
+    skill: asset-gatherer
+    input: "Procesa los videos con estado 'scripted' en la DB."
+
+  - name: 4. Renderizado
+    skill: video-editor
+    input: "Renderiza los videos con estado 'assets_ready'."
+
+  - name: 5. Distribución
+    skill: uploader
+    input: "Sube los videos renderizados a la plataforma destino."

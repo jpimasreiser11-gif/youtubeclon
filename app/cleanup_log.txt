@@ -1,0 +1,11 @@
+🧹 Iniciando limpieza de almacenamiento...
+✅ Proyectos activos en DB: 2
+✅ Clips activos en DB: 13
+
+===============================
+🎉 Limpieza completada!
+Archivos eliminados: 0
+Carpetas eliminadas: 0
+Espacio liberado: 0.00 MB
+===============================
+

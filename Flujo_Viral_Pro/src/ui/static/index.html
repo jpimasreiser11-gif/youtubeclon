@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoViral Factory Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-idea {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .status-scripted {
+            background-color: #a855f7;
+            color: white;
+        }
+
+        .status-assets_ready {
+            background-color: #eab308;
+            color: black;
+        }
+
+        .status-rendered {
+            background-color: #22c55e;
+            color: black;
+        }
+
+        .status-uploaded {
+            background-color: #ec4899;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <!-- Header & Action Bar -->
+        <header class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+            <div>
+                <h1
+                    class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500">
+                    AutoViral Factory <span class="text-xs text-slate-500 font-mono">v1.0</span>
+                </h1>
+                <p class="text-slate-400 mt-1">Panel de Control de Producción Automatizada</p>
+            </div>
+
+            <!-- Create New Video Form -->
+            <div class="glass p-2 rounded-xl flex gap-2 items-center">
+                <input type="text" id="new-topic" placeholder="Tema (ej. El Triángulo de las Bermudas)"
+                    class="bg-slate-800 border-none text-white px-3 py-2 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none text-sm w-64">
+
+                <select id="new-niche"
+                    class="bg-slate-800 border-none text-white px-3 py-2 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none text-sm w-40">
+                    <option value="mystery">Canal: Misterio</option>
+                    <option value="history">Canal: Historia</option>
+                    <option value="tech">Canal: Tecnología</option>
+                </select>
+
+                <button onclick="createVideo()"
+                    class="bg-gradient-to-r from-purple-600 to-cyan-600 hover:opacity-90 text-white px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2">
+                    <i data-lucide="sparkles"></i> Crear Proyecto V2
+                </button>
+            </div>
+
+            <div class="flex gap-4">
+                <button onclick="fetchVideos()"
+                    class="bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-lg text-sm flex items-center gap-2">
+                    <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div class="glass p-4 rounded-xl">
+                <h3 class="text-slate-400 text-sm">Videos en Cola</h3>
+                <p class="text-2xl font-bold" id="stat-queue">0</p>
+            </div>
+            <div class="glass p-4 rounded-xl">
+                <h3 class="text-slate-400 text-sm">Listos para Render</h3>
+                <p class="text-2xl font-bold text-yellow-400" id="stat-ready">0</p>
+            </div>
+            <div class="glass p-4 rounded-xl">
+                <h3 class="text-slate-400 text-sm">Completados Hoy</h3>
+                <p class="text-2xl font-bold text-green-400" id="stat-done">0</p>
+            </div>
+            <div class="glass p-4 rounded-xl border-pink-500/30">
+                <h3 class="text-slate-400 text-sm">Subidos</h3>
+                <p class="text-2xl font-bold text-pink-400" id="stat-uploaded">0</p>
+            </div>
+        </div>
+
+        <!-- Main Table -->
+        <div class="glass rounded-xl overflow-hidden shadow-2xl">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-slate-800/50 text-slate-400 text-xs uppercase">
+                        <tr>
+                            <th class="p-4 w-16">ID</th>
+                            <th class="p-4">Título / Nicho</th>
+                            <th class="p-4">Estado</th>
+                            <th class="p-4">Fecha</th>
+                            <th class="p-4 text-right">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="video-list" class="divide-y divide-slate-700/50">
+                        <!-- Rows will be injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Modal -->
+    <!-- ... existing modal ... -->
+    <div id="script-modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4 z-50">
+        <div class="glass bg-slate-900 w-full max-w-2xl rounded-2xl p-6 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <h2 class="text-xl font-bold mb-4">Revisión de Guion</h2>
+            <div class="bg-slate-950 p-4 rounded-lg font-mono text-sm text-green-400 h-96 overflow-y-auto mb-4 whitespace-pre-wrap"
+                id="modal-content"></div>
+            <div class="flex justify-end gap-3">
+                <button onclick="closeModal()"
+                    class="px-4 py-2 rounded-lg text-slate-300 hover:bg-slate-800 transition">Cerrar</button>
+                <button onclick="approveScript(currentModalId)"
+                    class="bg-purple-600 hover:bg-purple-500 px-6 py-2 rounded-lg text-white font-semibold transition">Aprobar
+                    Guion</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        let currentModalId = null;
+
+        // Auto-refresh every 5s
+        setInterval(fetchVideos, 5000);
+        fetchVideos();
+
+        async function createVideo() {
+            const topic = document.getElementById('new-topic').value;
+            const niche = document.getElementById('new-niche').value;
+            if (!topic || !niche) return alert("Por favor ingresa tema y nicho");
+
+            try {
+                const res = await fetch('/api/videos', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ topic, niche })
+                });
+                if (res.ok) {
+                    document.getElementById('new-topic').value = '';
+                    fetchVideos();
+                } else {
+                    alert("Error creando video");
+                }
+            } catch (e) { console.error(e); }
+        }
+
+        async function fetchVideos() {
+            try {
+                const res = await fetch('/api/videos');
+                const videos = await res.json();
+                renderTable(videos);
+                updateStats(videos);
+            } catch (e) {
+                console.error("Error fetching videos:", e);
+            }
+        }
+
+        function renderTable(videos) {
+            const tbody = document.getElementById('video-list');
+            tbody.innerHTML = '';
+
+            if (videos.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="p-8 text-center text-slate-500">No hay proyectos activos. ¡Genera una idea!</td></tr>`;
+                return;
+            }
+
+            // Sort by ID desc
+            videos.sort((a, b) => b.id - a.id);
+
+            videos.forEach(v => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-slate-800/30 transition-colors';
+
+                const date = new Date(v.created_at).toLocaleDateString();
+
+                let actions = '';
+                if (v.status === 'idea') {
+                    if (v.script_content) {
+                        actions = `<button onclick="openModal(${v.id}, '${escapeJson(v.script_content)}')" class="text-cyan-400 hover:text-cyan-300 font-medium text-sm">Revisar Guion</button>`;
+                    } else {
+                        // GENERATE SCRIPT BUTTON
+                        actions = `<button onclick="triggerAction(${v.id}, 'generate_script')" class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded hover:bg-blue-600/40 text-sm flex items-center gap-1"><i data-lucide="sparkles" class="w-3 h-3"></i> Escribir Guion</button>`;
+                    }
+                } else if (v.status === 'scripted') {
+                    actions = `<button onclick="triggerAction(${v.id}, 'render')" class="bg-yellow-600/20 text-yellow-400 px-3 py-1 rounded hover:bg-yellow-600/40 text-sm">Generar Assets</button>`;
+                } else if (v.status === 'assets_ready') {
+                    actions = `<button onclick="triggerAction(${v.id}, 'upload')" class="bg-green-600/20 text-green-400 px-3 py-1 rounded hover:bg-green-600/40 text-sm">Renderizar</button>`;
+                } else if (v.status === 'rendered') {
+                    actions = `<button onclick="triggerAction(${v.id}, 'upload_platform')" class="bg-pink-600/20 text-pink-400 px-3 py-1 rounded hover:bg-pink-600/40 text-sm">Publicar</button>`;
+                } else {
+                    actions = `<span class="text-slate-500">Archivado</span>`;
+                }
+
+                row.innerHTML = `
+                    <td class="p-4 text-slate-500">#${v.id}</td>
+                    <td class="p-4">
+                        <div class="font-medium text-white">${v.topic}</div>
+                        <div class="text-xs text-slate-500 bg-slate-800 inline-block px-2 rounded mt-1">${v.niche}</div>
+                    </td>
+                    <td class="p-4"><span class="status-badge status-${v.status}">${v.status}</span></td>
+                    <td class="p-4 text-slate-400 text-sm">${date}</td>
+                    <td class="p-4 text-right gap-2">${actions}</td>
+                `;
+                tbody.appendChild(row);
+            });
+            lucide.createIcons();
+        }
+
+        // ... rest of logic ...
+
+        function updateStats(videos) {
+            document.getElementById('stat-queue').innerText = videos.filter(v => ['idea', 'scripted'].includes(v.status)).length;
+            document.getElementById('stat-ready').innerText = videos.filter(v => v.status === 'assets_ready').length;
+            document.getElementById('stat-done').innerText = videos.filter(v => v.status === 'rendered').length;
+            document.getElementById('stat-uploaded').innerText = videos.filter(v => v.status === 'uploaded').length;
+        }
+
+        async function triggerAction(id, actionCode) {
+            // Map simple actions to API calls
+            // Note: API in app.py logic is simple. "render" -> status=assets_ready (mock).
+            // We need to actually trigger the python logic. 
+            // For now, let's update status in DB via API, and assume a worker picks it up or we trigger it via separate endpoint later.
+            // The user just wants the dashboard to *work*.
+
+            // Map frontend action to backend endpoints
+            let endpoint = `/api/actions/${id}/`;
+            if (actionCode === 'render') endpoint += 'render'; // scripted -> assets_ready
+            else if (actionCode === 'upload') endpoint += 'upload'; // assets_ready -> rendered (mock name conflict in backend, let's stick to API def)
+            else if (actionCode === 'upload_platform') endpoint += 'upload_platform';
+
+            try {
+                const res = await fetch(endpoint, { method: 'POST' });
+                if (res.ok) {
+                    fetchVideos(); // Refresh
+                } else {
+                    alert("Error executing action");
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        // Modal Logic
+        function openModal(id, contentBase64) {
+            currentModalId = id;
+            const content = decodeURIComponent(contentBase64); // JSON string
+            try {
+                const json = JSON.parse(content);
+                document.getElementById('modal-content').innerText = JSON.stringify(json, null, 2);
+            } catch {
+                document.getElementById('modal-content').innerText = content;
+            }
+            document.getElementById('script-modal').classList.replace('hidden', 'flex');
+        }
+
+        function closeModal() {
+            document.getElementById('script-modal').classList.replace('flex', 'hidden');
+        }
+
+        async function approveScript(id) {
+            try {
+                await fetch(`/api/actions/${id}/approve`, { method: 'POST' });
+                closeModal();
+                fetchVideos();
+            } catch (e) {
+                alert("Error approving script");
+            }
+        }
+
+        function escapeJson(str) {
+            return encodeURIComponent(str);
+        }
+    </script>
+</body>
+
+</html>

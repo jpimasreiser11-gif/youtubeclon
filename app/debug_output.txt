@@ -1,0 +1,5 @@
+[DEBUG] Found venv python: C:\Users\jpima\Downloads\edumind---ai-learning-guide\venv_sovereign\Scripts\python.exe
+[DEBUG] Executing command: "C:\Users\jpima\Downloads\edumind---ai-learning-guide\venv_sovereign\Scripts\python.exe" "C:\Users\jpima\Downloads\edumind---ai-learning-guide\scripts\transcribe_v2.py" --video "C:\Users\jpima\Downloads\edumind---ai-learning-guide\storage\source\39bf7965-b4f3-7085-858d-fd080de28017.mp4" --clip-id "24d43931-ffed-4911-a2a3-0455c71901c8" --model large-v3 --db-password "n8n" --db-name "antigravity"
+[DEBUG] stdout: ­ƒÜÇ Using device: cpu with model: large-v3
+{"status": "error", "message": "[Errno 2] No such file or directory: 'C:\\\\Users\\\\jpima\\\\Downloads\\\\edumind---ai-learning-guide\\\\storage\\\\source\\\\39bf7965-b4f3-7085-858d-fd080de28017.mp4'"}
+

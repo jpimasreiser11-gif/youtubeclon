@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "C:\Users\jpima\Downloads\edumind---ai-learning-guide\test_redis.py", line 1, in <module>
+    import redis
+ModuleNotFoundError: No module named 'redis'

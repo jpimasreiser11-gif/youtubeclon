@@ -1,0 +1,4 @@
+{
+  "success": false,
+  "error": "Notebook URL is required to create a session"
+}

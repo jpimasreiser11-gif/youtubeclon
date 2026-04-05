@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "data": {
+    "notebook": {
+      "id": "opusclips-clone-improvements-g",
+      "name": "OpusClips Clone Improvements Guide",
+      "content_types": [
+        "documentation",
+        "examples"
+      ],
+      "use_cases": [
+        "Learning about OpusClips Clone Improvements Guide",
+        "Implementing features with OpusClips Clone Improvements Guide"
+      ],
+      "added_at": "2026-01-31T14:48:41.222Z",
+      "last_used": "2026-01-31T14:55:59.310Z",
+      "use_count": 2,
+      "topics": [
+        "OpusClips",
+        "App Improvements",
+        "AI Video Clipping"
+      ],
+      "tags": []
+    }
+  }
+}

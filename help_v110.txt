@@ -1,0 +1,57 @@
+ÔòöÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòù
+Ôòæ                                                          Ôòæ
+Ôòæ           NotebookLM MCP Server v1.0.0                   Ôòæ
+Ôòæ                                                          Ôòæ
+Ôòæ   Chat with Gemini 2.5 through NotebookLM via MCP       Ôòæ
+Ôòæ                                                          Ôòæ
+ÔòÜÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòÉÔòØ
+
+Ôä╣´©Å  [14:31:00] ­ƒîÉ SharedContextManager initialized (PERSISTENT MODE)
+Ôä╣´©Å  [14:31:00]   Chrome Profile: C:\Users\jpima\AppData\Local\notebooklm-mcp\Data\chrome_profile
+Ô£à  [14:31:00]   Fingerprint: PERSISTENT across restarts! ­ƒÄ»
+Ôä╣´©Å  [14:31:00] ­ƒÄ» SessionManager initialized
+Ôä╣´©Å  [14:31:00]   Max sessions: 10
+Ôä╣´©Å  [14:31:00]   Timeout: 900s (15 minutes)
+Ô£à  [14:31:00]   Ô£à Loaded library with 0 notebooks
+Ôä╣´©Å  [14:31:00] ­ƒôÜ NotebookLibrary initialized
+Ôä╣´©Å  [14:31:00]   Library path: C:\Users\jpima\AppData\Local\notebooklm-mcp\Data\library.json
+Ôä╣´©Å  [14:31:00]   Notebooks: 0
+Ôä╣´©Å  [14:31:00] ­ƒÜÇ NotebookLM MCP Server initialized
+Ôä╣´©Å  [14:31:00]   Version: 1.1.0
+Ôä╣´©Å  [14:31:00]   Node: v22.19.0
+Ôä╣´©Å  [14:31:00]   Platform: win32
+Ôä╣´©Å  [14:31:00]   Profile: full (16 tools active)
+Ôä╣´©Å  [14:31:00] ­ƒÄ» Starting NotebookLM MCP Server...
+Ôä╣´©Å  [14:31:00] 
+Ôä╣´©Å  [14:31:00] ­ƒôØ Configuration:
+Ôä╣´©Å  [14:31:00]   Config Dir: C:\Users\jpima\AppData\Roaming\notebooklm-mcp\Config
+Ôä╣´©Å  [14:31:00]   Data Dir: C:\Users\jpima\AppData\Local\notebooklm-mcp\Data
+Ôä╣´©Å  [14:31:00]   Headless: true
+Ôä╣´©Å  [14:31:00]   Max Sessions: 10
+Ôä╣´©Å  [14:31:00]   Session Timeout: 900s
+Ôä╣´©Å  [14:31:00]   Stealth: true
+Ôä╣´©Å  [14:31:00] 
+Ô£à  [14:31:00] Ô£à MCP Server connected via stdio
+Ô£à  [14:31:00] ­ƒÄë Ready to receive requests from Claude Code!
+Ôä╣´©Å  [14:31:00] 
+Ôä╣´©Å  [14:31:00] ­ƒÆí Available tools:
+Ôä╣´©Å  [14:31:00]   - ask_question: # Conversational Research Partner (NotebookLM ÔÇó Gemini 2.5 ÔÇó Session RAG)...
+Ôä╣´©Å  [14:31:00]   - add_notebook: PERMISSION REQUIRED ÔÇö Only when user explicitly asks to add a notebook....
+Ôä╣´©Å  [14:31:00]   - list_notebooks: List all library notebooks with metadata (name, topics, use cases, URL). Use thi...
+Ôä╣´©Å  [14:31:00]   - get_notebook: Get detailed information about a specific notebook by ID...
+Ôä╣´©Å  [14:31:00]   - select_notebook: Set a notebook as the active default (used when ask_question has no notebook_id)...
+Ôä╣´©Å  [14:31:00]   - update_notebook: Update notebook metadata based on user intent....
+Ôä╣´©Å  [14:31:00]   - remove_notebook: Dangerous ÔÇö requires explicit user confirmation....
+Ôä╣´©Å  [14:31:00]   - search_notebooks: Search library by query (name, description, topics, tags). Use to propose releva...
+Ôä╣´©Å  [14:31:00]   - get_library_stats: Get statistics about your notebook library (total notebooks, usage, etc.)...
+Ôä╣´©Å  [14:31:00]   - list_sessions: List all active sessions with stats (age, message count, last activity). Use to ...
+Ôä╣´©Å  [14:31:00]   - close_session: Close a specific session by session ID. Ask before closing if the user might sti...
+Ôä╣´©Å  [14:31:00]   - reset_session: Reset a session's chat history (keep same session ID). Use for a clean slate whe...
+Ôä╣´©Å  [14:31:00]   - get_health: Get server health status including authentication state, active sessions, and co...
+Ôä╣´©Å  [14:31:00]   - setup_auth: Google authentication for NotebookLM access - opens a browser window for manual ...
+Ôä╣´©Å  [14:31:00]   - re_auth: Switch to a different Google account or re-authenticate. Use this when:...
+Ôä╣´©Å  [14:31:00]   - cleanup_data: ULTRATHINK Deep Cleanup - Scans entire system for ALL NotebookLM MCP data files ...
+Ôä╣´©Å  [14:31:00] 
+Ôä╣´©Å  [14:31:00] ­ƒôû For documentation, see: README.md
+Ôä╣´©Å  [14:31:00] ­ƒôû For MCP details, see: MCP_INFOS.md
+Ôä╣´©Å  [14:31:00] 

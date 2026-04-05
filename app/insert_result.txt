@@ -1,0 +1,17 @@
+=== VIDEO_VERSIONS COLUMNS ===
+  id                             uuid
+  clip_id                        uuid
+  version                        USER-DEFINED
+  file_path                      text
+  status                         USER-DEFINED
+  created_at                     timestamp with time zone
+
+Project ID: fce2a522-33a1-4ad2-9fd6-e61ecbc5a661
+Clip ID:    c2b4d5c4-801c-4a57-afc3-e5878b4ce1c5
+Traceback (most recent call last):
+  File "C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\scripts\insert_clip_to_web.py", line 47, in <module>
+    print("\u2705 Project created")
+  File "C:\Users\jpima\AppData\Local\Programs\Python\Python312\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 0: character maps to <undefined>

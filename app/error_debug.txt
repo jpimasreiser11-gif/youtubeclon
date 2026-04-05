@@ -1,0 +1,29 @@
+_3_RETO DE CREMA DE CACAO PUEDES .mp4
+2026-03-15 12:37:58,441 - INFO -    Video pequeño (640px) → Scale+Pad a 1080x1920
+2026-03-15 13:55:54,451 - INFO -    ✅ Clip renderizado exitosamente
+2026-03-15 13:55:54,451 - INFO - ✅ Clip 4/5 generado en 4682.5s.
+2026-03-15 13:55:54,451 - INFO - 
+🎬 Iniciando render paralelo - Clip 5/5: ¿CUÁL ES EL TACO MÁS CARO?
+2026-03-15 13:55:54,542 - INFO -    Snap: 323.58s - 560.54s (793 palabras)
+2026-03-15 13:55:54,571 - INFO - Progress: [90%] Completado clip 4 de 5
+2026-03-15 13:55:57,971 - INFO - Generando subtítulos con efecto BOUNCE & SHINE (2026 Style)...
+2026-03-15 13:55:57,978 - INFO - Renderizando clip: C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\storage\temp\f4ca43dd-6928-43e6-93bf-b2fdba88fdce\VIRAL_4_CUÁL ES EL TACO MÁS CARO.mp4
+2026-03-15 13:55:57,978 - INFO -    Video pequeño (640px) → Scale+Pad a 1080x1920
+2026-03-15 17:40:39,215 - INFO -    ✅ Clip renderizado exitosamente
+2026-03-15 17:40:39,222 - INFO - ✅ Clip 5/5 generado en 13484.8s.
+2026-03-15 17:40:39,675 - INFO - Progress: [95%] Completado clip 5 de 5
+2026-03-15 17:40:39,931 - INFO - Progress: [100%] ¡Proceso completado!
+2026-03-15 17:40:39,934 - INFO - 
+🎉 Pipeline completado: 5 clips generados
+2026-03-15 17:40:40,203 - ERROR - Error guardando clips en DB: column "hook_description" of relation "clips" does not exist
+LINE 4: ...          title_generated, description_generated, hook_descr...
+                                                             ^
+
+Traceback (most recent call last):
+  File "C:\Users\jpima\Downloads\edumind---ai-learning-guide\app\scripts\ingest.py", line 243, in main
+    cur.execute("""
+psycopg2.errors.UndefinedColumn: column "hook_description" of relation "clips" does not exist
+LINE 4: ...          title_generated, description_generated, hook_descr...
+                                                             ^
+
+2026-03-15 17:40:40,639 - ERROR - ❌ Proyecto f4ca43dd-6928-43e6-93bf-b2fdba88fdce falló
