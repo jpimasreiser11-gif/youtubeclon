@@ -110,30 +110,46 @@ def _ass_ts(seconds):
     return f"{h}:{m:02d}:{s:02d}.{cs:02d}"
 
 
-def _generate_ass_pop_subtitles(audio_path, text_fallback, ass_path):
+def _generate_ass_pop_subtitles(audio_path, text_fallback, ass_path, prefer_fast=False):
     words = []
-    try:
-        import whisperx
+    if prefer_fast:
+        # Fast dry-run path: synthesize rough word timing from script text.
+        duration = _audio_duration_seconds(audio_path)
+        tokens = [w.strip() for w in (text_fallback or "").replace("\n", " ").split(" ") if w.strip()]
+        if not tokens:
+            tokens = ["MYSTERY", "STORY"]
+        step = max(0.08, duration / max(1, len(tokens)))
+        cur = 0.0
+        for t in tokens:
+            start = cur
+            end = min(duration, cur + step)
+            words.append((t, start, end))
+            cur = end
 
-        device = "cpu"
-        audio = whisperx.load_audio(audio_path)
-        model = whisperx.load_model("small", device, compute_type="int8")
-        transcribed = model.transcribe(audio, batch_size=16)
-        align_model, align_meta = whisperx.load_align_model(language_code=transcribed["language"], device=device)
-        aligned = whisperx.align(transcribed["segments"], align_model, align_meta, audio, device, return_char_alignments=False)
-        for seg in aligned.get("segments", []):
-            for w in seg.get("words", []):
-                if "start" in w and "end" in w:
-                    words.append((str(w.get("word", "")).strip(), float(w["start"]), float(w["end"])))
+    try:
+        if not words:
+            import whisperx
+
+            device = "cpu"
+            audio = whisperx.load_audio(audio_path)
+            model = whisperx.load_model("small", device, compute_type="int8")
+            transcribed = model.transcribe(audio, batch_size=16)
+            align_model, align_meta = whisperx.load_align_model(language_code=transcribed["language"], device=device)
+            aligned = whisperx.align(transcribed["segments"], align_model, align_meta, audio, device, return_char_alignments=False)
+            for seg in aligned.get("segments", []):
+                for w in seg.get("words", []):
+                    if "start" in w and "end" in w:
+                        words.append((str(w.get("word", "")).strip(), float(w["start"]), float(w["end"])))
     except Exception:
         try:
-            import whisper
+            if not words:
+                import whisper
 
-            model = whisper.load_model("base")
-            result = model.transcribe(audio_path, word_timestamps=True)
-            for seg in result.get("segments", []):
-                for w in seg.get("words", []):
-                    words.append((str(w.get("word", "")).strip(), float(w.get("start", 0)), float(w.get("end", 0))))
+                model = whisper.load_model("base")
+                result = model.transcribe(audio_path, word_timestamps=True)
+                for seg in result.get("segments", []):
+                    for w in seg.get("words", []):
+                        words.append((str(w.get("word", "")).strip(), float(w.get("start", 0)), float(w.get("end", 0))))
         except Exception:
             pass
 
@@ -412,7 +428,7 @@ def build_motor_b_video_suite(script, keywords, out_dir, temp_dir, dry_run=False
             ])
 
         subtitle_path = os.path.join(part_dir, f"parte_{idx}.ass")
-        subtitle_generated = _generate_ass_pop_subtitles(audio_path, part_text, subtitle_path)
+        subtitle_generated = _generate_ass_pop_subtitles(audio_path, part_text, subtitle_path, prefer_fast=dry_run)
         if not subtitle_generated:
             subtitle_path = os.path.join(part_dir, f"parte_{idx}.srt")
             _generate_srt_with_whisper(audio_path, part_text, subtitle_path)

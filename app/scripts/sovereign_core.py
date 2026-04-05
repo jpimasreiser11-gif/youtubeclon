@@ -69,6 +69,21 @@ class ViralEngine:
     def __init__(self, api_key, output_dir="output", ffmpeg_path="ffmpeg", provider="auto", options=None):
         self.output_dir = output_dir
         self.options = options or {}
+
+        # Preset profile for English hybrid mystery workflow.
+        profile = str(self.options.get('profile', '')).strip().lower()
+        if profile == 'english_mystery_hybrid':
+            defaults = {
+                'strict_semantic_hooks': True,
+                'dynamic_reframe': True,
+                'smart_reframe': True,
+                'b_roll': True,
+                'broll_style': 'split',
+                'language': 'en',
+            }
+            for k, v in defaults.items():
+                self.options.setdefault(k, v)
+
         os.makedirs(output_dir, exist_ok=True)
         
         # AUTO-DISCOVERY: Encontrar FFmpeg automáticamente
@@ -531,62 +546,108 @@ class ViralEngine:
 
     def _analyze_chunk(self, text_chunk):
         """Procesa un fragmento de texto con la API seleccionada (lógica original)"""
-        
-        system_prompt = """
-        Eres un editor ELITE de videos (YouTube/TikTok/Reels) especializado en retención.
 
-        OBJETIVO ESTRICTO:
-        Selecciona SOLO clips de 30 a 60 segundos con estructura narrativa completa:
-        1) Gancho polemico en los primeros 3 segundos.
-        2) Desarrollo rapido y claro.
-        3) Remate/payoff explicitamente entendible al final.
+        lang_mode = str(self.options.get('language', 'auto')).strip().lower()
+        if lang_mode == 'en':
+            system_prompt = """
+            You are an elite short-video editor for YouTube Shorts and TikTok.
 
-        CRITERIOS CRITICOS:
-        - El clip debe ser autosuficiente, con contexto completo.
-        - Prohibido cortar frases a mitad o terminar sin cierre.
-        - No seleccionar segmentos por volumen o gritos: prioriza semantica y narrativa.
-        - start_text y end_text deben existir literalmente en el transcript.
-        
-        FORMATO DE SALIDA (JSON puro, sin markdown):
-        [
-            {
-                "start_text": "frase EXACTA de inicio (primeras 5-8 palabras)",
-                "end_text": "frase EXACTA de cierre (últimas 5-8 palabras)",
-                "virality_metrics": {
-                    "hook_power": 9,
-                    "emotional_impact": 8,
-                    "value_density": 9,
-                    "trend_potential": 8
-                },
-                "category": "Educational/Entertainment/Motivational",
-                "hook": "Describe el gancho en 1 línea",
-                "payoff": "Describe el cierre en 1 línea",
-                "reason": "Por qué explotaría en redes (máx 20 palabras)",
-                "title": "Título CLICKBAIT en MAYÚSCULAS (max 50 chars)",
-                "description": "Descripción optimizada para retención (máx 150 caracteres)",
-                "hashtags": "3-5 hashtags virales relevantes (ej. #crypto #finance #growth)",
-                "broll_inserts": [
-                    {
-                        "keyword": "1-2 palabras en INGLÉS buscando en Pexels (ej. money, running, nature)",
-                        "start_text": "frase EXACTA donde debe entrar el clip de apoyo",
-                        "end_text": "frase EXACTA donde debe ocultarse"
-                    }
-                ]
-            }
-        ]
-        
-        IMPORTANTE:
-        - Duracion final esperada: 30-60s.
-        - Puntúa las 4 virality_metrics de 1 al 10 con la máxima exigencia.
-        - Máximo 5 clips
-        - start_text y end_text (tanto del clip principal como de los b-rolls) deben coincidir PALABRA POR PALABRA con el transcript original.
-        - Genera 1 o 2 broll_inserts por clip si ayudan a enriquecer visualmente el tema. Si no hace falta, envía el array vacío [].
-        """
-        
+            STRICT OBJECTIVE:
+            Return ONLY 30-60 second clips with full narrative shape:
+            1) Strong hook in first 3 seconds.
+            2) Fast, clear development.
+            3) Explicit payoff at the end.
+
+            CRITICAL RULES:
+            - No cuts by loudness. Select by semantic meaning.
+            - start_text and end_text must be exact transcript fragments.
+            - Clip must be self-contained and understandable without external context.
+            - No sentence cut in half.
+
+            OUTPUT FORMAT (JSON only):
+            [
+                {
+                    "start_text": "exact phrase",
+                    "end_text": "exact phrase",
+                    "virality_metrics": {
+                        "hook_power": 9,
+                        "emotional_impact": 8,
+                        "value_density": 9,
+                        "trend_potential": 8
+                    },
+                    "category": "Educational/Entertainment/Motivational",
+                    "hook": "one-line hook description",
+                    "payoff": "one-line payoff description",
+                    "reason": "why it can go viral (max 20 words)",
+                    "title": "UPPERCASE click title max 50 chars",
+                    "description": "retention-first description max 150 chars",
+                    "hashtags": "3-5 hashtags",
+                    "broll_inserts": [
+                        {
+                            "keyword": "1-2 english words",
+                            "start_text": "exact phrase",
+                            "end_text": "exact phrase"
+                        }
+                    ]
+                }
+            ]
+            """
+        else:
+            system_prompt = """
+            Eres un editor ELITE de videos (YouTube/TikTok/Reels) especializado en retención.
+
+            OBJETIVO ESTRICTO:
+            Selecciona SOLO clips de 30 a 60 segundos con estructura narrativa completa:
+            1) Gancho polemico en los primeros 3 segundos.
+            2) Desarrollo rapido y claro.
+            3) Remate/payoff explicitamente entendible al final.
+
+            CRITERIOS CRITICOS:
+            - El clip debe ser autosuficiente, con contexto completo.
+            - Prohibido cortar frases a mitad o terminar sin cierre.
+            - No seleccionar segmentos por volumen o gritos: prioriza semantica y narrativa.
+            - start_text y end_text deben existir literalmente en el transcript.
+
+            FORMATO DE SALIDA (JSON puro, sin markdown):
+            [
+                {
+                    "start_text": "frase EXACTA de inicio (primeras 5-8 palabras)",
+                    "end_text": "frase EXACTA de cierre (últimas 5-8 palabras)",
+                    "virality_metrics": {
+                        "hook_power": 9,
+                        "emotional_impact": 8,
+                        "value_density": 9,
+                        "trend_potential": 8
+                    },
+                    "category": "Educational/Entertainment/Motivational",
+                    "hook": "Describe el gancho en 1 línea",
+                    "payoff": "Describe el cierre en 1 línea",
+                    "reason": "Por qué explotaría en redes (máx 20 palabras)",
+                    "title": "Título CLICKBAIT en MAYÚSCULAS (max 50 chars)",
+                    "description": "Descripción optimizada para retención (máx 150 caracteres)",
+                    "hashtags": "3-5 hashtags virales relevantes (ej. #crypto #finance #growth)",
+                    "broll_inserts": [
+                        {
+                            "keyword": "1-2 palabras en INGLÉS buscando en Pexels (ej. money, running, nature)",
+                            "start_text": "frase EXACTA donde debe entrar el clip de apoyo",
+                            "end_text": "frase EXACTA donde debe ocultarse"
+                        }
+                    ]
+                }
+            ]
+
+            IMPORTANTE:
+            - Duracion final esperada: 30-60s.
+            - Puntúa las 4 virality_metrics de 1 al 10 con la máxima exigencia.
+            - Máximo 5 clips
+            - start_text y end_text (tanto del clip principal como de los b-rolls) deben coincidir PALABRA POR PALABRA con el transcript original.
+            - Genera 1 o 2 broll_inserts por clip si ayudan a enriquecer visualmente el tema. Si no hace falta, envía el array vacío [].
+            """
+
         # CRITICAL FIX: Manejo robusto de rate limit con reintentos extensos
         max_retries = 5
         base_delay = 15
-        
+
         for attempt in range(max_retries):
             try:
                 # Soportar múltiples providers con FALLBACK AUTOMÁTICO
@@ -651,7 +712,7 @@ class ViralEngine:
                     else:
                         response = self.model.generate_content(f"{system_prompt}\n\nTRANSCRIPT FRAGMENT:\n{text_chunk}")
                         response_text = response.text
-                
+
                 # Parse JSON (común para ambos providers)
                 try:
                     import re
@@ -661,15 +722,15 @@ class ViralEngine:
                         clean_json = json_match.group(1)
                     else:
                         clean_json = response_text.replace('```json', '').replace('```', '').strip()
-                    
+
                     clips_metadata = json.loads(clean_json)
                     logger.info(f"✅ {self.provider.upper()} encontró {len(clips_metadata)} clips en este chunk")
-                    
+
                     # Rate-limit delay (reducido: solo necesario entre chunks consecutivos)
                     delay = 3 if self.provider == "groq" else 2
                     logger.info(f"   Pausa {delay}s anti rate-limit...")
                     time.sleep(delay)
-                    
+
                     return clips_metadata
                 except json.JSONDecodeError as je:
                     logger.warning(f"   ⚠️ Malformed JSON en intento {attempt + 1}: {je}")
@@ -682,11 +743,10 @@ class ViralEngine:
                 except Exception as e:
                     logger.error(f"Error inesperado en JSON.loads: {e}")
                     return []
-                    
-                    
+
             except Exception as api_error:
                 error_msg = str(api_error)
-                
+
                 # Detectar error 429 específicamente
                 if "429" in error_msg or "ResourceExhausted" in error_msg or "quota" in error_msg.lower():
                     if attempt < max_retries - 1:
@@ -696,12 +756,12 @@ class ViralEngine:
                         continue
                     else:
                         logger.error(f"❌ Rate limit persistente después de {max_retries} intentos.")
-                        raise Exception(f"Rate limit de API excedido.")
+                        raise Exception("Rate limit de API excedido.")
                 else:
                     # Otro tipo de error - no reintentar
                     logger.error(f"Error en API: {api_error}")
                     raise
-        
+
         return []
 
 
