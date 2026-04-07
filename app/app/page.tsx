@@ -7,10 +7,11 @@ import {
   ChevronDown, X, Info, Clock, Trash2
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { trackEvent } from '@/lib/analytics';
 import { useRouter } from 'next/navigation'; // Added this import
 
 type ViewState = 'HOME' | 'PREVIEW' | 'PROCESSING' | 'RESULTS';
-type CreationSystem = 'legacy' | 'viral_auto' | 'viral_motor_a' | 'viral_motor_b';
+type CreationSystem = 'viral_motor_a' | 'viral_motor_b';
 
 export default function HomePage() {
   const [url, setUrl] = useState('');
@@ -122,9 +123,9 @@ export default function HomePage() {
     cleanSpeech: true,
     bRoll: true
   });
-  const [creationSystem, setCreationSystem] = useState<CreationSystem>('legacy');
+  const creationSystem: CreationSystem = 'viral_motor_a';
   const [viralNiche, setViralNiche] = useState('finanzas personales');
-  const requiresSourceUrl = creationSystem !== 'viral_motor_b';
+  const requiresSourceUrl = true;
 
   // Metadata state
   const [metadata, setMetadata] = useState<{ title: string, thumbnail: string } | null>(null);
@@ -149,18 +150,10 @@ export default function HomePage() {
 
   // Phase 1: Fetch Metadata
   const handleUrlSubmit = async () => {
-    if (!requiresSourceUrl) {
-      setMetadata({
-        title: `Video desde 0 (${viralNiche || 'nicho libre'})`,
-        thumbnail: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="%230a0a0a" offset="0"/><stop stop-color="%231f2937" offset="1"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/><text x="50%" y="48%" dominant-baseline="middle" text-anchor="middle" fill="%23ffffff" font-size="58" font-family="sans-serif">CREAR DESDE 0</text><text x="50%" y="58%" dominant-baseline="middle" text-anchor="middle" fill="%23d1d5db" font-size="30" font-family="sans-serif">Motor B gratuito</text></svg>',
-      });
-      setView('PREVIEW');
-      return;
-    }
-
     if (!url) return;
     setIsLoading(true);
     setStatus(null); // Clear previous status
+    trackEvent('motor_a_metadata_requested', { has_url: Boolean(url) });
 
     try {
       const response = await fetch('/api/get-metadata', {
@@ -173,11 +166,14 @@ export default function HomePage() {
       if (response.ok) {
         setMetadata(data);
         setView('PREVIEW');
+        trackEvent('motor_a_metadata_loaded', { has_thumbnail: Boolean(data?.thumbnail) });
       } else {
         setStatus({ type: 'error', message: 'No se pudo obtener información del video.' });
+        trackEvent('motor_a_metadata_failed');
       }
     } catch (error) {
       setStatus({ type: 'error', message: 'Error de conexión.' });
+      trackEvent('motor_a_metadata_failed');
     } finally {
       setIsLoading(false);
     }
@@ -188,9 +184,9 @@ export default function HomePage() {
     setIsLoading(true);
     setStatus({ type: 'processing', message: 'Obteniendo información del video...' });
     setClips([]); // Clear clips from previous runs
+    trackEvent('motor_a_job_create_clicked', { niche: viralNiche, has_url: Boolean(url) });
 
     try {
-      const isViralMode = creationSystem !== 'legacy';
       const response = await fetch('/api/create-job', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -199,7 +195,7 @@ export default function HomePage() {
           enterpriseOptions,
           creationSystem,
           viralNiche,
-          viralDryRun: isViralMode ? false : true,
+          viralDryRun: false,
         }),
       });
 
@@ -209,12 +205,14 @@ export default function HomePage() {
         setJobId(data.jobId);
         setView('PROCESSING');
         setStatus({ type: 'processing', message: 'Generando clips virales...' });
+        trackEvent('motor_a_job_created', { job_id: data.jobId, niche: viralNiche });
       } else {
         throw new Error('Error al enviar el video');
       }
     } catch (error) {
       setStatus({ type: 'error', message: 'Hubo un error al conectar con el servidor.' });
       setIsLoading(false);
+      trackEvent('motor_a_job_create_failed', { niche: viralNiche });
     }
   };
 
@@ -418,27 +416,18 @@ export default function HomePage() {
                   <div className="text-xs font-bold text-gray-500 uppercase tracking-tighter mb-1">Opciones Enterprise</div>
 
                   <div className="space-y-2">
-                    <div className="text-xs font-bold text-gray-500 uppercase tracking-tighter">Sistema de creación</div>
-                    <select
-                      value={creationSystem}
-                      onChange={(e) => setCreationSystem(e.target.value as CreationSystem)}
-                      className="w-full bg-[#18181b] border border-[#27272a] rounded-lg px-3 py-2 text-sm text-white"
-                    >
-                      <option value="legacy">Clásico (actual)</option>
-                      <option value="viral_auto">Viral nuevo (Auto)</option>
-                      <option value="viral_motor_a">Viral nuevo (Motor A)</option>
-                      <option value="viral_motor_b">Viral nuevo (Motor B)</option>
-                    </select>
-                    {creationSystem !== 'legacy' && (
-                      <input
-                        value={viralNiche}
-                        onChange={(e) => setViralNiche(e.target.value)}
-                        className="w-full bg-[#18181b] border border-[#27272a] rounded-lg px-3 py-2 text-sm text-white placeholder:text-[#52525b]"
-                        placeholder="Nicho (ej: finanzas personales)"
-                      />
-                    )}
+                    <div className="text-xs font-bold text-gray-500 uppercase tracking-tighter">Motor de clips</div>
+                    <div className="w-full bg-[#18181b] border border-[#27272a] rounded-lg px-3 py-2 text-sm text-white">
+                      Motor A (único motor para generar clips)
+                    </div>
+                    <input
+                      value={viralNiche}
+                      onChange={(e) => setViralNiche(e.target.value)}
+                      className="w-full bg-[#18181b] border border-[#27272a] rounded-lg px-3 py-2 text-sm text-white placeholder:text-[#52525b]"
+                      placeholder="Nicho (ej: finanzas personales)"
+                    />
                     <p className="text-[11px] text-[#71717a]">
-                      Si eliges Viral nuevo, el worker usará el bridge y mantendrá fallback seguro al sistema clásico.
+                      Para contenido desde cero usa la pestaña dedicada de Motor B.
                     </p>
                   </div>
 

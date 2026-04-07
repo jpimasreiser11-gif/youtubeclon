@@ -13,13 +13,17 @@ def _run(cmd):
 
 
 def _create_motion_background(output_path, duration=8, seed=0):
-    # Fully local dynamic background to avoid static "photo + text" look.
+    # Fully local dynamic background without SMPTE bars/test patterns.
+    # Keep it subtle and cinematic so fallback visuals remain usable.
+    hue_shift = 10 + (seed % 9)
     filter_chain = (
         "scale=1080:1920,"
         "format=yuv420p,"
-        "eq=saturation=1.35:contrast=1.08:brightness=0.02,"
-        "noise=alls=14:allf=t+u,"
-        "unsharp=5:5:0.8:3:3:0.2"
+        "eq=saturation=1.26:contrast=1.10:brightness=0.05,"
+        f"hue=h={hue_shift}*sin(2*PI*t/30),"
+        "noise=alls=5:allf=t+u,"
+        "vignette=PI/7,"
+        "unsharp=5:5:0.5:3:3:0.1"
     )
     cmd = [
         "ffmpeg",
@@ -27,7 +31,7 @@ def _create_motion_background(output_path, duration=8, seed=0):
         "-f",
         "lavfi",
         "-i",
-        f"testsrc2=size=1080x1920:rate=30:duration={max(4, int(duration))}",
+        f"color=c=#3b4a66:size=1080x1920:rate=30:duration={max(4, int(duration))}",
         "-vf",
         filter_chain,
         "-c:v",

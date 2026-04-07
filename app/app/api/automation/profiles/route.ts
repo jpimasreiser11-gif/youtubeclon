@@ -12,12 +12,20 @@ export async function GET(request: Request) {
     const client = await pool.connect();
 
     try {
-        const result = await client.query(
-            `SELECT * FROM automation_profiles 
-             WHERE user_id = $1::uuid 
-             ORDER BY created_at DESC`,
-            [session.user.id]
-        );
+        let result;
+        try {
+            result = await client.query(
+                `SELECT * FROM automation_profiles 
+                 WHERE user_id = $1::uuid 
+                 ORDER BY created_at DESC`,
+                [session.user.id]
+            );
+        } catch (error: any) {
+            if (error?.code === '42P01') {
+                return NextResponse.json({ profiles: [] });
+            }
+            throw error;
+        }
 
         return NextResponse.json({ profiles: result.rows });
 
@@ -74,6 +82,9 @@ export async function POST(request: Request) {
 
     } catch (error) {
         console.error('Error creating automation profile:', error);
+        if ((error as any)?.code === '42P01') {
+            return NextResponse.json({ error: 'automation_profiles table missing' }, { status: 503 });
+        }
         return NextResponse.json({
             error: 'Internal server error'
         }, { status: 500 });

@@ -4,12 +4,16 @@ import pool from '@/lib/db';
 
 export async function GET(
     request: Request,
-    { params }: { params: { clipId: string } }
+    context: { params: Promise<{ clipId: string }> }
 ) {
     const session = await auth();
     if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+    const params = await context.params;
     const clipId = params.clipId;
+    if (!/^[0-9a-fA-F-]{36}$/.test(clipId)) {
+        return NextResponse.json({ error: 'Invalid clip id' }, { status: 400 });
+    }
 
     try {
         const client = await pool.connect();
@@ -39,12 +43,16 @@ export async function GET(
 
 export async function POST(
     request: Request,
-    { params }: { params: { clipId: string } }
+    context: { params: Promise<{ clipId: string }> }
 ) {
     const session = await auth();
     if (!session?.user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+    const params = await context.params;
     const clipId = params.clipId;
+    if (!/^[0-9a-fA-F-]{36}$/.test(clipId)) {
+        return NextResponse.json({ error: 'Invalid clip id' }, { status: 400 });
+    }
     const { subtitleStyle } = await request.json();
 
     try {

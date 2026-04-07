@@ -18,6 +18,14 @@ def _run(cmd):
         return False
 
 
+def _subtitle_filter_path(path):
+    # Prefer normalized absolute path for ffmpeg subtitle filters on Windows.
+    p = os.path.abspath(path).replace("\\", "/")
+    if len(p) > 1 and p[1] == ":":
+        p = p[0] + "\\:" + p[2:]
+    return p
+
+
 def _ensure_dir(path):
     os.makedirs(path, exist_ok=True)
 
@@ -234,9 +242,16 @@ def _assemble_part_video(media_assets, audio_path, out_video_path, dark_opacity=
 
     filters = []
     for i in range(asset_count):
-        filters.append(
-            f"[{i}:v]fps=30,scale=1080:1920,zoompan=z='min(zoom+0.0012,1.08)':d={zoom_frames}:s=1080x1920,eq=saturation=1.25:contrast=1.07[v{i}]"
-        )
+        asset_kind = (media_assets[i] or {}).get("type", "image")
+        if asset_kind == "video":
+            # Avoid zoompan on videos; it can produce corrupted-looking output with some sources.
+            filters.append(
+                f"[{i}:v]fps=30,scale=1200:2133:force_original_aspect_ratio=increase,crop=1080:1920,eq=saturation=1.10:contrast=1.04[v{i}]"
+            )
+        else:
+            filters.append(
+                f"[{i}:v]fps=30,scale=1080:1920,zoompan=z='min(zoom+0.0012,1.08)':d={zoom_frames}:s=1080x1920,eq=saturation=1.18:contrast=1.06[v{i}]"
+            )
     concat_inputs = "".join([f"[v{i}]" for i in range(asset_count)])
     filters.append(f"{concat_inputs}concat=n={asset_count}:v=1:a=0[vcat]")
     filters.append(f"[vcat]unsharp=5:5:0.9:3:3:0.2,eq=gamma=1.03,drawbox=x=0:y=0:w=iw:h=ih:color=black@{dark_opacity}:t=fill[vout]")
@@ -267,9 +282,11 @@ def _assemble_part_video(media_assets, audio_path, out_video_path, dark_opacity=
 
 
 def _burn_subtitles(input_video, srt_path, out_video):
-    subtitle_filter = "subtitles=" + srt_path
-    if str(srt_path).lower().endswith(".ass"):
-        subtitle_filter = "ass=" + srt_path
+    safe_sub_path = _subtitle_filter_path(srt_path)
+    subtitle_filter = "subtitles='" + safe_sub_path + "'"
+    is_ass = str(srt_path).lower().endswith(".ass")
+    if is_ass:
+        subtitle_filter = "ass='" + safe_sub_path + "'"
 
     cmd = [
         "ffmpeg",
@@ -277,7 +294,7 @@ def _burn_subtitles(input_video, srt_path, out_video):
         "-i",
         input_video,
         "-vf",
-        subtitle_filter + ("" if str(srt_path).lower().endswith(".ass") else ":force_style='FontName=Arial,FontSize=22,Bold=1,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,Outline=3,MarginV=180'"),
+        subtitle_filter,
         "-c:v",
         "libx264",
         "-preset",
@@ -286,7 +303,8 @@ def _burn_subtitles(input_video, srt_path, out_video):
         "copy",
         out_video,
     ]
-    return _run(cmd)
+    ok = _run(cmd)
+    return bool(ok and os.path.exists(out_video) and os.path.getsize(out_video) > 0)
 
 
 def _mix_background_music(input_video, music_path, out_video):
@@ -418,7 +436,7 @@ def build_motor_b_video_suite(script, keywords, out_dir, temp_dir, dry_run=False
         media_assets = parallax_assets or media_assets
 
         part_video_raw = os.path.join(out_dir, f"parte_{idx}_video.mp4")
-        dark_opacity = 0.55 if style_profile == "mystery" else 0.35
+        dark_opacity = 0.12 if style_profile == "mystery" else 0.08
         built = _assemble_part_video(media_assets, audio_path, part_video_raw, dark_opacity=dark_opacity)
         if not built:
             # Last-resort fallback video to keep pipeline running

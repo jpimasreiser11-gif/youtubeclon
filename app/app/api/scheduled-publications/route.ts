@@ -16,7 +16,7 @@ export async function GET(request: Request) {
         try {
             const result = await client.query(
                 `SELECT 
-                    sp.id, sp.clip_id, sp.platform, sp.scheduled_at, sp.status, c.title,
+                    sp.id, sp.clip_id, sp.platform, sp.scheduled_at, sp.status, COALESCE(c.title_generated, p.title) AS title,
                     pm.views, pm.likes, pm.comments, pm.shares
                  FROM scheduled_publications sp
                  JOIN clips c ON sp.clip_id = c.id

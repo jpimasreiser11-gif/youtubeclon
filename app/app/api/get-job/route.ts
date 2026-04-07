@@ -14,13 +14,19 @@ export async function GET(request: Request) {
 
     const client = await pool.connect();
     try {
-        // Ahora traemos progress_percent, eta_seconds y current_step
+                // Keep detail endpoint consistent with get-jobs stale timeout behavior.
         const project = await client.query(`
-            SELECT *, 
-                   project_status as status,
-                   progress_percent,
-                   eta_seconds,
-                   current_step
+                        SELECT *,
+                                     CASE
+                                         WHEN project_status = 'PROCESSING' AND updated_at < NOW() - INTERVAL '90 minutes' THEN 'FAILED'
+                                         ELSE project_status
+                                     END as status,
+                                     progress_percent,
+                                     CASE
+                                         WHEN project_status = 'PROCESSING' AND updated_at < NOW() - INTERVAL '90 minutes' THEN 0
+                                         ELSE eta_seconds
+                                     END as eta_seconds,
+                                     current_step
             FROM projects 
             WHERE id = $1 AND user_id = $2
         `, [id, session.user.id]);

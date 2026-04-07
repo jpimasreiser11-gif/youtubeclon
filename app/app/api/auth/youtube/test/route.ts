@@ -131,7 +131,7 @@ export async function GET() {
 
         return NextResponse.json({ ok: true, accountName: name, message: 'Conexión YouTube válida' });
     } catch (error: any) {
-        return NextResponse.json({ ok: false, error: error.message || 'Error validando YouTube OAuth' }, { status: 500 });
+        return NextResponse.json({ ok: false, error: error.message || 'Error validando YouTube OAuth' }, { status: 400 });
     } finally {
         client.release();
     }

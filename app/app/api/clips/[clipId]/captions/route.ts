@@ -7,6 +7,9 @@ export async function GET(
 ) {
     const params = await context.params;
     const clipId = params.clipId;
+    if (!/^[0-9a-fA-F-]{36}$/.test(clipId)) {
+        return NextResponse.json({ error: 'Invalid clip id' }, { status: 400 });
+    }
 
     try {
         const client = await pool.connect();
@@ -19,8 +22,7 @@ export async function GET(
                     c.start_time,
                     c.end_time,
                     c.hook_description,
-                    c.payoff_description,
-                    c.title
+                    c.payoff_description
                  FROM clips c
                  WHERE c.id = $1::uuid`,
                 [clipId]
@@ -71,12 +73,12 @@ function generateVTT(clip: any): string {
     // Hook cue
     vtt += `1\n`;
     vtt += `${formatTimestamp(0)} --> ${formatTimestamp(duration / 2)}\n`;
-    vtt += `${clip.hook_description}\n\n`;
+    vtt += `${clip.hook_description || 'HOOK'}\n\n`;
 
     // Payoff cue
     vtt += `2\n`;
     vtt += `${formatTimestamp(duration / 2)} --> ${formatTimestamp(duration)}\n`;
-    vtt += `${clip.payoff_description}\n\n`;
+    vtt += `${clip.payoff_description || 'PAYOFF'}\n\n`;
 
     return vtt;
 }

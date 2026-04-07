@@ -26,11 +26,33 @@ export const videoWorker = new Worker(
             throw ghost;
         }
 
-        // Mark project as PROCESSING
-        await pool.query(
-            'UPDATE projects SET project_status = $1, updated_at = NOW() WHERE id = $2',
-            ['PROCESSING', projectId]
+        // Atomically claim the project for processing to prevent duplicate ingest processes.
+        // If another worker already owns a fresh PROCESSING state, skip this duplicate job.
+        const claimResult = await pool.query(
+            `
+            UPDATE projects
+            SET project_status = 'PROCESSING', updated_at = NOW()
+            WHERE id = $1
+              AND (
+                                project_status IN ('QUEUED', 'FAILED')
+                OR (project_status = 'PROCESSING' AND updated_at < NOW() - INTERVAL '30 minutes')
+              )
+            RETURNING id
+            `,
+            [projectId]
         );
+
+        if (claimResult.rowCount === 0) {
+            const statusCheck = await pool.query(
+                'SELECT project_status, updated_at FROM projects WHERE id = $1',
+                [projectId]
+            );
+            const current = statusCheck.rows[0];
+            console.warn(
+                `⚠️ Skipping duplicate/invalid job ${job.id} for project ${projectId}. Current status=${current?.project_status}, updated_at=${current?.updated_at}`
+            );
+            return { projectId, status: 'SKIPPED_DUPLICATE' };
+        }
 
         // Auto-detect virtual environment Python executable
         const isWin = process.platform === 'win32';

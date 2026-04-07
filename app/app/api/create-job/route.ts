@@ -40,7 +40,8 @@ export async function POST(request: Request) {
             }, { status: 400 });
         }
 
-        const isFromScratchMode = body.creationSystem === 'viral_motor_b';
+        const normalizedCreationSystem = body.creationSystem === 'viral_motor_b' ? 'viral_motor_b' : 'viral_motor_a';
+        const isFromScratchMode = normalizedCreationSystem === 'viral_motor_b';
         const normalizedUrl = (body.url || '').trim();
         if (!normalizedUrl && !isFromScratchMode) {
             return NextResponse.json({ error: 'URL is required' }, { status: 400 });
@@ -109,9 +110,9 @@ export async function POST(request: Request) {
                     projectId,
                     url: sourceUrl,
                     enterpriseOptions: body.enterpriseOptions || {},
-                    creationSystem: body.creationSystem || 'legacy',
+                    creationSystem: normalizedCreationSystem,
                     viralNiche: body.viralNiche || 'finanzas personales',
-                    viralDryRun: body.viralDryRun ?? true,
+                    viralDryRun: body.viralDryRun ?? false,
                     motorBInput: body.motorBInput || null,
                     motorBTrendMode: body.motorBTrendMode || 'internet',
                 },

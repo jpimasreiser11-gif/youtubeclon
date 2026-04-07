@@ -16,7 +16,7 @@ export async function GET(request: Request) {
 
     const clientId = process.env.YOUTUBE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID;
     if (!clientId) {
-        return NextResponse.json({ error: 'Missing YOUTUBE_CLIENT_ID/GOOGLE_CLIENT_ID' }, { status: 500 });
+        return NextResponse.json({ error: 'Missing YOUTUBE_CLIENT_ID/GOOGLE_CLIENT_ID' }, { status: 400 });
     }
 
     const baseUrl = getBaseUrl(request);

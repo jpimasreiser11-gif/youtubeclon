@@ -1,5 +1,10 @@
 import { z } from 'zod';
 
+const NIL_UUID = '00000000-0000-0000-0000-000000000000';
+const NonNilUuidSchema = z.string()
+    .uuid('clipId debe ser un UUID válido')
+    .refine((value) => value !== NIL_UUID, 'clipId no puede ser UUID nulo');
+
 // Schema para procesamiento de videos
 export const ProcessVideoSchema = z.object({
     url: z.string()
@@ -18,7 +23,7 @@ export const ProcessVideoSchema = z.object({
 
 // Schema para agregar subtítulos
 export const AddSubtitlesSchema = z.object({
-    clipId: z.string().uuid('clipId debe ser un UUID válido'),
+    clipId: NonNilUuidSchema,
     style: z.enum(['tiktok', 'youtube_shorts', 'instagram_reels', 'hormozi', 'minimalist', 'minimal', 'clean', 'default'])
         .default('tiktok'),
     customStyle: z.object({
@@ -30,27 +35,27 @@ export const AddSubtitlesSchema = z.object({
 
 // Schema para mejorar audio
 export const EnhanceAudioSchema = z.object({
-    clipId: z.string().uuid('clipId debe ser un UUID válido'),
+    clipId: NonNilUuidSchema,
     targetLufs: z.number().min(-20).max(-10).default(-14),
     targetTp: z.number().min(-3).max(0).default(-1),
 });
 
 // Schema para smart crop
 export const SmartCropSchema = z.object({
-    clipId: z.string().uuid('clipId debe ser un UUID válido'),
+    clipId: NonNilUuidSchema,
     alpha: z.number().min(0).max(1).default(0.1),
 });
 
 // Schema para acciones enterprise
 export const EnterpriseActionSchema = z.object({
-    clipId: z.string().uuid('clipId debe ser un UUID válido'),
+    clipId: NonNilUuidSchema,
     action: z.enum(['reframe', 'clean_speech', 'add_broll', 'enhance_all']),
     options: z.record(z.string(), z.unknown()).optional()
 });
 
 // Schema para publicación
 export const PublishClipSchema = z.object({
-    clipId: z.string().uuid('clipId debe ser un UUID válido'),
+    clipId: NonNilUuidSchema,
     platform: z.enum(['youtube', 'tiktok', 'instagram']),
     scheduledAt: z.string().datetime().optional(), // ISO 8601 format
     metadata: z.object({
@@ -63,7 +68,7 @@ export const PublishClipSchema = z.object({
 
 // Schema para actualizar clip
 export const UpdateClipSchema = z.object({
-    clipId: z.string().uuid('clipId debe ser un UUID válido'),
+    clipId: NonNilUuidSchema,
     updates: z.object({
         title: z.string().max(200).optional(),
         startTime: z.number().min(0).optional(),

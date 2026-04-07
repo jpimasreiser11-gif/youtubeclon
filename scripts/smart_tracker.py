@@ -12,7 +12,7 @@ def smooth_array(array, window_size=15):
     return np.convolve(array, np.ones(window_size)/window_size, mode='same')
 
 def smart_crop_video(input_path, output_path):
-    print(f"🎥 Iniciando Auto-Cámara IA (OpenCV) en: {input_path}")
+    print(f"Starting smart auto-camera (OpenCV): {input_path}")
     
     # Usar el clasificador de rostros de OpenCV (más fiable que MediaPipe en Windows)
     face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
@@ -43,7 +43,7 @@ def smart_crop_video(input_path, output_path):
     face_x_positions = []
     
     # Pasada 1: Analizar posiciones de la cara
-    print("🧠 Analizando frames...")
+    print("Analyzing frames...")
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
@@ -72,7 +72,7 @@ def smart_crop_video(input_path, output_path):
     smoothed_x = smooth_array(face_x_positions, window_size=20)
 
     # Pasada 2: Renderizar el recorte
-    print("✂️ Renderizando reencuadre suave...")
+    print("Rendering smooth reframing...")
     cap = cv2.VideoCapture(input_path)
     frame_idx = 0
     
@@ -103,7 +103,7 @@ def smart_crop_video(input_path, output_path):
     out.release()
     
     # Juntar el audio original con el video recortado usando FFmpeg
-    print("🎵 Restaurando audio...")
+    print("Restoring audio...")
     ffmpeg_cmd = [
         "ffmpeg", "-y", "-i", temp_video, "-i", input_path,
         "-c:v", "libx264", "-preset", "ultrafast", "-crf", "23",

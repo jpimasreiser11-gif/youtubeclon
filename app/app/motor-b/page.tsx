@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Sidebar } from '@/components/sidebar';
 import { Sparkles, TrendingUp, Loader2, Wand2 } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 type ScriptParts = {
   parte_1: string;
@@ -135,6 +136,12 @@ export default function MotorBPage() {
 
     setLoading(true);
     setError('');
+    trackEvent('motor_b_job_create_clicked', {
+      niche: payload.nicho,
+      trend_mode: trendMode,
+      keywords_count: payload.palabras_clave.length,
+      has_prebuilt_script: Boolean(prebuiltScript),
+    });
 
     try {
       const res = await fetch('/api/create-job', {
@@ -156,10 +163,21 @@ export default function MotorBPage() {
 
       setLastJobId(data.jobId || null);
       if (data.jobId) {
+        trackEvent('motor_b_job_created', {
+          job_id: data.jobId,
+          niche: payload.nicho,
+          trend_mode: trendMode,
+        });
+      }
+      if (data.jobId) {
         router.push(`/projects/${data.jobId}`);
       }
     } catch (e: any) {
       setError(e?.message || 'Error creando job de Motor B');
+      trackEvent('motor_b_job_create_failed', {
+        niche: payload.nicho,
+        trend_mode: trendMode,
+      });
     } finally {
       setLoading(false);
     }

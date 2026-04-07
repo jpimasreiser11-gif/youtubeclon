@@ -20,18 +20,18 @@ export async function GET() {
 
     const client = await pool.connect();
     try {
-        // Hard Anti-Mock Rule: Only real data from DB, filtered by user_id
-        // BUG 4 FIX: Stale timeout changed from 30min → 180min (long videos take >30min to process)
+                // Hard Anti-Mock Rule: Only real data from DB, filtered by user_id
+                // Mark stale PROCESSING jobs as FAILED after 90 minutes to avoid endless 70% stalls.
         const query = `
       SELECT 
         id, 
         source_video_url as source_url, 
-        CASE WHEN project_status = 'PROCESSING' AND updated_at < NOW() - INTERVAL '180 minutes' THEN 'FAILED' ELSE project_status END as status, 
+                CASE WHEN project_status = 'PROCESSING' AND updated_at < NOW() - INTERVAL '90 minutes' THEN 'FAILED' ELSE project_status END as status, 
         progress_percent as progress, 
         created_at, 
         title, 
         thumbnail_url, 
-        CASE WHEN project_status = 'PROCESSING' AND updated_at < NOW() - INTERVAL '180 minutes' THEN 0 ELSE eta_seconds END as estimated_time_remaining, 
+                CASE WHEN project_status = 'PROCESSING' AND updated_at < NOW() - INTERVAL '90 minutes' THEN 0 ELSE eta_seconds END as estimated_time_remaining, 
         current_step,
         auto_publish_enabled,
         publish_slots_per_day,

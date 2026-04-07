@@ -17,10 +17,17 @@ export async function POST(request: Request) {
 
     try {
         const { clipId } = await request.json();
+        if (!clipId || !/^[0-9a-fA-F-]{36}$/.test(String(clipId))) {
+            return NextResponse.json({ error: 'Invalid clipId' }, { status: 400 });
+        }
         const client = await pool.connect();
         try {
             const inputVideo = `${config.clipsDir}\\${clipId}.mp4`;
             const outputVideo = `${config.enhancedDir}\\${clipId}_smart_crop.mp4`;
+
+            if (!fs.existsSync(inputVideo)) {
+                return NextResponse.json({ error: 'Clip no encontrado' }, { status: 404 });
+            }
 
             // Ensure enhanced directory exists
             if (!fs.existsSync(config.enhancedDir)) {
@@ -33,7 +40,8 @@ export async function POST(request: Request) {
 
             console.log("Ejecutando AI Face Tracking...");
             const { stdout } = await execAsync(cmd);
-            const result = JSON.parse(stdout.split('\n').filter(l => l.startsWith('{'))[0] || '{"status":"error"}');
+            const line = stdout.split('\n').find(l => l.trim().startsWith('{'));
+            const result = JSON.parse(line || '{"status":"error"}');
 
             if (result.status === 'success') {
                 // Sobrescribe el clip original con la versión reencuadrada

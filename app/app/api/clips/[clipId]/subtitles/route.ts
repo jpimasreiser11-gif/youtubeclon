@@ -5,7 +5,7 @@ import pool from '@/lib/db';
 // GET: Retrieve transcription for a clip
 export async function GET(
     request: Request,
-    { params }: { params: { clipId: string } }
+    context: { params: Promise<{ clipId: string }> }
 ) {
     const session = await auth();
 
@@ -13,7 +13,11 @@ export async function GET(
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    const params = await context.params;
     const clipId = params.clipId;
+    if (!/^[0-9a-fA-F-]{36}$/.test(clipId)) {
+        return NextResponse.json({ error: 'Invalid clip id' }, { status: 400 });
+    }
 
     try {
         const client = await pool.connect();
@@ -62,7 +66,7 @@ export async function GET(
 // POST: Update transcription (edited by user)
 export async function POST(
     request: Request,
-    { params }: { params: { clipId: string } }
+    context: { params: Promise<{ clipId: string }> }
 ) {
     const session = await auth();
 
@@ -70,7 +74,11 @@ export async function POST(
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    const params = await context.params;
     const clipId = params.clipId;
+    if (!/^[0-9a-fA-F-]{36}$/.test(clipId)) {
+        return NextResponse.json({ error: 'Invalid clip id' }, { status: 400 });
+    }
     const { words } = await request.json();
 
     if (!words || !Array.isArray(words)) {

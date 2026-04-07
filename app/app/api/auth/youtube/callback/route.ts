@@ -14,10 +14,14 @@ function toDateFromSeconds(expiresIn?: number | null) {
     return new Date(Date.now() + expiresIn * 1000);
 }
 
+function redirectTo(request: Request, path: string) {
+    return NextResponse.redirect(new URL(path, request.url));
+}
+
 export async function GET(request: Request) {
     const session = await auth();
     if (!session?.user) {
-        return NextResponse.redirect('/connections?youtube=error');
+        return redirectTo(request, '/connections?youtube=error');
     }
 
     const reqUrl = new URL(request.url);
@@ -26,11 +30,11 @@ export async function GET(request: Request) {
     const oauthError = reqUrl.searchParams.get('error');
 
     if (oauthError) {
-        return NextResponse.redirect('/connections?youtube=error');
+        return redirectTo(request, '/connections?youtube=error');
     }
 
     if (!code || !state) {
-        return NextResponse.redirect('/connections?youtube=error');
+        return redirectTo(request, '/connections?youtube=error');
     }
 
     let stateUserId: string | null = null;
@@ -38,17 +42,17 @@ export async function GET(request: Request) {
         const parsed = JSON.parse(Buffer.from(state, 'base64url').toString('utf-8'));
         stateUserId = parsed.userId || null;
     } catch {
-        return NextResponse.redirect('/connections?youtube=error');
+        return redirectTo(request, '/connections?youtube=error');
     }
 
     if (!stateUserId || stateUserId !== session.user.id) {
-        return NextResponse.redirect('/connections?youtube=error');
+        return redirectTo(request, '/connections?youtube=error');
     }
 
     const clientId = process.env.YOUTUBE_CLIENT_ID || process.env.GOOGLE_CLIENT_ID;
     const clientSecret = process.env.YOUTUBE_CLIENT_SECRET || process.env.GOOGLE_CLIENT_SECRET;
     if (!clientId || !clientSecret) {
-        return NextResponse.redirect('/connections?youtube=error');
+        return redirectTo(request, '/connections?youtube=error');
     }
 
     const baseUrl = getBaseUrl(request);
@@ -68,7 +72,7 @@ export async function GET(request: Request) {
         });
 
         if (!tokenResp.ok) {
-            return NextResponse.redirect('/connections?youtube=error');
+            return redirectTo(request, '/connections?youtube=error');
         }
 
         const tokenData = await tokenResp.json();
@@ -77,7 +81,7 @@ export async function GET(request: Request) {
         const expiresIn = tokenData.expires_in as number | undefined;
 
         if (!accessToken) {
-            return NextResponse.redirect('/connections?youtube=error');
+            return redirectTo(request, '/connections?youtube=error');
         }
 
         // Fetch channel name for better UX
@@ -131,8 +135,8 @@ export async function GET(request: Request) {
             client.release();
         }
 
-        return NextResponse.redirect('/connections?youtube=connected');
+        return redirectTo(request, '/connections?youtube=connected');
     } catch {
-        return NextResponse.redirect('/connections?youtube=error');
+        return redirectTo(request, '/connections?youtube=error');
     }
 }

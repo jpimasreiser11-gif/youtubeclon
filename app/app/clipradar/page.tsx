@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Sidebar } from '@/components/sidebar'
 import { Radar, Search, TrendingUp, DollarSign, Sparkles, Globe, Languages, Play } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics'
 
 interface VideoData {
   id: string
@@ -182,6 +183,7 @@ export default function ClipRadarPage() {
     setLoading(true)
     setError('')
     setItems([])
+    trackEvent('clipradar_search_started', { lang, query })
 
     try {
       const res = await fetch(`/api/youtube?nicho=${encodeURIComponent(query)}&lang=${lang}&days=30`)
@@ -191,10 +193,12 @@ export default function ClipRadarPage() {
       const enriched = (data.items || []).map(enrich).filter(Boolean) as VideoData[]
       enriched.sort((a, b) => b.viralScore - a.viralScore)
       setItems(enriched)
+      trackEvent('clipradar_search_completed', { lang, query, results_count: enriched.length })
       if (!enriched.length) setError('No hay resultados con suficiente señal viral para este filtro.')
     } catch (e: unknown) {
       const message = e instanceof Error ? e.message : 'Error inesperado'
       setError(message)
+      trackEvent('clipradar_search_failed', { lang, query })
     } finally {
       setLoading(false)
     }
@@ -202,6 +206,7 @@ export default function ClipRadarPage() {
 
   const createMotorAJob = async (videoUrl: string) => {
     try {
+      trackEvent('clipradar_motor_a_job_create_clicked', { source_url: videoUrl, niche: query })
       const res = await fetch('/api/create-job', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -214,10 +219,14 @@ export default function ClipRadarPage() {
       })
       const data = await res.json()
       if (!res.ok || data.error) throw new Error(data.error || 'No se pudo crear el job')
+      if (data.jobId) {
+        trackEvent('clipradar_motor_a_job_created', { job_id: data.jobId, niche: query })
+      }
       if (data.jobId) router.push(`/projects/${data.jobId}`)
     } catch (e: unknown) {
       const message = e instanceof Error ? e.message : 'Error creando job'
       setError(message)
+      trackEvent('clipradar_motor_a_job_create_failed', { niche: query })
     }
   }
 

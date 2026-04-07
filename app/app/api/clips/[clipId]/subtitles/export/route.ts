@@ -4,7 +4,7 @@ import pool from '@/lib/db';
 
 export async function GET(
     request: Request,
-    { params }: { params: { clipId: string } }
+    context: { params: Promise<{ clipId: string }> }
 ) {
     const session = await auth();
 
@@ -14,7 +14,11 @@ export async function GET(
 
     const { searchParams } = new URL(request.url);
     const format = searchParams.get('format') || 'vtt'; // vtt, srt, ass
+    const params = await context.params;
     const clipId = params.clipId;
+    if (!/^[0-9a-fA-F-]{36}$/.test(clipId)) {
+        return NextResponse.json({ error: 'Invalid clip id' }, { status: 400 });
+    }
 
     try {
         const client = await pool.connect();
@@ -22,7 +26,7 @@ export async function GET(
         try {
             // Get transcription
             const result = await client.query(
-                `SELECT t.words, t.language, c.title
+                `SELECT t.words, t.language, COALESCE(p.title, c.id::text) AS title
                  FROM transcriptions t
                  JOIN clips c ON t.clip_id = c.id
                  JOIN projects p ON c.project_id = p.id

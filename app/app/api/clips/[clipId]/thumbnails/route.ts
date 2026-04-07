@@ -10,7 +10,7 @@ const execAsync = promisify(exec);
 
 export async function POST(
     request: Request,
-    { params }: { params: { clipId: string } }
+    context: { params: Promise<{ clipId: string }> }
 ) {
     const session = await auth();
 
@@ -18,7 +18,11 @@ export async function POST(
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    const params = await context.params;
     const clipId = params.clipId;
+    if (!/^[0-9a-fA-F-]{36}$/.test(clipId)) {
+        return NextResponse.json({ error: 'Invalid clip id' }, { status: 400 });
+    }
 
     try {
         const client = await pool.connect();
@@ -26,7 +30,7 @@ export async function POST(
         try {
             // Get clip details
             const result = await client.query(
-                `SELECT c.id, c.title, c.category, c.start_time, c.end_time, p.id as project_id, p.user_id
+                `SELECT c.id, COALESCE(c.title_generated, p.title) AS title, c.start_time, c.end_time, p.id as project_id, p.user_id
                  FROM clips c
                  JOIN projects p ON c.project_id = p.id
                  WHERE c.id = $1::uuid`,
@@ -67,8 +71,8 @@ export async function POST(
             `"${scriptPath}"`,
             `--video "${videoPath}"`,
             `--clip-id "${clipId}"`,
-            `--title "${clip.title}"`,
-            `--category "${clip.category || 'general'}"`,
+            `--title "${clip.title || 'Clip'}"`,
+            `--category "general"`,
             `--output "${outputPath}"`,
             `--db-password "${dbPassword}"`
         ].join(' ');
@@ -100,7 +104,7 @@ export async function POST(
 // GET: Retrieve existing thumbnail
 export async function GET(
     request: Request,
-    { params }: { params: { clipId: string } }
+    context: { params: Promise<{ clipId: string }> }
 ) {
     const session = await auth();
 
@@ -108,14 +112,18 @@ export async function GET(
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    const params = await context.params;
     const clipId = params.clipId;
+    if (!/^[0-9a-fA-F-]{36}$/.test(clipId)) {
+        return NextResponse.json({ error: 'Invalid clip id' }, { status: 400 });
+    }
 
     try {
         const client = await pool.connect();
 
         try {
             const result = await client.query(
-                `SELECT t.id, t.file_path, t.viral_text, t.created_at
+                `SELECT t.id, t.url, t.frame_timestamp, t.is_custom, t.created_at
                  FROM thumbnails t
                  JOIN clips c ON t.clip_id = c.id
                  JOIN projects p ON c.project_id = p.id
@@ -133,8 +141,9 @@ export async function GET(
 
             return NextResponse.json({
                 id: thumbnail.id,
-                path: `/thumbnails/${clipId}.jpg`,
-                viralText: thumbnail.viral_text,
+                path: thumbnail.url,
+                frameTimestamp: thumbnail.frame_timestamp,
+                isCustom: thumbnail.is_custom,
                 createdAt: thumbnail.created_at
             });
 

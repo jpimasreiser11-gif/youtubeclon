@@ -16,31 +16,31 @@ export async function GET(request: Request) {
         const client = await pool.connect();
 
         // Build WHERE clause
-        let whereClause = 'WHERE p.user_id = $1';
+        let whereClause = 'WHERE p.user_id = $1::uuid';
         const params: any[] = [session.user.id];
 
         if (status !== 'all') {
-            whereClause += ' AND su.status = $2';
+            whereClause += ' AND sp.status = $2';
             params.push(status);
         }
 
         // Get uploads
         const result = await client.query(`
             SELECT 
-                su.id,
-                su.clip_id,
-                su.platform,
-                su.scheduled_at,
-                su.status,
-                su.attempts,
-                su.last_error,
-                su.video_url,
-                c.title as clip_title
-            FROM scheduled_uploads su
-            JOIN clips c ON su.clip_id = c.id
+                sp.id,
+                sp.clip_id,
+                sp.platform,
+                sp.scheduled_at,
+                sp.status,
+                sp.attempts,
+                sp.error_message as last_error,
+                sp.video_url,
+                COALESCE(c.title_generated, p.title) as clip_title
+            FROM scheduled_publications sp
+            JOIN clips c ON sp.clip_id = c.id
             JOIN projects p ON c.project_id = p.id
             ${whereClause}
-            ORDER BY su.scheduled_at DESC
+            ORDER BY sp.scheduled_at DESC
             LIMIT 100
         `, params);
 
@@ -63,10 +63,10 @@ export async function GET(request: Request) {
                 COUNT(*) FILTER (WHERE status = 'success') as success,
                 COUNT(*) FILTER (WHERE status = 'failed') as failed,
                 COUNT(*) FILTER (WHERE DATE(scheduled_at) = CURRENT_DATE) as total_today
-            FROM scheduled_uploads su
-            JOIN clips c ON su.clip_id = c.id
+            FROM scheduled_publications sp
+            JOIN clips c ON sp.clip_id = c.id
             JOIN projects p ON c.project_id = p.id
-            WHERE p.user_id = $1
+            WHERE p.user_id = $1::uuid
         `, [session.user.id]);
 
         const stats = statsResult.rows[0];
