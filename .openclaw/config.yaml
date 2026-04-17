@@ -1,0 +1,71 @@
+logging:
+  level: "info"
+
+agent:
+  model: "anthropic/claude-opus-4-6"
+  workspace: "./.openclaw/workspace"
+  thinkingDefault: "medium"
+  timeoutSeconds: 1800
+  heartbeat:
+    every: "0m"
+
+agents:
+  defaults:
+    heartbeat:
+      every: "0m"
+
+channels:
+  telegram:
+    token: "${TELEGRAM_BOT_TOKEN}"
+    allowFrom:
+      - "${TELEGRAM_USER_ID}"
+
+routing:
+  agentMentions:
+    enabled: true
+    format: "@{agentName}: {message}"
+    defaultAgent: "patriarch"
+
+security:
+  allowedPaths:
+    - "./"
+    - "./.openclaw/workspace/"
+  blockedPaths:
+    - "~/"
+    - "/etc/"
+    - "/usr/"
+    - "./.env"
+    - "./.git/"
+  allowedCommands:
+    - "python"
+    - "pip"
+    - "ffmpeg"
+    - "ffprobe"
+    - "git commit"
+    - "git push"
+  blockedCommands:
+    - "rm -rf"
+    - "sudo"
+    - "chmod 777"
+    - "curl | bash"
+    - "wget | bash"
+  hardBlocks:
+    - pattern: "rm -rf /"
+    - pattern: "sudo"
+    - pattern: "format"
+    - pattern: "DROP TABLE"
+    - pattern: "DELETE FROM"
+    - pattern: ".env"
+    - pattern: "git push --force"
+    - pattern: "stripe"
+    - pattern: "paypal"
+  beforeWrite:
+    createBackup: true
+    backupPath: ".openclaw/backups/"
+    keepBackups: 7
+
+session:
+  scope: "per-agent"
+  reset:
+    mode: "daily"
+    atHour: 4

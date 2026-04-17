@@ -1,0 +1,175 @@
+name: Monetization Check
+
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: monetization-check-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  monitor-monetization:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      MONETIZATION_ALERT_WEBHOOK_URL: ${{ secrets.MONETIZATION_ALERT_WEBHOOK_URL }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Restore previous monetization snapshot cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .github/state/monetization_snapshot.json
+          key: monetization-snapshot-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            monetization-snapshot-${{ github.ref_name }}-
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: pip install --disable-pip-version-check -r requirements.txt
+
+      - name: Initialize database
+        run: python run.py setup-db
+
+      - name: Build monetization change report
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from datetime import datetime, timezone
+          from pathlib import Path
+          from urllib import request
+          from backend.database import get_db, init_db
+
+          init_db()
+          state_dir = Path(".github/state")
+          report_dir = Path("reports")
+          state_dir.mkdir(parents=True, exist_ok=True)
+          report_dir.mkdir(parents=True, exist_ok=True)
+          snapshot_path = state_dir / "monetization_snapshot.json"
+
+          previous = {}
+          if snapshot_path.exists():
+              previous = json.loads(snapshot_path.read_text(encoding="utf-8"))
+
+          with get_db() as conn:
+              totals = dict(conn.execute("""
+                SELECT
+                  COALESCE(SUM(views), 0) as total_views,
+                  COALESCE(SUM(estimated_revenue), 0) as total_revenue,
+                  COUNT(*) as total_videos
+                FROM videos
+              """).fetchone())
+              channels = [dict(r) for r in conn.execute("""
+                SELECT
+                  c.channel_id,
+                  c.cpm_estimate,
+                  COALESCE(SUM(v.views), 0) as total_views,
+                  COALESCE(SUM(v.estimated_revenue), 0) as total_revenue
+                FROM channels c
+                LEFT JOIN videos v ON v.channel_id = c.id
+                GROUP BY c.id
+                ORDER BY c.id
+              """).fetchall()]
+
+          current = {
+              "generated_at": datetime.now(timezone.utc).isoformat(),
+              "totals": totals,
+              "channels": channels,
+          }
+
+          def pct_change(curr, prev):
+              curr = float(curr or 0)
+              prev = float(prev or 0)
+              if prev == 0:
+                  return None if curr == 0 else 100.0
+              return ((curr - prev) / prev) * 100.0
+
+          previous_totals = (previous.get("totals") or {})
+          delta = {
+              "views_pct": pct_change(totals.get("total_views"), previous_totals.get("total_views")),
+              "revenue_pct": pct_change(totals.get("total_revenue"), previous_totals.get("total_revenue")),
+              "videos_pct": pct_change(totals.get("total_videos"), previous_totals.get("total_videos")),
+          }
+
+          alerts = []
+          rev_change = delta.get("revenue_pct")
+          if rev_change is not None and rev_change <= -20:
+              alerts.append(f"Estimated revenue dropped {rev_change:.2f}% vs previous snapshot.")
+          if float(totals.get("total_revenue") or 0) <= 0:
+              alerts.append("Estimated revenue is zero. Verify monetization and affiliate attribution.")
+
+          report = {
+              "current": current,
+              "previous": previous,
+              "delta_pct": delta,
+              "alerts": alerts,
+          }
+          report_path = report_dir / "monetization_check_report.json"
+          report_path.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
+          snapshot_path.write_text(json.dumps(current, indent=2, ensure_ascii=False), encoding="utf-8")
+
+          md_lines = [
+              "# Monetization Check",
+              "",
+              f"- Total videos: {totals.get('total_videos', 0)}",
+              f"- Total views: {totals.get('total_views', 0)}",
+              f"- Estimated revenue: ${float(totals.get('total_revenue') or 0):.2f}",
+              "",
+              "## Snapshot delta",
+              f"- Views change: {delta['views_pct'] if delta['views_pct'] is not None else 'n/a'}",
+              f"- Revenue change: {delta['revenue_pct'] if delta['revenue_pct'] is not None else 'n/a'}",
+              f"- Videos change: {delta['videos_pct'] if delta['videos_pct'] is not None else 'n/a'}",
+              "",
+              "## Alerts",
+          ]
+          if alerts:
+              md_lines.extend([f"- {a}" for a in alerts])
+          else:
+              md_lines.append("- No critical monetization change detected.")
+          md_text = "\n".join(md_lines) + "\n"
+          (report_dir / "monetization_check_report.md").write_text(md_text, encoding="utf-8")
+          print(md_text)
+
+          if os.getenv("GITHUB_STEP_SUMMARY"):
+              with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as fh:
+                  fh.write(md_text)
+
+          webhook = os.getenv("MONETIZATION_ALERT_WEBHOOK_URL", "").strip()
+          if webhook and alerts:
+              body = json.dumps({"text": "\n".join(["Monetization alerts:"] + alerts)}).encode("utf-8")
+              req = request.Request(webhook, data=body, headers={"Content-Type": "application/json"})
+              with request.urlopen(req, timeout=15) as resp:
+                  print(f"Alert webhook delivered: {resp.status}")
+          PY
+
+      - name: Upload monetization artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: monetization-check-${{ github.run_id }}
+          path: |
+            reports/monetization_check_report.json
+            reports/monetization_check_report.md
+            .github/state/monetization_snapshot.json
+          retention-days: 30
+
+      - name: Save monetization snapshot cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .github/state/monetization_snapshot.json
+          key: monetization-snapshot-${{ github.ref_name }}-${{ github.run_id }}
+

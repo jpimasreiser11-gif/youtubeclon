@@ -1,0 +1,134 @@
+name: Weekly Metrics Report
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: weekly-report-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  weekly-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      WEEKLY_REPORT_WEBHOOK_URL: ${{ secrets.WEEKLY_REPORT_WEBHOOK_URL }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: pip install --disable-pip-version-check -r requirements.txt
+
+      - name: Initialize database
+        run: python run.py setup-db
+
+      - name: Generate weekly metrics summary
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from datetime import datetime, timezone
+          from pathlib import Path
+          from urllib import request
+          from backend.database import get_db, get_dashboard_stats, init_db
+
+          init_db()
+          Path("reports").mkdir(parents=True, exist_ok=True)
+
+          with get_db() as conn:
+              weekly = dict(conn.execute("""
+                SELECT
+                  COUNT(*) as videos_last_7d,
+                  SUM(CASE WHEN status = 'published' THEN 1 ELSE 0 END) as published_last_7d,
+                  COALESCE(SUM(views), 0) as views_last_7d,
+                  COALESCE(SUM(estimated_revenue), 0) as revenue_last_7d
+                FROM videos
+                WHERE datetime(created_at) >= datetime('now', '-7 day')
+              """).fetchone())
+
+              by_channel = [dict(r) for r in conn.execute("""
+                SELECT
+                  c.channel_id,
+                  c.name,
+                  COUNT(v.id) as videos_last_7d,
+                  SUM(CASE WHEN v.status = 'published' THEN 1 ELSE 0 END) as published_last_7d,
+                  COALESCE(SUM(v.views), 0) as views_last_7d,
+                  COALESCE(SUM(v.estimated_revenue), 0) as revenue_last_7d
+                FROM channels c
+                LEFT JOIN videos v
+                  ON v.channel_id = c.id
+                  AND datetime(v.created_at) >= datetime('now', '-7 day')
+                GROUP BY c.id
+                ORDER BY c.id
+              """).fetchall()]
+
+          dashboard = get_dashboard_stats()
+          payload = {
+              "generated_at": datetime.now(timezone.utc).isoformat(),
+              "weekly": weekly,
+              "dashboard_total": dashboard,
+              "by_channel": by_channel,
+          }
+
+          Path("reports/weekly_metrics_summary.json").write_text(
+              json.dumps(payload, indent=2, ensure_ascii=False),
+              encoding="utf-8",
+          )
+
+          lines = [
+              "# Weekly Metrics Summary",
+              "",
+              f"- Videos created (7d): {weekly.get('videos_last_7d', 0)}",
+              f"- Published (7d): {weekly.get('published_last_7d', 0)}",
+              f"- Views (7d): {weekly.get('views_last_7d', 0)}",
+              f"- Estimated revenue (7d): ${float(weekly.get('revenue_last_7d') or 0):.2f}",
+              "",
+              "## Per channel (7d)",
+          ]
+          for ch in by_channel:
+              lines.append(
+                  f"- {ch['channel_id']}: videos={ch['videos_last_7d']}, published={ch['published_last_7d']}, "
+                  f"views={ch['views_last_7d']}, revenue=${float(ch['revenue_last_7d'] or 0):.2f}"
+              )
+          summary_text = "\n".join(lines) + "\n"
+          Path("reports/weekly_metrics_summary.md").write_text(summary_text, encoding="utf-8")
+          print(summary_text)
+
+          if os.getenv("GITHUB_STEP_SUMMARY"):
+              with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as fh:
+                  fh.write(summary_text)
+
+          webhook = os.getenv("WEEKLY_REPORT_WEBHOOK_URL", "").strip()
+          if webhook:
+              body = json.dumps({"text": summary_text[:3500]}).encode("utf-8")
+              req = request.Request(webhook, data=body, headers={"Content-Type": "application/json"})
+              with request.urlopen(req, timeout=15) as resp:
+                  print(f"Webhook delivered: {resp.status}")
+          else:
+              print("WEEKLY_REPORT_WEBHOOK_URL not set: skipping send step.")
+          PY
+
+      - name: Upload weekly report artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-report-${{ github.run_id }}
+          path: |
+            reports/weekly_metrics_summary.json
+            reports/weekly_metrics_summary.md
+            data/youtube_automation.db
+          retention-days: 30
+

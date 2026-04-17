@@ -1,0 +1,27 @@
+name: Copilot Agents Team Sync
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "sistema-10-agentes/**"
+      - "widflow-copilor-sistem/**"
+
+jobs:
+  sync-agents:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync 10 agents into .github/agents
+        shell: pwsh
+        run: |
+          ./widflow-copilor-sistem/install_and_sync_agents.ps1
+
+      - name: Validate agent count
+        shell: bash
+        run: |
+          count=$(find .github/agents -name "*.agent.md" | wc -l | tr -d ' ')
+          echo "Agent files: $count"
+          test "$count" -ge 10

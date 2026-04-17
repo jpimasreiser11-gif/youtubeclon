@@ -1,0 +1,15 @@
+.env
+*.pyc
+__pycache__/
+.venv/
+node_modules/
+frontend/dist/
+output/
+assets/music/
+assets/fonts/
+logs/*.log
+*.db
+*.sqlite
+.youtube_token*.json
+oauth/
+clips/

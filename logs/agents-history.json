@@ -1,0 +1,1758 @@
+{
+  "cycles": [
+    {
+      "done": 25,
+      "cycle": 1705,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:31:34",
+      "started_at": "04/13/2026 22:31:21"
+    },
+    {
+      "done": 25,
+      "cycle": 1706,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:31:52",
+      "started_at": "04/13/2026 22:31:39"
+    },
+    {
+      "done": 25,
+      "cycle": 1707,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:32:12",
+      "started_at": "04/13/2026 22:31:57"
+    },
+    {
+      "done": 25,
+      "cycle": 1708,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:32:30",
+      "started_at": "04/13/2026 22:32:17"
+    },
+    {
+      "done": 25,
+      "cycle": 1709,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:32:46",
+      "started_at": "04/13/2026 22:32:35"
+    },
+    {
+      "done": 25,
+      "cycle": 1710,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:33:05",
+      "started_at": "04/13/2026 22:32:51"
+    },
+    {
+      "done": 25,
+      "cycle": 1711,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:33:21",
+      "started_at": "04/13/2026 22:33:10"
+    },
+    {
+      "done": 25,
+      "cycle": 1712,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:33:38",
+      "started_at": "04/13/2026 22:33:26"
+    },
+    {
+      "done": 25,
+      "cycle": 1713,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:33:58",
+      "started_at": "04/13/2026 22:33:43"
+    },
+    {
+      "done": 25,
+      "cycle": 1714,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:34:16",
+      "started_at": "04/13/2026 22:34:03"
+    },
+    {
+      "done": 25,
+      "cycle": 1715,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:34:34",
+      "started_at": "04/13/2026 22:34:21"
+    },
+    {
+      "done": 25,
+      "cycle": 1716,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:34:51",
+      "started_at": "04/13/2026 22:34:40"
+    },
+    {
+      "done": 25,
+      "cycle": 1717,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:35:08",
+      "started_at": "04/13/2026 22:34:57"
+    },
+    {
+      "done": 25,
+      "cycle": 1718,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:35:25",
+      "started_at": "04/13/2026 22:35:14"
+    },
+    {
+      "done": 25,
+      "cycle": 1719,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:35:45",
+      "started_at": "04/13/2026 22:35:30"
+    },
+    {
+      "done": 25,
+      "cycle": 1720,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:36:02",
+      "started_at": "04/13/2026 22:35:50"
+    },
+    {
+      "done": 25,
+      "cycle": 1721,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:36:20",
+      "started_at": "04/13/2026 22:36:08"
+    },
+    {
+      "done": 25,
+      "cycle": 1722,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:36:39",
+      "started_at": "04/13/2026 22:36:26"
+    },
+    {
+      "done": 25,
+      "cycle": 1723,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:36:57",
+      "started_at": "04/13/2026 22:36:44"
+    },
+    {
+      "done": 25,
+      "cycle": 1724,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:37:14",
+      "started_at": "04/13/2026 22:37:02"
+    },
+    {
+      "done": 25,
+      "cycle": 1725,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:37:35",
+      "started_at": "04/13/2026 22:37:20"
+    },
+    {
+      "done": 25,
+      "cycle": 1726,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:37:52",
+      "started_at": "04/13/2026 22:37:40"
+    },
+    {
+      "done": 25,
+      "cycle": 1727,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:38:11",
+      "started_at": "04/13/2026 22:37:58"
+    },
+    {
+      "done": 25,
+      "cycle": 1728,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:38:28",
+      "started_at": "04/13/2026 22:38:16"
+    },
+    {
+      "done": 25,
+      "cycle": 1729,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:38:46",
+      "started_at": "04/13/2026 22:38:33"
+    },
+    {
+      "done": 25,
+      "cycle": 1730,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:39:05",
+      "started_at": "04/13/2026 22:38:51"
+    },
+    {
+      "done": 25,
+      "cycle": 1731,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:39:25",
+      "started_at": "04/13/2026 22:39:10"
+    },
+    {
+      "done": 25,
+      "cycle": 1732,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:39:43",
+      "started_at": "04/13/2026 22:39:30"
+    },
+    {
+      "done": 25,
+      "cycle": 1733,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:40:02",
+      "started_at": "04/13/2026 22:39:49"
+    },
+    {
+      "done": 25,
+      "cycle": 1734,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:40:21",
+      "started_at": "04/13/2026 22:40:07"
+    },
+    {
+      "done": 25,
+      "cycle": 1735,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:40:38",
+      "started_at": "04/13/2026 22:40:27"
+    },
+    {
+      "done": 25,
+      "cycle": 1736,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:40:57",
+      "started_at": "04/13/2026 22:40:44"
+    },
+    {
+      "done": 25,
+      "cycle": 1737,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:41:17",
+      "started_at": "04/13/2026 22:41:02"
+    },
+    {
+      "done": 25,
+      "cycle": 1738,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:41:33",
+      "started_at": "04/13/2026 22:41:22"
+    },
+    {
+      "done": 25,
+      "cycle": 1739,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:41:51",
+      "started_at": "04/13/2026 22:41:39"
+    },
+    {
+      "done": 25,
+      "cycle": 1740,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:42:10",
+      "started_at": "04/13/2026 22:41:56"
+    },
+    {
+      "done": 25,
+      "cycle": 1741,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:42:27",
+      "started_at": "04/13/2026 22:42:15"
+    },
+    {
+      "done": 25,
+      "cycle": 1742,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:42:46",
+      "started_at": "04/13/2026 22:42:32"
+    },
+    {
+      "done": 25,
+      "cycle": 1743,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:43:07",
+      "started_at": "04/13/2026 22:42:52"
+    },
+    {
+      "done": 25,
+      "cycle": 1744,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:43:24",
+      "started_at": "04/13/2026 22:43:12"
+    },
+    {
+      "done": 25,
+      "cycle": 1745,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:43:43",
+      "started_at": "04/13/2026 22:43:29"
+    },
+    {
+      "done": 25,
+      "cycle": 1746,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:44:07",
+      "started_at": "04/13/2026 22:43:48"
+    },
+    {
+      "done": 25,
+      "cycle": 1747,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:44:26",
+      "started_at": "04/13/2026 22:44:12"
+    },
+    {
+      "done": 25,
+      "cycle": 1748,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:44:43",
+      "started_at": "04/13/2026 22:44:31"
+    },
+    {
+      "done": 25,
+      "cycle": 1749,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:45:03",
+      "started_at": "04/13/2026 22:44:48"
+    },
+    {
+      "done": 25,
+      "cycle": 1750,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:45:21",
+      "started_at": "04/13/2026 22:45:08"
+    },
+    {
+      "done": 25,
+      "cycle": 1751,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:45:40",
+      "started_at": "04/13/2026 22:45:26"
+    },
+    {
+      "done": 25,
+      "cycle": 1752,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:45:57",
+      "started_at": "04/13/2026 22:45:45"
+    },
+    {
+      "done": 25,
+      "cycle": 1753,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:46:17",
+      "started_at": "04/13/2026 22:46:02"
+    },
+    {
+      "done": 25,
+      "cycle": 1754,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:46:34",
+      "started_at": "04/13/2026 22:46:22"
+    },
+    {
+      "done": 25,
+      "cycle": 1755,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:46:51",
+      "started_at": "04/13/2026 22:46:40"
+    },
+    {
+      "done": 25,
+      "cycle": 1756,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:47:09",
+      "started_at": "04/13/2026 22:46:56"
+    },
+    {
+      "done": 25,
+      "cycle": 1757,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:47:26",
+      "started_at": "04/13/2026 22:47:15"
+    },
+    {
+      "done": 25,
+      "cycle": 1758,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:47:44",
+      "started_at": "04/13/2026 22:47:32"
+    },
+    {
+      "done": 25,
+      "cycle": 1759,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:48:02",
+      "started_at": "04/13/2026 22:47:49"
+    },
+    {
+      "done": 25,
+      "cycle": 1760,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:48:19",
+      "started_at": "04/13/2026 22:48:07"
+    },
+    {
+      "done": 25,
+      "cycle": 1761,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:48:36",
+      "started_at": "04/13/2026 22:48:24"
+    },
+    {
+      "done": 25,
+      "cycle": 1762,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:48:55",
+      "started_at": "04/13/2026 22:48:41"
+    },
+    {
+      "done": 25,
+      "cycle": 1763,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:49:13",
+      "started_at": "04/13/2026 22:49:01"
+    },
+    {
+      "done": 25,
+      "cycle": 1764,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:49:33",
+      "started_at": "04/13/2026 22:49:18"
+    },
+    {
+      "done": 25,
+      "cycle": 1765,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:49:50",
+      "started_at": "04/13/2026 22:49:38"
+    },
+    {
+      "done": 25,
+      "cycle": 1766,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:50:07",
+      "started_at": "04/13/2026 22:49:55"
+    },
+    {
+      "done": 25,
+      "cycle": 1767,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:50:27",
+      "started_at": "04/13/2026 22:50:12"
+    },
+    {
+      "done": 25,
+      "cycle": 1768,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:50:43",
+      "started_at": "04/13/2026 22:50:32"
+    },
+    {
+      "done": 25,
+      "cycle": 1769,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:51:01",
+      "started_at": "04/13/2026 22:50:48"
+    },
+    {
+      "done": 25,
+      "cycle": 1770,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:51:21",
+      "started_at": "04/13/2026 22:51:06"
+    },
+    {
+      "done": 25,
+      "cycle": 1771,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:51:41",
+      "started_at": "04/13/2026 22:51:26"
+    },
+    {
+      "done": 25,
+      "cycle": 1772,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:51:58",
+      "started_at": "04/13/2026 22:51:46"
+    },
+    {
+      "done": 25,
+      "cycle": 1773,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:52:21",
+      "started_at": "04/13/2026 22:52:03"
+    },
+    {
+      "done": 25,
+      "cycle": 1774,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:52:41",
+      "started_at": "04/13/2026 22:52:26"
+    },
+    {
+      "done": 25,
+      "cycle": 1775,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:53:01",
+      "started_at": "04/13/2026 22:52:46"
+    },
+    {
+      "done": 25,
+      "cycle": 1776,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:53:18",
+      "started_at": "04/13/2026 22:53:06"
+    },
+    {
+      "done": 25,
+      "cycle": 1777,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:53:37",
+      "started_at": "04/13/2026 22:53:23"
+    },
+    {
+      "done": 25,
+      "cycle": 1778,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:53:58",
+      "started_at": "04/13/2026 22:53:43"
+    },
+    {
+      "done": 25,
+      "cycle": 1779,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:54:18",
+      "started_at": "04/13/2026 22:54:03"
+    },
+    {
+      "done": 25,
+      "cycle": 1780,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:54:38",
+      "started_at": "04/13/2026 22:54:23"
+    },
+    {
+      "done": 25,
+      "cycle": 1781,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:54:56",
+      "started_at": "04/13/2026 22:54:43"
+    },
+    {
+      "done": 25,
+      "cycle": 1782,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:55:15",
+      "started_at": "04/13/2026 22:55:02"
+    },
+    {
+      "done": 25,
+      "cycle": 1783,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:55:31",
+      "started_at": "04/13/2026 22:55:20"
+    },
+    {
+      "done": 25,
+      "cycle": 1784,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:55:49",
+      "started_at": "04/13/2026 22:55:37"
+    },
+    {
+      "done": 25,
+      "cycle": 1785,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:56:06",
+      "started_at": "04/13/2026 22:55:54"
+    },
+    {
+      "done": 25,
+      "cycle": 1786,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:56:25",
+      "started_at": "04/13/2026 22:56:11"
+    },
+    {
+      "done": 25,
+      "cycle": 1787,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:56:42",
+      "started_at": "04/13/2026 22:56:31"
+    },
+    {
+      "done": 25,
+      "cycle": 1788,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:57:00",
+      "started_at": "04/13/2026 22:56:48"
+    },
+    {
+      "done": 25,
+      "cycle": 1789,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:57:17",
+      "started_at": "04/13/2026 22:57:06"
+    },
+    {
+      "done": 25,
+      "cycle": 1790,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:57:33",
+      "started_at": "04/13/2026 22:57:23"
+    },
+    {
+      "done": 25,
+      "cycle": 1791,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:57:53",
+      "started_at": "04/13/2026 22:57:39"
+    },
+    {
+      "done": 25,
+      "cycle": 1792,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:58:10",
+      "started_at": "04/13/2026 22:57:58"
+    },
+    {
+      "done": 25,
+      "cycle": 1793,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:58:28",
+      "started_at": "04/13/2026 22:58:16"
+    },
+    {
+      "done": 25,
+      "cycle": 1794,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:58:46",
+      "started_at": "04/13/2026 22:58:33"
+    },
+    {
+      "done": 25,
+      "cycle": 1795,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:59:03",
+      "started_at": "04/13/2026 22:58:52"
+    },
+    {
+      "done": 25,
+      "cycle": 1796,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:59:23",
+      "started_at": "04/13/2026 22:59:08"
+    },
+    {
+      "done": 25,
+      "cycle": 1797,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:59:40",
+      "started_at": "04/13/2026 22:59:29"
+    },
+    {
+      "done": 25,
+      "cycle": 1798,
+      "errors": 0,
+      "finished_at": "04/13/2026 22:59:59",
+      "started_at": "04/13/2026 22:59:46"
+    },
+    {
+      "done": 25,
+      "cycle": 1799,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:00:15",
+      "started_at": "04/13/2026 23:00:04"
+    },
+    {
+      "done": 25,
+      "cycle": 1800,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:00:32",
+      "started_at": "04/13/2026 23:00:21"
+    },
+    {
+      "done": 25,
+      "cycle": 1801,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:00:49",
+      "started_at": "04/13/2026 23:00:37"
+    },
+    {
+      "done": 25,
+      "cycle": 1802,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:01:06",
+      "started_at": "04/13/2026 23:00:54"
+    },
+    {
+      "done": 25,
+      "cycle": 1803,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:01:24",
+      "started_at": "04/13/2026 23:01:11"
+    },
+    {
+      "done": 25,
+      "cycle": 1804,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:01:42",
+      "started_at": "04/13/2026 23:01:29"
+    },
+    {
+      "done": 25,
+      "cycle": 1805,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:02:01",
+      "started_at": "04/13/2026 23:01:48"
+    },
+    {
+      "done": 25,
+      "cycle": 1806,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:02:18",
+      "started_at": "04/13/2026 23:02:06"
+    },
+    {
+      "done": 25,
+      "cycle": 1807,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:02:35",
+      "started_at": "04/13/2026 23:02:23"
+    },
+    {
+      "done": 25,
+      "cycle": 1808,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:02:52",
+      "started_at": "04/13/2026 23:02:40"
+    },
+    {
+      "done": 25,
+      "cycle": 1809,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:03:10",
+      "started_at": "04/13/2026 23:02:57"
+    },
+    {
+      "done": 25,
+      "cycle": 1810,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:03:28",
+      "started_at": "04/13/2026 23:03:15"
+    },
+    {
+      "done": 25,
+      "cycle": 1811,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:03:46",
+      "started_at": "04/13/2026 23:03:33"
+    },
+    {
+      "done": 25,
+      "cycle": 1812,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:04:04",
+      "started_at": "04/13/2026 23:03:51"
+    },
+    {
+      "done": 25,
+      "cycle": 1813,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:04:24",
+      "started_at": "04/13/2026 23:04:09"
+    },
+    {
+      "done": 25,
+      "cycle": 1814,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:04:40",
+      "started_at": "04/13/2026 23:04:29"
+    },
+    {
+      "done": 25,
+      "cycle": 1815,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:04:59",
+      "started_at": "04/13/2026 23:04:46"
+    },
+    {
+      "done": 25,
+      "cycle": 1816,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:05:16",
+      "started_at": "04/13/2026 23:05:04"
+    },
+    {
+      "done": 25,
+      "cycle": 1817,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:05:33",
+      "started_at": "04/13/2026 23:05:22"
+    },
+    {
+      "done": 25,
+      "cycle": 1818,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:05:53",
+      "started_at": "04/13/2026 23:05:38"
+    },
+    {
+      "done": 25,
+      "cycle": 1819,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:06:10",
+      "started_at": "04/13/2026 23:05:58"
+    },
+    {
+      "done": 25,
+      "cycle": 1820,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:06:30",
+      "started_at": "04/13/2026 23:06:15"
+    },
+    {
+      "done": 25,
+      "cycle": 1821,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:06:47",
+      "started_at": "04/13/2026 23:06:35"
+    },
+    {
+      "done": 25,
+      "cycle": 1822,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:07:05",
+      "started_at": "04/13/2026 23:06:52"
+    },
+    {
+      "done": 25,
+      "cycle": 1823,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:07:22",
+      "started_at": "04/13/2026 23:07:10"
+    },
+    {
+      "done": 25,
+      "cycle": 1824,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:07:40",
+      "started_at": "04/13/2026 23:07:27"
+    },
+    {
+      "done": 25,
+      "cycle": 1825,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:08:00",
+      "started_at": "04/13/2026 23:07:46"
+    },
+    {
+      "done": 25,
+      "cycle": 1826,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:08:19",
+      "started_at": "04/13/2026 23:08:05"
+    },
+    {
+      "done": 25,
+      "cycle": 1827,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:08:35",
+      "started_at": "04/13/2026 23:08:24"
+    },
+    {
+      "done": 25,
+      "cycle": 1828,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:08:53",
+      "started_at": "04/13/2026 23:08:41"
+    },
+    {
+      "done": 25,
+      "cycle": 1829,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:09:11",
+      "started_at": "04/13/2026 23:08:58"
+    },
+    {
+      "done": 25,
+      "cycle": 1830,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:09:28",
+      "started_at": "04/13/2026 23:09:16"
+    },
+    {
+      "done": 25,
+      "cycle": 1831,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:09:45",
+      "started_at": "04/13/2026 23:09:33"
+    },
+    {
+      "done": 25,
+      "cycle": 1832,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:10:04",
+      "started_at": "04/13/2026 23:09:50"
+    },
+    {
+      "done": 25,
+      "cycle": 1833,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:10:24",
+      "started_at": "04/13/2026 23:10:10"
+    },
+    {
+      "done": 25,
+      "cycle": 1834,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:10:41",
+      "started_at": "04/13/2026 23:10:30"
+    },
+    {
+      "done": 25,
+      "cycle": 1835,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:11:00",
+      "started_at": "04/13/2026 23:10:46"
+    },
+    {
+      "done": 25,
+      "cycle": 1836,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:11:20",
+      "started_at": "04/13/2026 23:11:05"
+    },
+    {
+      "done": 25,
+      "cycle": 1837,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:11:38",
+      "started_at": "04/13/2026 23:11:26"
+    },
+    {
+      "done": 25,
+      "cycle": 1838,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:11:54",
+      "started_at": "04/13/2026 23:11:43"
+    },
+    {
+      "done": 25,
+      "cycle": 1839,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:12:15",
+      "started_at": "04/13/2026 23:12:00"
+    },
+    {
+      "done": 25,
+      "cycle": 1840,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:12:34",
+      "started_at": "04/13/2026 23:12:20"
+    },
+    {
+      "done": 25,
+      "cycle": 1841,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:12:54",
+      "started_at": "04/13/2026 23:12:40"
+    },
+    {
+      "done": 25,
+      "cycle": 1842,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:13:14",
+      "started_at": "04/13/2026 23:13:00"
+    },
+    {
+      "done": 25,
+      "cycle": 1843,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:13:31",
+      "started_at": "04/13/2026 23:13:20"
+    },
+    {
+      "done": 25,
+      "cycle": 1844,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:13:49",
+      "started_at": "04/13/2026 23:13:36"
+    },
+    {
+      "done": 25,
+      "cycle": 1845,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:14:08",
+      "started_at": "04/13/2026 23:13:55"
+    },
+    {
+      "done": 25,
+      "cycle": 1846,
+      "errors": 0,
+      "finished_at": "04/13/2026 23:14:27",
+      "started_at": "04/13/2026 23:14:13"
+    },
+    {
+      "done": 25,
+      "cycle": 1847,
+      "errors": 0,
+      "finished_at": "04/14/2026 06:27:29",
+      "started_at": "04/13/2026 23:14:32"
+    },
+    {
+      "done": 25,
+      "cycle": 1848,
+      "errors": 0,
+      "finished_at": "04/14/2026 06:29:07",
+      "started_at": "04/14/2026 06:27:34"
+    },
+    {
+      "done": 25,
+      "cycle": 1849,
+      "errors": 0,
+      "finished_at": "04/14/2026 06:29:52",
+      "started_at": "04/14/2026 06:29:12"
+    },
+    {
+      "done": 25,
+      "cycle": 1850,
+      "errors": 0,
+      "finished_at": "04/14/2026 06:30:46",
+      "started_at": "04/14/2026 06:29:57"
+    },
+    {
+      "done": 25,
+      "cycle": 1851,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:43:17",
+      "started_at": "04/14/2026 06:30:51"
+    },
+    {
+      "done": 25,
+      "cycle": 1852,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:43:42",
+      "started_at": "04/14/2026 15:43:23"
+    },
+    {
+      "done": 25,
+      "cycle": 1853,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:44:01",
+      "started_at": "04/14/2026 15:43:47"
+    },
+    {
+      "done": 25,
+      "cycle": 1854,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:44:22",
+      "started_at": "04/14/2026 15:44:06"
+    },
+    {
+      "done": 25,
+      "cycle": 1855,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:44:38",
+      "started_at": "04/14/2026 15:44:27"
+    },
+    {
+      "done": 25,
+      "cycle": 1856,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:44:58",
+      "started_at": "04/14/2026 15:44:44"
+    },
+    {
+      "done": 25,
+      "cycle": 1857,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:45:21",
+      "started_at": "04/14/2026 15:45:03"
+    },
+    {
+      "done": 25,
+      "cycle": 1858,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:45:40",
+      "started_at": "04/14/2026 15:45:27"
+    },
+    {
+      "done": 25,
+      "cycle": 1859,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:45:57",
+      "started_at": "04/14/2026 15:45:45"
+    },
+    {
+      "done": 25,
+      "cycle": 1860,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:46:14",
+      "started_at": "04/14/2026 15:46:02"
+    },
+    {
+      "done": 25,
+      "cycle": 1861,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:46:35",
+      "started_at": "04/14/2026 15:46:20"
+    },
+    {
+      "done": 25,
+      "cycle": 1862,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:46:53",
+      "started_at": "04/14/2026 15:46:40"
+    },
+    {
+      "done": 25,
+      "cycle": 1863,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:47:15",
+      "started_at": "04/14/2026 15:46:58"
+    },
+    {
+      "done": 25,
+      "cycle": 1864,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:47:38",
+      "started_at": "04/14/2026 15:47:20"
+    },
+    {
+      "done": 25,
+      "cycle": 1865,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:47:59",
+      "started_at": "04/14/2026 15:47:43"
+    },
+    {
+      "done": 25,
+      "cycle": 1866,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:48:21",
+      "started_at": "04/14/2026 15:48:04"
+    },
+    {
+      "done": 25,
+      "cycle": 1867,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:48:42",
+      "started_at": "04/14/2026 15:48:26"
+    },
+    {
+      "done": 25,
+      "cycle": 1868,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:49:03",
+      "started_at": "04/14/2026 15:48:47"
+    },
+    {
+      "done": 25,
+      "cycle": 1869,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:49:22",
+      "started_at": "04/14/2026 15:49:09"
+    },
+    {
+      "done": 25,
+      "cycle": 1870,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:49:41",
+      "started_at": "04/14/2026 15:49:27"
+    },
+    {
+      "done": 25,
+      "cycle": 1871,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:50:02",
+      "started_at": "04/14/2026 15:49:46"
+    },
+    {
+      "done": 25,
+      "cycle": 1872,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:50:23",
+      "started_at": "04/14/2026 15:50:08"
+    },
+    {
+      "done": 25,
+      "cycle": 1873,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:50:47",
+      "started_at": "04/14/2026 15:50:29"
+    },
+    {
+      "done": 25,
+      "cycle": 1874,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:51:08",
+      "started_at": "04/14/2026 15:50:52"
+    },
+    {
+      "done": 25,
+      "cycle": 1875,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:51:34",
+      "started_at": "04/14/2026 15:51:14"
+    },
+    {
+      "done": 25,
+      "cycle": 1876,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:51:59",
+      "started_at": "04/14/2026 15:51:40"
+    },
+    {
+      "done": 25,
+      "cycle": 1877,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:52:22",
+      "started_at": "04/14/2026 15:52:05"
+    },
+    {
+      "done": 25,
+      "cycle": 1878,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:52:47",
+      "started_at": "04/14/2026 15:52:27"
+    },
+    {
+      "done": 25,
+      "cycle": 1879,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:53:12",
+      "started_at": "04/14/2026 15:52:52"
+    },
+    {
+      "done": 25,
+      "cycle": 1880,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:53:38",
+      "started_at": "04/14/2026 15:53:17"
+    },
+    {
+      "done": 25,
+      "cycle": 1881,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:54:04",
+      "started_at": "04/14/2026 15:53:43"
+    },
+    {
+      "done": 25,
+      "cycle": 1882,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:54:30",
+      "started_at": "04/14/2026 15:54:09"
+    },
+    {
+      "done": 25,
+      "cycle": 1883,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:54:51",
+      "started_at": "04/14/2026 15:54:35"
+    },
+    {
+      "done": 25,
+      "cycle": 1884,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:55:12",
+      "started_at": "04/14/2026 15:54:57"
+    },
+    {
+      "done": 25,
+      "cycle": 1885,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:55:34",
+      "started_at": "04/14/2026 15:55:17"
+    },
+    {
+      "done": 25,
+      "cycle": 1886,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:55:55",
+      "started_at": "04/14/2026 15:55:39"
+    },
+    {
+      "done": 25,
+      "cycle": 1887,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:56:34",
+      "started_at": "04/14/2026 15:56:00"
+    },
+    {
+      "done": 25,
+      "cycle": 1888,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:57:09",
+      "started_at": "04/14/2026 15:56:40"
+    },
+    {
+      "done": 25,
+      "cycle": 1889,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:57:31",
+      "started_at": "04/14/2026 15:57:14"
+    },
+    {
+      "done": 25,
+      "cycle": 1890,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:57:55",
+      "started_at": "04/14/2026 15:57:36"
+    },
+    {
+      "done": 25,
+      "cycle": 1891,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:58:19",
+      "started_at": "04/14/2026 15:58:00"
+    },
+    {
+      "done": 25,
+      "cycle": 1892,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:58:47",
+      "started_at": "04/14/2026 15:58:24"
+    },
+    {
+      "done": 25,
+      "cycle": 1893,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:59:10",
+      "started_at": "04/14/2026 15:58:52"
+    },
+    {
+      "done": 25,
+      "cycle": 1894,
+      "errors": 0,
+      "finished_at": "04/14/2026 15:59:46",
+      "started_at": "04/14/2026 15:59:15"
+    },
+    {
+      "done": 25,
+      "cycle": 1895,
+      "errors": 0,
+      "finished_at": "04/14/2026 16:00:07",
+      "started_at": "04/14/2026 15:59:51"
+    },
+    {
+      "done": 25,
+      "cycle": 1896,
+      "errors": 0,
+      "finished_at": "04/14/2026 16:00:29",
+      "started_at": "04/14/2026 16:00:12"
+    },
+    {
+      "done": 25,
+      "cycle": 1897,
+      "errors": 0,
+      "finished_at": "04/14/2026 16:00:49",
+      "started_at": "04/14/2026 16:00:34"
+    },
+    {
+      "done": 25,
+      "cycle": 1898,
+      "errors": 0,
+      "finished_at": "04/14/2026 16:01:07",
+      "started_at": "04/14/2026 16:00:54"
+    },
+    {
+      "done": 25,
+      "cycle": 1899,
+      "errors": 0,
+      "finished_at": "04/14/2026 16:01:30",
+      "started_at": "04/14/2026 16:01:12"
+    },
+    {
+      "done": 25,
+      "cycle": 1900,
+      "errors": 0,
+      "finished_at": "04/14/2026 16:01:49",
+      "started_at": "04/14/2026 16:01:35"
+    },
+    {
+      "done": 25,
+      "cycle": 1901,
+      "errors": 0,
+      "finished_at": "04/14/2026 16:02:10",
+      "started_at": "04/14/2026 16:01:54"
+    },
+    {
+      "done": 25,
+      "cycle": 1902,
+      "errors": 0,
+      "finished_at": "04/14/2026 16:02:31",
+      "started_at": "04/14/2026 16:02:16"
+    },
+    {
+      "done": 25,
+      "cycle": 1903,
+      "errors": 0,
+      "finished_at": "04/14/2026 16:02:50",
+      "started_at": "04/14/2026 16:02:36"
+    },
+    {
+      "done": 26,
+      "cycle": 1,
+      "errors": 0,
+      "finished_at": "2026-04-17T17:59:25",
+      "started_at": "2026-04-17T17:59:19"
+    }
+  ],
+  "updated_at": "2026-04-17T17:59:25",
+  "agents": {
+    "16-sponsorship.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:22",
+      "total_duration_ms": 18651,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "pipeline=sponsor-pipeline.md",
+      "done": 3275,
+      "last_action": "Track sponsorship outreach pipeline | HOY: Identificar 5 marcas nuevas que estarían bien alineadas con los canales más grandes.",
+      "runs": 3275,
+      "last_cycle": 1
+    },
+    "10-growth-marketing.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:21",
+      "total_duration_ms": 34729,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "marketing_modules=5",
+      "done": 3296,
+      "last_action": "Check growth automation modules | HOY: Actualizar la prioridad de los agentes para hoy basándose en qué tarea tiene mayor impacto en ingresos.",
+      "runs": 3296,
+      "last_cycle": 1
+    },
+    "05-footage-curator.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:21",
+      "total_duration_ms": 235015,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "clips_count=0",
+      "done": 3301,
+      "last_action": "Count available B-roll clips | HOY: Actualizar los thresholds de los checks basándose en los resultados de la semana. ¿Algún check es demasiado estricto o demasiado lento?",
+      "runs": 3301,
+      "last_cycle": 1
+    },
+    "23-virality.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:22",
+      "total_duration_ms": 8195,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "signals=virality-signals.md",
+      "done": 3275,
+      "last_action": "Capture virality signal findings | HOY: Evaluar el 'factor viral' de los guiones planificados para mañana. Dar una nota del 1-10 y mejorar los que estén por debajo de 7.",
+      "runs": 3275,
+      "last_cycle": 1
+    },
+    "17-newsletter.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:22",
+      "total_duration_ms": 7819,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "plan=newsletter-plan.md",
+      "done": 3275,
+      "last_action": "Maintain newsletter growth plan | HOY: Escribir el email de valor de esta semana para la lista (resumen de lo más interesante de los vídeos publicados).",
+      "runs": 3275,
+      "last_cycle": 1
+    },
+    "20-system-seller.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:22",
+      "total_duration_ms": 18046,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "positioning=offer-positioning.md",
+      "done": 3275,
+      "last_action": "Refine system-offer positioning | HOY: Investigar en qué plataformas (Gumroad, Etsy, AppSumo) se venden sistemas de automatización similares y a qué precio.",
+      "runs": 3275,
+      "last_cycle": 1
+    },
+    "07-thumbnail-seo.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:21",
+      "total_duration_ms": 42728994,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "latest_thumbnail=20260412_184828_thumb_C.jpg",
+      "done": 3297,
+      "last_action": "Validate thumbnail and generate income report | HOY: Comparar el rendimiento de esta semana con la semana anterior. Identificar qué cambió y por qué.",
+      "runs": 3297,
+      "last_cycle": 1
+    },
+    "11-ui-evolution.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:21",
+      "total_duration_ms": 53626,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "ui_files=1",
+      "done": 3277,
+      "last_action": "Audit UI evolution surface | HOY: Mejorar el sistema de notificaciones: ¿llegan a tiempo? ¿Son claras? ¿Hay demasiado ruido?",
+      "runs": 3277,
+      "last_cycle": 1
+    },
+    "00-patriarch.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:21",
+      "total_duration_ms": 215530,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "entry_written, needs=1",
+      "done": 2645,
+      "last_action": "Write patriarch diary and status board | HOY: Revisar el roadmap de ingresos. ¿Estamos en el camino correcto? Proponer 1 ajuste de estrategia basado en los datos de esta semana.",
+      "runs": 2645,
+      "last_cycle": 1
+    },
+    "12-performance.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:25",
+      "total_duration_ms": 11360025,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": ".. [100%] 2 passed in 2.48s",
+      "done": 3277,
+      "last_action": "Run performance smoke baseline | HOY: Identificar el cuello de botella principal del pipeline. Proponer e implementar una mejora.",
+      "runs": 3277,
+      "last_cycle": 1
+    },
+    "03-script-director.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:21",
+      "total_duration_ms": 113319,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "latest_script=20260414_224451_quantum-entanglement-and-the-proof-of-a-simulation.txt",
+      "done": 3302,
+      "last_action": "Inspect latest script quality source | HOY: Verificar que todos los imports del proyecto están en requirements.txt. Instalar los que falten.",
+      "runs": 3302,
+      "last_cycle": 1
+    },
+    "04-voice-audio.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:21",
+      "total_duration_ms": 109555,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "latest_audio=20260412_184512_voice.mp3",
+      "done": 3302,
+      "last_action": "Check latest narration audio asset | HOY: Investigar las keywords de cola larga más buscadas en cada nicho usando Google Search Console (si hay acceso) o VidIQ.",
+      "runs": 3302,
+      "last_cycle": 1
+    },
+    "08-qa-guardian.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:25",
+      "total_duration_ms": 87167330,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": ".. [100%] 2 passed in 2.58s",
+      "done": 3295,
+      "last_action": "Run API smoke quality check | HOY: Verificar que todos los tokens OAuth están activos. Refrescarlos automáticamente si es posible.",
+      "runs": 3295,
+      "last_cycle": 1
+    },
+    "19-distribution.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:22",
+      "total_duration_ms": 7660,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "checklist=distribution-checklist.md",
+      "done": 3275,
+      "last_action": "Update distribution checklist | HOY: Revisar las mejores horas de publicación para cada plataforma basándose en los datos de engagement de la semana.",
+      "runs": 3275,
+      "last_cycle": 1
+    },
+    "14-affiliate.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:21",
+      "total_duration_ms": 23646,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "tracker=affiliate-opportunities.md",
+      "done": 3275,
+      "last_action": "Update affiliate opportunities tracker | HOY: Calcular el ingreso estimado de afiliados de esta semana por programa y por canal.",
+      "runs": 3275,
+      "last_cycle": 1
+    },
+    "21-community.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:22",
+      "total_duration_ms": 7160,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "playbook=community-playbook.md",
+      "done": 3275,
+      "last_action": "Maintain community growth playbook | HOY: Identificar los 3 comentarios más frecuentes o preguntas recurrentes por canal. Usarlos como ideas de vídeo.",
+      "runs": 3275,
+      "last_cycle": 1
+    },
+    "24-net-forager.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:24",
+      "total_duration_ms": 38129829,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "sources=4, assignments=3, needs_updated=1",
+      "done": 2644,
+      "last_action": "Scan internet improvements and assign tasks | HOY: Revisar Product Hunt de esta semana. Identificar las 3 herramientas gratuitas o freemium más útiles para el proyecto.",
+      "runs": 2644,
+      "last_cycle": 1
+    },
+    "06-video-editor.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:21",
+      "total_duration_ms": 105904,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 1,
+      "last_result": "latest_video=learning_masterpiece.mp4",
+      "done": 3299,
+      "last_action": "Validate latest final video asset | HOY: Buscar en Impact.com y ShareASale nuevos programas de afiliados en los nichos del proyecto lanzados en los últimos 30 días.",
+      "runs": 3300,
+      "last_cycle": 1
+    },
+    "15-digital-products.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:22",
+      "total_duration_ms": 20602,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "roadmap=product-roadmap.md",
+      "done": 3275,
+      "last_action": "Maintain digital products roadmap | HOY: Bosquejar la estructura del próximo ebook/template. ¿Qué promesa tiene? ¿Qué problema resuelve?",
+      "runs": 3275,
+      "last_cycle": 1
+    },
+    "02-research-trends.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:21",
+      "total_duration_ms": 247840,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "trends_count=5",
+      "done": 3302,
+      "last_action": "Scan trends dataset | HOY: Crear 6 scripts de TikTok autónomos (uno por canal). Cada uno debe ser 100% independiente del vídeo largo correspondiente.",
+      "runs": 3302,
+      "last_cycle": 1
+    },
+    "11-video-researcher.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/12/2026 23:43:11",
+      "total_duration_ms": 53,
+      "last_started_at": "04/12/2026 23:43:11",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "latest_research=2026-04-12-discoveries.md",
+      "done": 15,
+      "last_action": "Review latest video-quality discoveries",
+      "runs": 15,
+      "last_cycle": 9
+    },
+    "13-adsense-web.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:22",
+      "total_duration_ms": 2875808,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "web_files=4",
+      "done": 3275,
+      "last_action": "Review web monetization surfaces | HOY: Investigar las mejores horas de publicación para maximizar CPM (varía según audiencia y temporada).",
+      "runs": 3275,
+      "last_cycle": 1
+    },
+    "18-shorts.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:22",
+      "total_duration_ms": 196567,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "shorts_assets=0",
+      "done": 3275,
+      "last_action": "Review shorts production inventory | HOY: Analizar qué Shorts de la competencia en cada nicho tienen más de 1M de views. ¿Qué tienen en común?",
+      "runs": 3275,
+      "last_cycle": 1
+    },
+    "09-automation-ops.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:21",
+      "total_duration_ms": 36960,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "workflow_files=5",
+      "done": 3296,
+      "last_action": "Check CI/CD workflow coverage | HOY: Revisar las 20 publicaciones más upvoteadas de esta semana en r/finance, r/psychology, r/space, r/ChatGPT, r/truecrime.",
+      "runs": 3296,
+      "last_cycle": 1
+    },
+    "01-coordinator.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:21",
+      "total_duration_ms": 41543,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "agents=26, mode=team",
+      "done": 3304,
+      "last_action": "Validate team config and agent registry | HOY: Buscar cambios de algoritmo de YouTube en los últimos 14 días. Fuentes: Creator Insider, VidIQ blog, TubeBuddy blog.",
+      "runs": 3304,
+      "last_cycle": 1
+    },
+    "25-video-quality.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:21",
+      "total_duration_ms": 50471,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 1,
+      "last_result": "report=video-quality-2026-04-17-videos.md, video=learning_masterpiece.mp4",
+      "done": 738,
+      "last_action": "Evaluate subjective video quality before QA Gate | HOY: Buscar estudios nuevos sobre retención en YouTube. Implementar cualquier técnica con evidencia sólida.",
+      "runs": 739,
+      "last_cycle": 1
+    },
+    "22-abtesting.agent.md": {
+      "last_status": "done",
+      "last_finished_at": "04/17/2026 17:59:22",
+      "total_duration_ms": 8389,
+      "last_started_at": "04/17/2026 17:59:20",
+      "last_error": "",
+      "errors": 0,
+      "last_result": "experiments=experiments.md",
+      "done": 3275,
+      "last_action": "Track A/B testing experiments | HOY: Revisar los resultados de los tests activos de la semana anterior. ¿Qué variante ganó? ¿Con qué margen?",
+      "runs": 3275,
+      "last_cycle": 1
+    }
+  }
+}

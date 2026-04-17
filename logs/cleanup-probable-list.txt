@@ -1,0 +1,151 @@
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\dist -- 665.53KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\@jridgewell\gen-mapping\dist -- 36.95KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\@jridgewell\remapping\dist -- 19.64KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\@jridgewell\resolve-uri\dist -- 46.08KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\@jridgewell\sourcemap-codec\dist -- 45.67KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\@jridgewell\trace-mapping\dist -- 55.45KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\@kurkle\color\dist -- 72.44KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\@rolldown\pluginutils\dist -- 23.84KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\@vitejs\plugin-react\dist -- 51.44KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\baseline-browser-mapping\dist -- 242.1KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\caniuse-lite\dist -- 4.14KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\chart.js\dist -- 6024.97KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\clsx\dist -- 1.6KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\cookie\dist -- 44.93KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\d3-array\dist -- 55.41KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\d3-color\dist -- 27.02KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\d3-ease\dist -- 8.81KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\d3-format\dist -- 17.49KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\d3-interpolate\dist -- 22.97KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\d3-path\dist -- 7.27KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\d3-scale\dist -- 45.6KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\d3-shape\dist -- 86.04KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\d3-time\dist -- 19.41KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\d3-time-format\dist -- 29.82KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\d3-timer\dist -- 6.02KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\escalade\dist -- 1.03KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\fast-equals\dist -- 239.91KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\fdir\dist -- 44.62KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\internmap\dist -- 3.36KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\json5\dist -- 162.26KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\react-chartjs-2\dist -- 48.59KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\react-router\dist -- 4011.58KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\react-router-dom\dist -- 2.22KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\react-transition-group\dist -- 113.87KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\rollup\dist -- 2710.98KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\tiny-invariant\dist -- 4.51KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\tinyglobby\dist -- 34.03KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\vite\dist -- 2449.82KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\.cache -- 88836.16KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@jridgewell\gen-mapping\dist -- 36.95KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@jridgewell\resolve-uri\dist -- 46.08KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@jridgewell\source-map\dist -- 12.02KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@jridgewell\sourcemap-codec\dist -- 45.67KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@jridgewell\trace-mapping\dist -- 55.45KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@mediabunny\aac-encoder\dist -- 4534.59KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@mediabunny\aac-encoder\dist\modules\build -- 580.64KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@mediabunny\flac-encoder\dist -- 1532.94KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@mediabunny\flac-encoder\dist\modules\build -- 201.64KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@mediabunny\mp3-encoder\dist -- 1597.75KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@mediabunny\mp3-encoder\dist\modules\build -- 306.71KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@module-federation\error-codes\dist -- 9.44KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@module-federation\runtime\dist -- 22.11KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@module-federation\runtime-core\dist -- 472.28KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@module-federation\runtime-tools\dist -- 4.02KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@module-federation\sdk\dist -- 169.52KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@module-federation\webpack-bundler-runtime\dist -- 89.52KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@remotion\bundler\dist -- 125.41KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@remotion\cli\dist -- 402.72KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@remotion\licensing\dist -- 12.17KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@remotion\media-parser\dist -- 2728.55KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@remotion\media-utils\dist -- 66.55KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@remotion\player\dist -- 292.35KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@remotion\renderer\dist -- 2435.4KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@remotion\streaming\dist -- 12.39KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@remotion\studio\dist -- 4990.35KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@remotion\studio-server\dist -- 364.86KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@remotion\studio-shared\dist -- 53.98KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@remotion\web-renderer\dist -- 203.44KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@remotion\zod-types\dist -- 5.23KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@rspack\core\dist -- 1127.09KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@rspack\core\compiled\tinypool\dist -- 39.61KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@rspack\lite-tapable\dist -- 57.25KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@rspack\plugin-react-refresh\dist -- 31KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@xtuc\ieee754\dist -- 2.13KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@xtuc\long\dist -- 114.01KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\acorn\dist -- 508.94KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\ajv\dist -- 661.89KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\ajv-formats\dist -- 26.23KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\ajv-keywords\dist -- 73.14KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\baseline-browser-mapping\dist -- 242.1KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\caniuse-lite\dist -- 4.14KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\chrome-trace-event\dist -- 6.45KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\error-stack-parser\dist -- 20.06KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\es-module-lexer\dist -- 49.45KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\escalade\dist -- 1.03KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\esprima\dist -- 276.92KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\html-entities\dist -- 84.62KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\human-signals\build -- 25.84KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\jest-worker\build -- 66.75KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\json5\dist -- 162.26KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\mediabunny\dist -- 4978.32KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\prompts\dist -- 81.47KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\recast\node_modules\source-map\dist -- 648.8KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\remotion\dist -- 853.44KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\schema-utils\dist -- 59.25KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\source-map\dist -- 103.92KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\source-map-support\node_modules\source-map\dist -- 648.8KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\stackframe\dist -- 9.91KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\style-loader\dist -- 26.91KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\terser\dist -- 1040.29KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\terser-webpack-plugin\dist -- 64.48KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\tiny-invariant\dist -- 4.51KB -- artefactos build/cache potencialmente regenerables
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\test_hardening.py -- 5.11KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\test_windows_compat.py -- 6.01KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\document-skills\pdf\scripts\check_bounding_boxes_test.py -- 8.83KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\document-skills\pdf\scripts\check_fillable_fields.py -- 0.37KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\document-skills\pdf\scripts\create_validation_image.py -- 1.61KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\document-skills\pdf\scripts\fill_pdf_form_with_annotations.py -- 3.62KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\document-skills\pptx\scripts\html2pptx.js -- 37.86KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\document-skills\pptx\scripts\rearrange.py -- 8.54KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\document-skills\xlsx\recalc.py -- 6.43KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\mcp-builder\scripts\evaluation.py -- 12.65KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\skill-creator\scripts\init_skill.py -- 10.9KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\skill-creator\scripts\package_skill.py -- 3.28KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\slack-gif-creator\core\visual_effects.py -- 15KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\slack-gif-creator\templates\kaleidoscope.py -- 6.41KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\slack-gif-creator\templates\morph.py -- 11.3KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\slack-gif-creator\templates\wiggle.py -- 10.12KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\video-downloader\scripts\download_video.py -- 4.32KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\webapp-testing\examples\console_logging.py -- 1.04KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\webapp-testing\examples\element_discovery.py -- 1.47KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\02-awesome-claude-skills\webapp-testing\examples\static_html_automation.py -- 0.96KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\04-banana-claude\skills\banana\scripts\cost_tracker.py -- 6.44KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\04-banana-claude\skills\banana\scripts\setup_mcp.py -- 4.67KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\04-banana-claude\skills\banana\scripts\validate_setup.py -- 3.69KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\08-anthropic-webapp-testing\webapp-testing\examples\console_logging.py -- 1.04KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\08-anthropic-webapp-testing\webapp-testing\examples\element_discovery.py -- 1.47KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\08-anthropic-webapp-testing\webapp-testing\examples\static_html_automation.py -- 0.96KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\10-superpowers\skills\systematic-debugging\condition-based-waiting-example.ts -- 4.94KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.claude\skills\10-superpowers\skills\writing-skills\render-graphs.js -- 4.74KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\vite.config.js -- 0.26KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\marketing_automation\affiliate_tracker.py -- 9.18KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\marketing_automation\email_outreach.py -- 6.84KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\marketing_automation\seo_optimizer.py -- 7.56KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\marketing_automation\trend_detector.py -- 7.66KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\pipeline\downloader_footage.py -- 1.96KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\pipeline\ensamblador_pro.py -- 4.12KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\pipeline\generador_guion.py -- 3.34KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\pipeline\quality_control.py -- 4.22KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\pipeline\tiktok_clipper.py -- 4.81KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\pipeline\youtube_uploader.py -- 2.37KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\remotion.config.ts -- 0.16KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\scripts\agent_status.py -- 12.92KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\scripts\changelog_writer.py -- 4.89KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\scripts\check_apis.py -- 7.47KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\scripts\dashboard_server.py -- 6.76KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\scripts\pixel_dashboard.py -- 19.71KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\tests\run_phase7_checks.py -- 2.59KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\tests\test_api_smoke.py -- 0.7KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\tests\test_pipeline_smoke.py -- 1KB -- sin referencias claras por nombre de módulo (heurística)
+[PROBABLE] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\tools\pixel_agents\copilot_hook_bridge.py -- 2.58KB -- sin referencias claras por nombre de módulo (heurística)

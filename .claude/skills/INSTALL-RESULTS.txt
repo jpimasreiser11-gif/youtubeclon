@@ -1,0 +1,10 @@
+01-marketingskills => installed skills/
+02-awesome-claude-skills => installed repository skills pack
+03-anthropic-skill-creator => SKILL.md installed
+04-banana-claude => installed skills/
+05-remotion => installed .claude/skills/
+06-refactoring-citypaul => SKILL.md installed
+07-anthropic-frontend-design => SKILL.md installed
+08-anthropic-webapp-testing => installed tree
+09-ui-ux-pro-max => SKILL.md installed
+10-superpowers => installed skills/

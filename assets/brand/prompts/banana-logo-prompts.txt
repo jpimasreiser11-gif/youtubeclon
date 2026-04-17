@@ -1,0 +1,7 @@
+/banana generate "minimalist logo for mystery history YouTube channel called Impacto Mundial, dark gold and black colors, no text" --preset logo
+/banana generate "minimalist logo for true crime YouTube channel called Mentes Rotas, dark red and grey colors, broken mind symbol" --preset logo
+/banana generate "minimalist logo for AI tools YouTube channel called El Loco de la IA, electric cyan and black, circuit brain" --preset logo
+/banana generate "minimalist logo for psychology YouTube channel called Mind Warp, deep purple and black, brain waves" --preset logo
+/banana generate "minimalist logo for wealth YouTube channel called Wealth Files, gold and black, vault or crown" --preset logo
+/banana generate "minimalist logo for dark science YouTube channel called Dark Science, deep blue and black, galaxy or atom" --preset logo
+

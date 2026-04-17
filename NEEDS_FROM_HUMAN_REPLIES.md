@@ -1,0 +1,4 @@
+- [2026-04-13 16:01] Need #1: Hecho: instalé kokoro-tts correctamente y hay 230.71 GB libres en C:. Puedes continuar con la integración.
+- [2026-04-14 22:07] Need #0 (Revisar e instalar herramienta TTS open-source candidata.)
+  - Reply: Hecho por humano
+  - Notified: Agent-24

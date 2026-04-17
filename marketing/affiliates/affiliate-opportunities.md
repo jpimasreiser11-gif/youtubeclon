@@ -1,0 +1,3 @@
+﻿# Affiliate opportunities
+
+- Pending curation.

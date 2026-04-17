@@ -1,0 +1,650 @@
+{
+  "agent": "08-qa-guardian",
+  "total_runs": 733,
+  "total_done": 733,
+  "total_errors": 0,
+  "last_updated": "2026-04-17T17:59:25",
+  "last_learning": "Replicar: Run API smoke quality check | HOY: Verificar que todos los tokens OAuth están activos. Refrescarlos automáticamente si es posible. -> .. [100%] 2 passed in 2.58s",
+  "entries": [
+    {
+      "ts": "2026-04-17T17:59:25",
+      "status": "done",
+      "action": "Run API smoke quality check | HOY: Verificar que todos los tokens OAuth están activos. Refrescarlos automáticamente si es posible.",
+      "result": ".. [100%] 2 passed in 2.58s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check | HOY: Verificar que todos los tokens OAuth están activos. Refrescarlos automáticamente si es posible. -> .. [100%] 2 passed in 2.58s"
+    },
+    {
+      "ts": "04/17/2026 17:58:28",
+      "status": "done",
+      "action": "Run API smoke quality check | HOY: Verificar que todos los tokens OAuth están activos. Refrescarlos automáticamente si es posible.",
+      "result": ".. [100%] 2 passed in 3.52s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check | HOY: Verificar que todos los tokens OAuth están activos. Refrescarlos automáticamente si es posible. -> .. [100%] 2 passed in 3.52s"
+    },
+    {
+      "ts": "04/17/2026 17:52:48",
+      "status": "done",
+      "action": "Run API smoke quality check | HOY: Verificar que todos los tokens OAuth están activos. Refrescarlos automáticamente si es posible.",
+      "result": ".. [100%] 2 passed in 10.96s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check | HOY: Verificar que todos los tokens OAuth están activos. Refrescarlos automáticamente si es posible. -> .. [100%] 2 passed in 10.96s"
+    },
+    {
+      "ts": "04/16/2026 21:55:29",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.94s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.94s"
+    },
+    {
+      "ts": "04/16/2026 21:55:24",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.94s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.94s"
+    },
+    {
+      "ts": "04/16/2026 21:55:19",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.93s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.93s"
+    },
+    {
+      "ts": "04/16/2026 21:55:14",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.95s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.95s"
+    },
+    {
+      "ts": "04/16/2026 21:55:09",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.96s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.96s"
+    },
+    {
+      "ts": "04/16/2026 21:55:04",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.95s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.95s"
+    },
+    {
+      "ts": "04/16/2026 21:54:59",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.95s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.95s"
+    },
+    {
+      "ts": "04/16/2026 21:54:54",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.93s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.93s"
+    },
+    {
+      "ts": "04/16/2026 21:54:50",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.01s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.01s"
+    },
+    {
+      "ts": "04/16/2026 21:54:45",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.99s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.99s"
+    },
+    {
+      "ts": "04/16/2026 21:54:40",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.96s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.96s"
+    },
+    {
+      "ts": "04/16/2026 21:54:35",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.05s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.05s"
+    },
+    {
+      "ts": "04/16/2026 21:54:30",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.01s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.01s"
+    },
+    {
+      "ts": "04/16/2026 21:54:25",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.99s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.99s"
+    },
+    {
+      "ts": "04/16/2026 21:54:20",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.98s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.98s"
+    },
+    {
+      "ts": "04/16/2026 21:54:15",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.97s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.97s"
+    },
+    {
+      "ts": "04/16/2026 21:54:10",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.95s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.95s"
+    },
+    {
+      "ts": "04/16/2026 21:54:05",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.96s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.96s"
+    },
+    {
+      "ts": "04/16/2026 21:54:00",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.93s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.93s"
+    },
+    {
+      "ts": "04/16/2026 21:53:56",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.07s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.07s"
+    },
+    {
+      "ts": "04/16/2026 21:53:51",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.00s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.00s"
+    },
+    {
+      "ts": "04/16/2026 21:53:46",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.92s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.92s"
+    },
+    {
+      "ts": "04/16/2026 21:53:41",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.94s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.94s"
+    },
+    {
+      "ts": "04/16/2026 21:53:36",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.18s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.18s"
+    },
+    {
+      "ts": "04/16/2026 21:53:30",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.93s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.93s"
+    },
+    {
+      "ts": "04/16/2026 21:53:25",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.82s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.82s"
+    },
+    {
+      "ts": "04/16/2026 21:53:21",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.90s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.90s"
+    },
+    {
+      "ts": "04/16/2026 21:53:16",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.95s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.95s"
+    },
+    {
+      "ts": "04/16/2026 21:53:11",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.98s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.98s"
+    },
+    {
+      "ts": "04/16/2026 21:53:06",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.97s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.97s"
+    },
+    {
+      "ts": "04/16/2026 21:53:01",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.00s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.00s"
+    },
+    {
+      "ts": "04/16/2026 21:52:56",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.90s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.90s"
+    },
+    {
+      "ts": "04/16/2026 21:52:51",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.04s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.04s"
+    },
+    {
+      "ts": "04/16/2026 21:52:46",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.03s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.03s"
+    },
+    {
+      "ts": "04/16/2026 21:52:41",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.02s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.02s"
+    },
+    {
+      "ts": "04/16/2026 21:52:36",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.95s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.95s"
+    },
+    {
+      "ts": "04/16/2026 21:52:31",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.98s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.98s"
+    },
+    {
+      "ts": "04/16/2026 21:52:27",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.96s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.96s"
+    },
+    {
+      "ts": "04/16/2026 21:52:22",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.86s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.86s"
+    },
+    {
+      "ts": "04/16/2026 21:52:17",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.96s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.96s"
+    },
+    {
+      "ts": "04/16/2026 21:52:12",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.05s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.05s"
+    },
+    {
+      "ts": "04/16/2026 21:52:07",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.99s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.99s"
+    },
+    {
+      "ts": "04/16/2026 21:52:02",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.99s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.99s"
+    },
+    {
+      "ts": "04/16/2026 21:51:57",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.93s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.93s"
+    },
+    {
+      "ts": "04/16/2026 21:51:52",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.89s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.89s"
+    },
+    {
+      "ts": "04/16/2026 21:51:47",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.95s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.95s"
+    },
+    {
+      "ts": "04/16/2026 21:51:42",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.97s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.97s"
+    },
+    {
+      "ts": "04/16/2026 21:51:37",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.06s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.06s"
+    },
+    {
+      "ts": "04/16/2026 21:51:32",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.02s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.02s"
+    },
+    {
+      "ts": "04/16/2026 21:51:27",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.02s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.02s"
+    },
+    {
+      "ts": "04/16/2026 21:51:22",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.99s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.99s"
+    },
+    {
+      "ts": "04/16/2026 21:51:18",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.93s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.93s"
+    },
+    {
+      "ts": "04/16/2026 21:51:13",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.05s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.05s"
+    },
+    {
+      "ts": "04/16/2026 21:51:08",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.99s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.99s"
+    },
+    {
+      "ts": "04/16/2026 21:51:03",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.92s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.92s"
+    },
+    {
+      "ts": "04/16/2026 21:50:58",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.96s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.96s"
+    },
+    {
+      "ts": "04/16/2026 21:50:53",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.11s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.11s"
+    },
+    {
+      "ts": "04/16/2026 21:50:48",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.82s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.82s"
+    },
+    {
+      "ts": "04/16/2026 21:50:43",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.98s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.98s"
+    },
+    {
+      "ts": "04/16/2026 21:50:38",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.04s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.04s"
+    },
+    {
+      "ts": "04/16/2026 21:50:33",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.94s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.94s"
+    },
+    {
+      "ts": "04/16/2026 21:50:28",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.98s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.98s"
+    },
+    {
+      "ts": "04/16/2026 21:50:23",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.00s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.00s"
+    },
+    {
+      "ts": "04/16/2026 21:50:19",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.94s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.94s"
+    },
+    {
+      "ts": "04/16/2026 21:50:14",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.84s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.84s"
+    },
+    {
+      "ts": "04/16/2026 21:50:09",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.00s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.00s"
+    },
+    {
+      "ts": "04/16/2026 21:50:04",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.01s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.01s"
+    },
+    {
+      "ts": "04/16/2026 21:49:59",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.01s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.01s"
+    },
+    {
+      "ts": "04/16/2026 21:49:54",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.08s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.08s"
+    },
+    {
+      "ts": "04/16/2026 21:49:49",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.10s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.10s"
+    },
+    {
+      "ts": "04/16/2026 21:49:42",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.98s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.98s"
+    },
+    {
+      "ts": "04/16/2026 21:49:37",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.01s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.01s"
+    },
+    {
+      "ts": "04/16/2026 21:49:32",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.93s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.93s"
+    },
+    {
+      "ts": "04/16/2026 21:49:27",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.99s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.99s"
+    },
+    {
+      "ts": "04/16/2026 21:49:22",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.94s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.94s"
+    },
+    {
+      "ts": "04/16/2026 21:49:17",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 2.01s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 2.01s"
+    },
+    {
+      "ts": "04/16/2026 21:49:12",
+      "status": "done",
+      "action": "Run API smoke quality check",
+      "result": ".. [100%] 2 passed in 1.95s",
+      "error": "",
+      "learning": "Replicar: Run API smoke quality check -> .. [100%] 2 passed in 1.95s"
+    }
+  ]
+}

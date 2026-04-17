@@ -1,0 +1,27 @@
+{
+  "impacto-mundial": {
+    "style": "dramatic_aerial",
+    "palette": ["#C8A829", "#0A0A0A", "#8B0000"]
+  },
+  "mentes-rotas": {
+    "style": "crime_documentary",
+    "palette": ["#DC143C", "#1A1A1A", "#E8E8E8"]
+  },
+  "el-loco-de-la-ia": {
+    "style": "tech_futuristic",
+    "palette": ["#00E5FF", "#0A0A0A", "#FFFFFF"]
+  },
+  "mind-warp": {
+    "style": "brain_neural",
+    "palette": ["#7B1FA2", "#0A0A0A", "#FFFFFF"]
+  },
+  "wealth-files": {
+    "style": "luxury_premium",
+    "palette": ["#FFD700", "#0A0A0A", "#E5E4E2"]
+  },
+  "dark-science": {
+    "style": "deep_space",
+    "palette": ["#1565C0", "#0A0A0A", "#00E5FF"]
+  }
+}
+

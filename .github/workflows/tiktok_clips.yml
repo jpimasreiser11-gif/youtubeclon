@@ -1,0 +1,128 @@
+name: TikTok Clips
+
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+    inputs:
+      clip_seconds:
+        description: "Clip length in seconds (10-120)"
+        required: false
+        default: "45"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tiktok-clips-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-clips:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      CLIP_SECONDS: ${{ inputs.clip_seconds || '45' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: pip install --disable-pip-version-check -r requirements.txt
+
+      - name: Initialize database
+        run: python run.py setup-db
+
+      - name: Build TikTok clips from latest channel videos
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          from backend.database import get_db, init_db
+          from pipeline.tiktok_clipper import create_tiktok_clip
+
+          init_db()
+          clip_seconds = int(os.getenv("CLIP_SECONDS", "45"))
+          Path("reports").mkdir(parents=True, exist_ok=True)
+
+          with get_db() as conn:
+              rows = conn.execute("""
+                SELECT c.channel_id, v.id as video_id, v.video_path, v.created_at
+                FROM videos v
+                JOIN channels c ON c.id = v.channel_id
+                WHERE v.video_path IS NOT NULL
+                  AND v.video_path != ''
+                  AND v.status IN ('ready', 'published', 'video_ready', 'thumbnail_ready')
+                ORDER BY c.id, datetime(v.created_at) DESC
+              """).fetchall()
+
+          latest = {}
+          for row in rows:
+              item = dict(row)
+              if item["channel_id"] not in latest:
+                  latest[item["channel_id"]] = item
+
+          results = []
+          for channel_id, item in latest.items():
+              source = Path(item["video_path"])
+              if not source.exists():
+                  results.append({
+                      "channel_id": channel_id,
+                      "video_id": item["video_id"],
+                      "status": "missing_source",
+                      "source": str(source),
+                  })
+                  continue
+
+              output = source.with_name(f"{source.stem}_tiktok.mp4")
+              payload = create_tiktok_clip(
+                  video_path=source,
+                  output_path=output,
+                  clip_seconds=clip_seconds,
+              )
+              results.append({
+                  "channel_id": channel_id,
+                  "video_id": item["video_id"],
+                  "status": "ok",
+                  "clip": payload["output_video"],
+                  "strategy": payload["strategy"],
+              })
+
+          report = {
+              "clip_seconds": clip_seconds,
+              "channels_with_source_videos": len(latest),
+              "generated": sum(1 for r in results if r["status"] == "ok"),
+              "results": results,
+          }
+          Path("reports/tiktok_clips_report.json").write_text(
+              json.dumps(report, indent=2, ensure_ascii=False),
+              encoding="utf-8",
+          )
+
+          print(json.dumps(report, indent=2, ensure_ascii=False))
+          summary_path = os.getenv("GITHUB_STEP_SUMMARY")
+          if summary_path:
+              with open(summary_path, "a", encoding="utf-8") as fh:
+                  fh.write("## TikTok clips summary\n")
+                  fh.write(f"- Channels with source videos: {report['channels_with_source_videos']}\n")
+                  fh.write(f"- Clips generated: {report['generated']}\n")
+          PY
+
+      - name: Upload TikTok artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tiktok-clips-${{ github.run_id }}
+          path: |
+            reports/tiktok_clips_report.json
+            logs/**
+          retention-days: 7
+

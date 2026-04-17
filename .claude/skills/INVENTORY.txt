@@ -1,0 +1,11 @@
+Installed folders:
+01-marketingskills
+02-awesome-claude-skills
+03-anthropic-skill-creator
+04-banana-claude
+05-remotion
+06-refactoring-citypaul
+07-anthropic-frontend-design
+08-anthropic-webapp-testing
+09-ui-ux-pro-max
+10-superpowers

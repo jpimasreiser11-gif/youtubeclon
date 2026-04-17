@@ -1,0 +1,650 @@
+{
+  "agent": "16-sponsorship",
+  "total_runs": 733,
+  "total_done": 733,
+  "total_errors": 0,
+  "last_updated": "2026-04-17T17:59:22",
+  "last_learning": "Replicar: Track sponsorship outreach pipeline | HOY: Identificar 5 marcas nuevas que estarían bien alineadas con los canales más grandes. -> pipeline=sponsor-pipeline.md",
+  "entries": [
+    {
+      "ts": "2026-04-17T17:59:22",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline | HOY: Identificar 5 marcas nuevas que estarían bien alineadas con los canales más grandes.",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline | HOY: Identificar 5 marcas nuevas que estarían bien alineadas con los canales más grandes. -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/17/2026 17:58:23",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline | HOY: Identificar 5 marcas nuevas que estarían bien alineadas con los canales más grandes.",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline | HOY: Identificar 5 marcas nuevas que estarían bien alineadas con los canales más grandes. -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/17/2026 17:52:34",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline | HOY: Identificar 5 marcas nuevas que estarían bien alineadas con los canales más grandes.",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline | HOY: Identificar 5 marcas nuevas que estarían bien alineadas con los canales más grandes. -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:55:25",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:55:20",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:55:15",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:55:10",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:55:05",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:55:01",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:56",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:51",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:46",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:41",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:36",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:31",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:26",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:21",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:16",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:11",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:06",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:02",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:57",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:52",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:47",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:42",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:37",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:32",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:27",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:22",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:17",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:12",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:07",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:02",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:58",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:53",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:48",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:43",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:38",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:33",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:28",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:23",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:18",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:13",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:08",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:03",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:58",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:53",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:49",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:44",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:39",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:34",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:29",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:24",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:19",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:14",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:09",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:04",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:59",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:54",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:49",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:45",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:40",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:35",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:30",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:25",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:20",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:15",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:10",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:05",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:00",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:55",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:50",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:45",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:38",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:34",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:29",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:24",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:19",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:14",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:09",
+      "status": "done",
+      "action": "Track sponsorship outreach pipeline",
+      "result": "pipeline=sponsor-pipeline.md",
+      "error": "",
+      "learning": "Replicar: Track sponsorship outreach pipeline -> pipeline=sponsor-pipeline.md"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+[
+  {
+    "date": "2026-04-14",
+    "agent": "Agent-07",
+    "source": "system_init",
+    "channel": "global",
+    "estimated_monthly": 0.0,
+    "confidence": "low",
+    "notes": "Income tracker initialized. Agents will add entries as monetization opportunities are identified."
+  },
+  {
+    "confidence": "medium",
+    "estimated_monthly": 350,
+    "channel": "Wealth Files",
+    "agent": "Agent-13",
+    "source": "AdSense"
+  },
+  {
+    "confidence": "low",
+    "estimated_monthly": 120,
+    "channel": "El Loco de la IA",
+    "agent": "Agent-14",
+    "source": "Affiliate Sales"
+  },
+  {
+    "confidence": "low",
+    "estimated_monthly": 50,
+    "channel": "Impacto Positivo",
+    "agent": "Agent-15",
+    "source": "Digital Products"
+  },
+  {
+    "confidence": "medium",
+    "estimated_monthly": 500,
+    "channel": "Wealth Files",
+    "agent": "Agent-16",
+    "source": "Sponsorships"
+  },
+  {
+    "confidence": "low",
+    "estimated_monthly": 1200,
+    "channel": "global",
+    "agent": "Agent-20",
+    "source": "System Course"
+  },
+  {
+    "date": "2026-04-17",
+    "agent": "Agent-17",
+    "source": "Newsletter",
+    "channel": "global",
+    "estimated_monthly": 80,
+    "confidence": "low",
+    "notes": "Income method enabled"
+  },
+  {
+    "date": "2026-04-17",
+    "agent": "Agent-13",
+    "source": "YouTube Partner Program",
+    "channel": "Mind Warp",
+    "estimated_monthly": 240,
+    "confidence": "medium",
+    "notes": "Income method enabled"
+  },
+  {
+    "date": "2026-04-17",
+    "agent": "Agent-18",
+    "source": "TikTok Creator Rewards",
+    "channel": "Mentes Rotas",
+    "estimated_monthly": 90,
+    "confidence": "low",
+    "notes": "Income method enabled"
+  }
+]

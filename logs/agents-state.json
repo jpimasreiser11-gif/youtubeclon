@@ -1,0 +1,311 @@
+{
+  "current_agent": null,
+  "running": false,
+  "agents": [
+    {
+      "agent_file": "00-patriarch.agent.md",
+      "last_result": "entry_written, needs=1",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:21",
+      "last_error": "",
+      "action": "Write patriarch diary and status board | HOY: Revisar el roadmap de ingresos. ¿Estamos en el camino correcto? Proponer 1 ajuste de estrategia basado en los datos de esta semana.",
+      "duration_ms": 219
+    },
+    {
+      "agent_file": "01-coordinator.agent.md",
+      "last_result": "agents=26, mode=team",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:21",
+      "last_error": "",
+      "action": "Validate team config and agent registry | HOY: Buscar cambios de algoritmo de YouTube en los últimos 14 días. Fuentes: Creator Insider, VidIQ blog, TubeBuddy blog.",
+      "duration_ms": 90
+    },
+    {
+      "agent_file": "02-research-trends.agent.md",
+      "last_result": "trends_count=5",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:21",
+      "last_error": "",
+      "action": "Scan trends dataset | HOY: Crear 6 scripts de TikTok autónomos (uno por canal). Cada uno debe ser 100% independiente del vídeo largo correspondiente.",
+      "duration_ms": 137
+    },
+    {
+      "agent_file": "03-script-director.agent.md",
+      "last_result": "latest_script=20260414_224451_quantum-entanglement-and-the-proof-of-a-simulation.txt",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:21",
+      "last_error": "",
+      "action": "Inspect latest script quality source | HOY: Verificar que todos los imports del proyecto están en requirements.txt. Instalar los que falten.",
+      "duration_ms": 89
+    },
+    {
+      "agent_file": "04-voice-audio.agent.md",
+      "last_result": "latest_audio=20260412_184512_voice.mp3",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:21",
+      "last_error": "",
+      "action": "Check latest narration audio asset | HOY: Investigar las keywords de cola larga más buscadas en cada nicho usando Google Search Console (si hay acceso) o VidIQ.",
+      "duration_ms": 67
+    },
+    {
+      "agent_file": "05-footage-curator.agent.md",
+      "last_result": "clips_count=0",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:21",
+      "last_error": "",
+      "action": "Count available B-roll clips | HOY: Actualizar los thresholds de los checks basándose en los resultados de la semana. ¿Algún check es demasiado estricto o demasiado lento?",
+      "duration_ms": 128
+    },
+    {
+      "agent_file": "06-video-editor.agent.md",
+      "last_result": "latest_video=learning_masterpiece.mp4",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:21",
+      "last_error": "",
+      "action": "Validate latest final video asset | HOY: Buscar en Impact.com y ShareASale nuevos programas de afiliados en los nichos del proyecto lanzados en los últimos 30 días.",
+      "duration_ms": 55
+    },
+    {
+      "agent_file": "07-thumbnail-seo.agent.md",
+      "last_result": "latest_thumbnail=20260412_184828_thumb_C.jpg",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:21",
+      "last_error": "",
+      "action": "Validate thumbnail and generate income report | HOY: Comparar el rendimiento de esta semana con la semana anterior. Identificar qué cambió y por qué.",
+      "duration_ms": 223
+    },
+    {
+      "agent_file": "25-video-quality.agent.md",
+      "last_result": "report=video-quality-2026-04-17-videos.md, video=learning_masterpiece.mp4",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:21",
+      "last_error": "",
+      "action": "Evaluate subjective video quality before QA Gate | HOY: Buscar estudios nuevos sobre retención en YouTube. Implementar cualquier técnica con evidencia sólida.",
+      "duration_ms": 95
+    },
+    {
+      "agent_file": "08-qa-guardian.agent.md",
+      "last_result": ".. [100%] 2 passed in 2.58s",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:25",
+      "last_error": "",
+      "action": "Run API smoke quality check | HOY: Verificar que todos los tokens OAuth están activos. Refrescarlos automáticamente si es posible.",
+      "duration_ms": 4595
+    },
+    {
+      "agent_file": "09-automation-ops.agent.md",
+      "last_result": "workflow_files=5",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:21",
+      "last_error": "",
+      "action": "Check CI/CD workflow coverage | HOY: Revisar las 20 publicaciones más upvoteadas de esta semana en r/finance, r/psychology, r/space, r/ChatGPT, r/truecrime.",
+      "duration_ms": 49
+    },
+    {
+      "agent_file": "24-net-forager.agent.md",
+      "last_result": "sources=4, assignments=3, needs_updated=1",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:24",
+      "last_error": "",
+      "action": "Scan internet improvements and assign tasks | HOY: Revisar Product Hunt de esta semana. Identificar las 3 herramientas gratuitas o freemium más útiles para el proyecto.",
+      "duration_ms": 3616
+    },
+    {
+      "agent_file": "10-growth-marketing.agent.md",
+      "last_result": "marketing_modules=5",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:21",
+      "last_error": "",
+      "action": "Check growth automation modules | HOY: Actualizar la prioridad de los agentes para hoy basándose en qué tarea tiene mayor impacto en ingresos.",
+      "duration_ms": 29
+    },
+    {
+      "agent_file": "11-ui-evolution.agent.md",
+      "last_result": "ui_files=1",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:21",
+      "last_error": "",
+      "action": "Audit UI evolution surface | HOY: Mejorar el sistema de notificaciones: ¿llegan a tiempo? ¿Son claras? ¿Hay demasiado ruido?",
+      "duration_ms": 26
+    },
+    {
+      "agent_file": "12-performance.agent.md",
+      "last_result": ".. [100%] 2 passed in 2.48s",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:25",
+      "last_error": "",
+      "action": "Run performance smoke baseline | HOY: Identificar el cuello de botella principal del pipeline. Proponer e implementar una mejora.",
+      "duration_ms": 4463
+    },
+    {
+      "agent_file": "13-adsense-web.agent.md",
+      "last_result": "web_files=4",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:22",
+      "last_error": "",
+      "action": "Review web monetization surfaces | HOY: Investigar las mejores horas de publicación para maximizar CPM (varía según audiencia y temporada).",
+      "duration_ms": 2096
+    },
+    {
+      "agent_file": "14-affiliate.agent.md",
+      "last_result": "tracker=affiliate-opportunities.md",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:21",
+      "last_error": "",
+      "action": "Update affiliate opportunities tracker | HOY: Calcular el ingreso estimado de afiliados de esta semana por programa y por canal.",
+      "duration_ms": 29
+    },
+    {
+      "agent_file": "15-digital-products.agent.md",
+      "last_result": "roadmap=product-roadmap.md",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:22",
+      "last_error": "",
+      "action": "Maintain digital products roadmap | HOY: Bosquejar la estructura del próximo ebook/template. ¿Qué promesa tiene? ¿Qué problema resuelve?",
+      "duration_ms": 32
+    },
+    {
+      "agent_file": "16-sponsorship.agent.md",
+      "last_result": "pipeline=sponsor-pipeline.md",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:22",
+      "last_error": "",
+      "action": "Track sponsorship outreach pipeline | HOY: Identificar 5 marcas nuevas que estarían bien alineadas con los canales más grandes.",
+      "duration_ms": 32
+    },
+    {
+      "agent_file": "17-newsletter.agent.md",
+      "last_result": "plan=newsletter-plan.md",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:22",
+      "last_error": "",
+      "action": "Maintain newsletter growth plan | HOY: Escribir el email de valor de esta semana para la lista (resumen de lo más interesante de los vídeos publicados).",
+      "duration_ms": 4
+    },
+    {
+      "agent_file": "18-shorts.agent.md",
+      "last_result": "shorts_assets=0",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:22",
+      "last_error": "",
+      "action": "Review shorts production inventory | HOY: Analizar qué Shorts de la competencia en cada nicho tienen más de 1M de views. ¿Qué tienen en común?",
+      "duration_ms": 107
+    },
+    {
+      "agent_file": "19-distribution.agent.md",
+      "last_result": "checklist=distribution-checklist.md",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:22",
+      "last_error": "",
+      "action": "Update distribution checklist | HOY: Revisar las mejores horas de publicación para cada plataforma basándose en los datos de engagement de la semana.",
+      "duration_ms": 5
+    },
+    {
+      "agent_file": "20-system-seller.agent.md",
+      "last_result": "positioning=offer-positioning.md",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:22",
+      "last_error": "",
+      "action": "Refine system-offer positioning | HOY: Investigar en qué plataformas (Gumroad, Etsy, AppSumo) se venden sistemas de automatización similares y a qué precio.",
+      "duration_ms": 28
+    },
+    {
+      "agent_file": "21-community.agent.md",
+      "last_result": "playbook=community-playbook.md",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:22",
+      "last_error": "",
+      "action": "Maintain community growth playbook | HOY: Identificar los 3 comentarios más frecuentes o preguntas recurrentes por canal. Usarlos como ideas de vídeo.",
+      "duration_ms": 5
+    },
+    {
+      "agent_file": "22-abtesting.agent.md",
+      "last_result": "experiments=experiments.md",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:22",
+      "last_error": "",
+      "action": "Track A/B testing experiments | HOY: Revisar los resultados de los tests activos de la semana anterior. ¿Qué variante ganó? ¿Con qué margen?",
+      "duration_ms": 4
+    },
+    {
+      "agent_file": "23-virality.agent.md",
+      "last_result": "signals=virality-signals.md",
+      "started_at": "2026-04-17T17:59:20",
+      "status": "done",
+      "finished_at": "2026-04-17T17:59:22",
+      "last_error": "",
+      "action": "Capture virality signal findings | HOY: Evaluar el 'factor viral' de los guiones planificados para mañana. Dar una nota del 1-10 y mejorar los que estén por debajo de 7.",
+      "duration_ms": 4
+    }
+  ],
+  "cycle_finished": "2026-04-17T17:59:25",
+  "handoff_rules": [
+    "patriarch -> coordinator -> research-trends -> script-director",
+    "script-director -> voice-audio + footage-curator",
+    "footage-curator -> video-editor -> thumbnail-seo",
+    "thumbnail-seo -> video-quality -> qa-guardian",
+    "qa-guardian -> automation-ops -> net-forager -> growth-marketing",
+    "growth-marketing -> ui-evolution -> performance -> adsense-web",
+    "adsense-web -> affiliate -> digital-products -> sponsorship",
+    "sponsorship -> newsletter -> shorts -> distribution",
+    "distribution -> system-seller -> community -> abtesting -> virality"
+  ],
+  "updated_at": "2026-04-17T17:59:25",
+  "cycle_started": "2026-04-17T17:59:19",
+  "mode": "team",
+  "execution_order": [
+    "00-patriarch.agent.md",
+    "01-coordinator.agent.md",
+    "02-research-trends.agent.md",
+    "03-script-director.agent.md",
+    "04-voice-audio.agent.md",
+    "05-footage-curator.agent.md",
+    "06-video-editor.agent.md",
+    "07-thumbnail-seo.agent.md",
+    "25-video-quality.agent.md",
+    "08-qa-guardian.agent.md",
+    "09-automation-ops.agent.md",
+    "24-net-forager.agent.md",
+    "10-growth-marketing.agent.md",
+    "11-ui-evolution.agent.md",
+    "12-performance.agent.md",
+    "13-adsense-web.agent.md",
+    "14-affiliate.agent.md",
+    "15-digital-products.agent.md",
+    "16-sponsorship.agent.md",
+    "17-newsletter.agent.md",
+    "18-shorts.agent.md",
+    "19-distribution.agent.md",
+    "20-system-seller.agent.md",
+    "21-community.agent.md",
+    "22-abtesting.agent.md",
+    "23-virality.agent.md"
+  ],
+  "coordinator": "00-patriarch.agent.md",
+  "cycle": 1
+}

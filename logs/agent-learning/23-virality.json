@@ -1,0 +1,650 @@
+{
+  "agent": "23-virality",
+  "total_runs": 733,
+  "total_done": 733,
+  "total_errors": 0,
+  "last_updated": "2026-04-17T17:59:22",
+  "last_learning": "Replicar: Capture virality signal findings | HOY: Evaluar el 'factor viral' de los guiones planificados para mañana. Dar una nota del 1-10 y mejorar los que estén por debajo de 7. -> signals=virality-signals.md",
+  "entries": [
+    {
+      "ts": "2026-04-17T17:59:22",
+      "status": "done",
+      "action": "Capture virality signal findings | HOY: Evaluar el 'factor viral' de los guiones planificados para mañana. Dar una nota del 1-10 y mejorar los que estén por debajo de 7.",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings | HOY: Evaluar el 'factor viral' de los guiones planificados para mañana. Dar una nota del 1-10 y mejorar los que estén por debajo de 7. -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/17/2026 17:58:24",
+      "status": "done",
+      "action": "Capture virality signal findings | HOY: Evaluar el 'factor viral' de los guiones planificados para mañana. Dar una nota del 1-10 y mejorar los que estén por debajo de 7.",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings | HOY: Evaluar el 'factor viral' de los guiones planificados para mañana. Dar una nota del 1-10 y mejorar los que estén por debajo de 7. -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/17/2026 17:52:35",
+      "status": "done",
+      "action": "Capture virality signal findings | HOY: Evaluar el 'factor viral' de los guiones planificados para mañana. Dar una nota del 1-10 y mejorar los que estén por debajo de 7.",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings | HOY: Evaluar el 'factor viral' de los guiones planificados para mañana. Dar una nota del 1-10 y mejorar los que estén por debajo de 7. -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:55:26",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:55:21",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:55:16",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:55:11",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:55:06",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:55:01",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:56",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:51",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:46",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:41",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:36",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:31",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:27",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:22",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:17",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:12",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:07",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:54:02",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:57",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:52",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:47",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:42",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:38",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:32",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:27",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:23",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:18",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:13",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:08",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:53:03",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:58",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:53",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:48",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:43",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:38",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:33",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:28",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:23",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:19",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:14",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:09",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:52:04",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:59",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:54",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:49",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:44",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:39",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:34",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:29",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:24",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:19",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:14",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:10",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:05",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:51:00",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:55",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:50",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:45",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:40",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:35",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:30",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:25",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:20",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:15",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:11",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:06",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:50:01",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:56",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:51",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:46",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:39",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:34",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:29",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:24",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:19",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:14",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    },
+    {
+      "ts": "04/16/2026 21:49:09",
+      "status": "done",
+      "action": "Capture virality signal findings",
+      "result": "signals=virality-signals.md",
+      "error": "",
+      "learning": "Replicar: Capture virality signal findings -> signals=virality-signals.md"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+/banana generate "dark dashboard UI mockup showing video analytics multiple channels professional" --preset ui
+/banana generate "dark control panel interface video automation professional software dark theme" --preset ui
+/banana generate "abstract dark background for video automation system hero section" --preset abstract
+/banana generate "professional video automation system hero image dark theme futuristic" --preset editorial
+/banana generate "YouTube channels dashboard on laptop mockup dark theme" --preset product
+/banana generate "before after comparison manual vs automated video creation" --preset editorial
+

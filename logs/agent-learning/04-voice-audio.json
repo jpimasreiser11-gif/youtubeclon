@@ -1,0 +1,650 @@
+{
+  "agent": "04-voice-audio",
+  "total_runs": 733,
+  "total_done": 733,
+  "total_errors": 0,
+  "last_updated": "2026-04-17T17:59:21",
+  "last_learning": "Replicar: Check latest narration audio asset | HOY: Investigar las keywords de cola larga más buscadas en cada nicho usando Google Search Console (si hay acceso) o VidIQ. -> latest_audio=20260412_184512_voice.mp3",
+  "entries": [
+    {
+      "ts": "2026-04-17T17:59:21",
+      "status": "done",
+      "action": "Check latest narration audio asset | HOY: Investigar las keywords de cola larga más buscadas en cada nicho usando Google Search Console (si hay acceso) o VidIQ.",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset | HOY: Investigar las keywords de cola larga más buscadas en cada nicho usando Google Search Console (si hay acceso) o VidIQ. -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/17/2026 17:58:23",
+      "status": "done",
+      "action": "Check latest narration audio asset | HOY: Investigar las keywords de cola larga más buscadas en cada nicho usando Google Search Console (si hay acceso) o VidIQ.",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset | HOY: Investigar las keywords de cola larga más buscadas en cada nicho usando Google Search Console (si hay acceso) o VidIQ. -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/17/2026 17:52:34",
+      "status": "done",
+      "action": "Check latest narration audio asset | HOY: Investigar las keywords de cola larga más buscadas en cada nicho usando Google Search Console (si hay acceso) o VidIQ.",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset | HOY: Investigar las keywords de cola larga más buscadas en cada nicho usando Google Search Console (si hay acceso) o VidIQ. -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:55:25",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:55:20",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:55:15",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:55:10",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:55:05",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:55:00",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:54:55",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:54:50",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:54:45",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:54:40",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:54:35",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:54:31",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:54:26",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:54:21",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:54:16",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:54:11",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:54:06",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:54:01",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:53:56",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:53:51",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:53:46",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:53:42",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:53:37",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:53:31",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:53:26",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:53:22",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:53:17",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:53:12",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:53:07",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:53:02",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:52:57",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:52:52",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:52:47",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:52:42",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:52:37",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:52:32",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:52:27",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:52:22",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:52:18",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:52:13",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:52:08",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:52:03",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:51:58",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:51:53",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:51:48",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:51:43",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:51:38",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:51:33",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:51:28",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:51:23",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:51:18",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:51:14",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:51:09",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:51:04",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:50:59",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:50:54",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:50:49",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:50:44",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:50:39",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:50:34",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:50:29",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:50:24",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:50:19",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:50:15",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:50:10",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:50:05",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:50:00",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:49:55",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:49:50",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:49:45",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:49:38",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:49:33",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:49:28",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:49:23",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:49:18",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:49:13",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    },
+    {
+      "ts": "04/16/2026 21:49:08",
+      "status": "done",
+      "action": "Check latest narration audio asset",
+      "result": "latest_audio=20260412_184512_voice.mp3",
+      "error": "",
+      "learning": "Replicar: Check latest narration audio asset -> latest_audio=20260412_184512_voice.mp3"
+    }
+  ]
+}

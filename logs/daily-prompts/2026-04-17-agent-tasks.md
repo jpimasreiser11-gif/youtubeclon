@@ -1,0 +1,28 @@
+# Tareas diarias del calendario - 2026-04-17
+
+- 00-patriarch.agent.md: Revisar el roadmap de ingresos. ¿Estamos en el camino correcto? Proponer 1 ajuste de estrategia basado en los datos de esta semana.
+- 01-coordinator.agent.md: Buscar cambios de algoritmo de YouTube en los últimos 14 días. Fuentes: Creator Insider, VidIQ blog, TubeBuddy blog.
+- 02-research-trends.agent.md: Crear 6 scripts de TikTok autónomos (uno por canal). Cada uno debe ser 100% independiente del vídeo largo correspondiente.
+- 03-script-director.agent.md: Verificar que todos los imports del proyecto están en requirements.txt. Instalar los que falten.
+- 04-voice-audio.agent.md: Investigar las keywords de cola larga más buscadas en cada nicho usando Google Search Console (si hay acceso) o VidIQ.
+- 05-footage-curator.agent.md: Actualizar los thresholds de los checks basándose en los resultados de la semana. ¿Algún check es demasiado estricto o demasiado lento?
+- 06-video-editor.agent.md: Buscar en Impact.com y ShareASale nuevos programas de afiliados en los nichos del proyecto lanzados en los últimos 30 días.
+- 07-thumbnail-seo.agent.md: Comparar el rendimiento de esta semana con la semana anterior. Identificar qué cambió y por qué.
+- 25-video-quality.agent.md: Buscar estudios nuevos sobre retención en YouTube. Implementar cualquier técnica con evidencia sólida.
+- 08-qa-guardian.agent.md: Verificar que todos los tokens OAuth están activos. Refrescarlos automáticamente si es posible.
+- 09-automation-ops.agent.md: Revisar las 20 publicaciones más upvoteadas de esta semana en r/finance, r/psychology, r/space, r/ChatGPT, r/truecrime.
+- 24-net-forager.agent.md: Revisar Product Hunt de esta semana. Identificar las 3 herramientas gratuitas o freemium más útiles para el proyecto.
+- 10-growth-marketing.agent.md: Actualizar la prioridad de los agentes para hoy basándose en qué tarea tiene mayor impacto en ingresos.
+- 11-ui-evolution.agent.md: Mejorar el sistema de notificaciones: ¿llegan a tiempo? ¿Son claras? ¿Hay demasiado ruido?
+- 12-performance.agent.md: Identificar el cuello de botella principal del pipeline. Proponer e implementar una mejora.
+- 13-adsense-web.agent.md: Investigar las mejores horas de publicación para maximizar CPM (varía según audiencia y temporada).
+- 14-affiliate.agent.md: Calcular el ingreso estimado de afiliados de esta semana por programa y por canal.
+- 15-digital-products.agent.md: Bosquejar la estructura del próximo ebook/template. ¿Qué promesa tiene? ¿Qué problema resuelve?
+- 16-sponsorship.agent.md: Identificar 5 marcas nuevas que estarían bien alineadas con los canales más grandes.
+- 17-newsletter.agent.md: Escribir el email de valor de esta semana para la lista (resumen de lo más interesante de los vídeos publicados).
+- 18-shorts.agent.md: Analizar qué Shorts de la competencia en cada nicho tienen más de 1M de views. ¿Qué tienen en común?
+- 19-distribution.agent.md: Revisar las mejores horas de publicación para cada plataforma basándose en los datos de engagement de la semana.
+- 20-system-seller.agent.md: Investigar en qué plataformas (Gumroad, Etsy, AppSumo) se venden sistemas de automatización similares y a qué precio.
+- 21-community.agent.md: Identificar los 3 comentarios más frecuentes o preguntas recurrentes por canal. Usarlos como ideas de vídeo.
+- 22-abtesting.agent.md: Revisar los resultados de los tests activos de la semana anterior. ¿Qué variante ganó? ¿Con qué margen?
+- 23-virality.agent.md: Evaluar el 'factor viral' de los guiones planificados para mañana. Dar una nota del 1-10 y mejorar los que estén por debajo de 7.

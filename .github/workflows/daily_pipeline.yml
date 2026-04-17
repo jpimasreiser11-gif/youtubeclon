@@ -1,0 +1,77 @@
+name: VidFlow AI — Daily Pipeline
+
+on:
+  schedule:
+    # Cada día a las 6:00 AM UTC (8:00 AM España)
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    # También permite lanzarlo manualmente desde GitHub
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120   # Máximo 2 horas por ciclo
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Whisper
+        run: pip install openai-whisper
+
+      - name: Create .env from GitHub Secrets
+        run: |
+          cat > .env << EOF
+          GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+          PEXELS_API_KEY=${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY=${{ secrets.PIXABAY_API_KEY }}
+          ELEVENLABS_API_KEY=${{ secrets.ELEVENLABS_API_KEY }}
+          MONGODB_URL=${{ secrets.MONGODB_URL }}
+          YOUTUBE_CLIENT_ID=${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET=${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          EMAIL_APP_PASSWORD=${{ secrets.EMAIL_APP_PASSWORD }}
+          EOF
+
+      - name: Run pipeline
+        run: python pipeline/pipeline.py
+        env:
+          PYTHONUNBUFFERED: "1"
+
+      - name: Upload approved videos
+        run: python pipeline/youtube_uploader.py --queue pipeline_queue.json
+        continue-on-error: true
+
+      - name: Save outputs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: daily-outputs-${{ github.run_number }}
+          path: |
+            briefings/
+            logs/
+            content_calendars/
+          retention-days: 7
+
+      - name: Send summary email
+        if: always()
+        run: python utils/send_daily_summary.py
+        env:
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+        continue-on-error: true

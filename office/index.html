@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VidFlow AI — Oficina Virtual</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&display=swap');
+
+:root {
+  --floor:   #1a1a2e;
+  --wall:    #0f0f1a;
+  --desk:    #16213e;
+  --accent:  #0f3460;
+  --cyan:    #00d4ff;
+  --green:   #00ff9d;
+  --magenta: #ff006e;
+  --yellow:  #ffd60a;
+  --orange:  #ff9500;
+  --red:     #ff3333;
+  --purple:  #9b5de5;
+  --text:    #e8e8f0;
+  --dim:     #4a4a6a;
+  --panel:   rgba(15,15,30,0.95);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background:var(--wall);
+  font-family:'Space Mono',monospace;
+  overflow:hidden;
+  height:100vh;
+  width:100vw;
+  cursor:default;
+}
+
+/* ── TOP BAR ─────────────────────────────────────────────── */
+#topbar {
+  position:fixed; top:0; left:0; right:0; height:44px;
+  background:rgba(10,10,20,0.97);
+  border-bottom:1px solid var(--dim);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 20px; z-index:100;
+  font-family:'Syne',sans-serif;
+}
+.logo { font-size:16px; font-weight:800; color:var(--cyan); letter-spacing:3px; }
+.logo span { color:var(--magenta); }
+#sys-pill {
+  display:flex; align-items:center; gap:8px;
+  padding:4px 14px; border-radius:20px; font-size:11px;
+  border:1px solid var(--dim); color:var(--dim);
+  transition:all .3s; cursor:pointer;
+}
+#sys-pill.active { border-color:var(--green); color:var(--green); background:rgba(0,255,157,.05); }
+.dot { width:7px; height:7px; border-radius:50%; background:currentColor; }
+.dot.pulse { animation:pulse 1.2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+#topbar-time { font-size:11px; color:var(--dim); }
+#topbar-chat-btn {
+  padding:6px 16px; border-radius:4px; font-size:11px;
+  background:var(--cyan); color:#000; border:none; cursor:pointer;
+  font-family:'Space Mono',monospace; font-weight:700; letter-spacing:1px;
+  transition:opacity .2s;
+}
+#topbar-chat-btn:hover { opacity:.8; }
+
+/* ── OFFICE CANVAS ───────────────────────────────────────── */
+#office {
+  position:fixed; top:44px; left:0; right:0; bottom:44px;
+  overflow:hidden;
+}
+
+/* Floor tiles */
+#office::before {
+  content:'';
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+}
+
+/* ── ROOMS ───────────────────────────────────────────────── */
+.room {
+  position:absolute;
+  border:1px solid rgba(255,255,255,.06);
+  border-radius:4px;
+  display:flex; align-items:flex-start; justify-content:flex-start;
+}
+.room-label {
+  position:absolute; top:8px; left:12px;
+  font-size:9px; color:rgba(255,255,255,.15);
+  font-family:'Syne',sans-serif; letter-spacing:2px; text-transform:uppercase;
+  pointer-events:none;
+}
+
+/* Desk furniture */
+.desk {
+  position:absolute;
+  background:var(--desk);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:3px;
+}
+.monitor {
+  position:absolute;
+  background:#080815;
+  border:2px solid #2a2a4a;
+  border-radius:2px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:8px; color:var(--dim);
+  overflow:hidden;
+}
+.monitor.on { border-color:var(--cyan); box-shadow:0 0 8px rgba(0,212,255,.2); }
+.monitor-screen { width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:3px; }
+.monitor-text { font-size:7px; color:var(--cyan); text-align:center; word-break:break-all; line-height:1.3; }
+.chair { position:absolute; background:#1a1a30; border:1px solid #2a2a45; border-radius:50%; }
+.plant {
+  position:absolute; font-size:16px;
+  filter:saturate(.6); pointer-events:none;
+}
+.coffee {
+  position:absolute; font-size:12px; pointer-events:none;
+}
+
+/* ── AGENT SPRITE ────────────────────────────────────────── */
+.agent {
+  position:absolute;
+  width:40px; height:52px;
+  cursor:pointer;
+  z-index:20;
+  transition:filter .2s;
+  user-select:none;
+}
+.agent:hover { filter:brightness(1.3); }
+.agent.selected { filter:brightness(1.5) drop-shadow(0 0 6px var(--cyan)); }
+
+.agent-body {
+  position:relative; width:100%; height:100%;
+  display:flex; flex-direction:column; align-items:center;
+}
+.agent-head {
+  width:22px; height:22px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; position:relative; flex-shrink:0;
+  transition:all .3s;
+}
+.agent-torso {
+  width:20px; height:16px;
+  border-radius:3px 3px 0 0;
+  margin-top:1px; flex-shrink:0;
+}
+.agent-legs {
+  width:20px; height:10px;
+  display:flex; gap:2px;
+}
+.leg { flex:1; border-radius:0 0 3px 3px; }
+
+.agent-name-tag {
+  position:absolute;
+  bottom:-18px;
+  left:50%; transform:translateX(-50%);
+  font-size:7.5px; white-space:nowrap;
+  padding:2px 6px; border-radius:10px;
+  font-family:'Syne',sans-serif; font-weight:600; letter-spacing:.5px;
+  pointer-events:none;
+}
+
+/* Status indicator above head */
+.agent-status-icon {
+  position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+  font-size:11px; pointer-events:none;
+  animation:float 2s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-3px)} }
+
+/* Working animation */
+.agent.working .agent-head { animation:nod .6s ease-in-out infinite alternate; }
+@keyframes nod { from{transform:rotate(-4deg)} to{transform:rotate(4deg)} }
+
+/* Walking animation */
+.agent.walking .agent-legs .leg:first-child { animation:walk-l .4s ease-in-out infinite alternate; }
+.agent.walking .agent-legs .leg:last-child  { animation:walk-r .4s ease-in-out infinite alternate; }
+@keyframes walk-l { from{transform:rotate(-15deg)} to{transform:rotate(15deg)} }
+@keyframes walk-r { from{transform:rotate(15deg)} to{transform:rotate(-15deg)} }
+
+/* Speech bubble */
+.bubble {
+  position:absolute;
+  top:-38px; left:50%;
+  transform:translateX(-30%);
+  background:rgba(15,15,30,.95);
+  border:1px solid var(--cyan);
+  border-radius:8px 8px 8px 0;
+  padding:4px 8px;
+  font-size:8px; color:var(--cyan);
+  white-space:nowrap; max-width:120px; overflow:hidden; text-overflow:ellipsis;
+  pointer-events:none;
+  opacity:0; transition:opacity .3s;
+}
+.agent.working .bubble,
+.agent.walking .bubble { opacity:1; }
+
+/* ── SIDE PANEL ──────────────────────────────────────────── */
+#side-panel {
+  position:fixed; right:0; top:44px; bottom:44px;
+  width:340px;
+  background:var(--panel);
+  border-left:1px solid rgba(255,255,255,.07);
+  z-index:50;
+  display:flex; flex-direction:column;
+  transform:translateX(100%);
+  transition:transform .3s cubic-bezier(.4,0,.2,1);
+}
+#side-panel.open { transform:translateX(0); }
+
+#panel-header {
+  padding:16px 18px 12px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  display:flex; align-items:center; gap:10px;
+}
+#panel-agent-icon { font-size:26px; }
+#panel-agent-name { font-family:'Syne',sans-serif; font-size:15px; font-weight:800; }
+#panel-agent-role { font-size:10px; color:var(--dim); margin-top:1px; }
+#panel-close {
+  margin-left:auto; width:26px; height:26px;
+  border:1px solid var(--dim); border-radius:50%;
+  background:none; color:var(--dim); cursor:pointer; font-size:14px;
+  display:flex; align-items:center; justify-content:center;
+  transition:all .2s;
+}
+#panel-close:hover { border-color:var(--text); color:var(--text); }
+
+#panel-tabs {
+  display:flex; border-bottom:1px solid rgba(255,255,255,.07);
+}
+.ptab {
+  flex:1; padding:10px; text-align:center; font-size:9px;
+  letter-spacing:1px; cursor:pointer; color:var(--dim);
+  border-bottom:2px solid transparent; transition:all .2s;
+  font-family:'Syne',sans-serif; font-weight:600;
+}
+.ptab.active { color:var(--cyan); border-bottom-color:var(--cyan); }
+
+#panel-body { flex:1; overflow-y:auto; padding:14px 18px; }
+#panel-body::-webkit-scrollbar { width:4px; }
+#panel-body::-webkit-scrollbar-thumb { background:var(--dim); border-radius:2px; }
+
+.section-title {
+  font-size:9px; color:var(--dim); letter-spacing:2px;
+  text-transform:uppercase; margin-bottom:10px; margin-top:16px;
+  font-family:'Syne',sans-serif;
+}
+.section-title:first-child { margin-top:0; }
+
+/* Diary text */
+#diary-text {
+  font-size:12px; color:var(--text); line-height:1.7;
+  white-space:pre-wrap; font-family:'Space Mono',monospace;
+}
+
+/* File list */
+.file-item {
+  display:flex; align-items:center; gap:8px;
+  padding:6px 0; border-bottom:1px solid rgba(255,255,255,.04);
+  font-size:10px;
+}
+.file-icon { font-size:12px; }
+.file-path { color:var(--cyan); flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.file-action { font-size:9px; padding:2px 7px; border-radius:10px; font-family:'Syne',sans-serif; }
+.file-action.fix     { background:rgba(255,100,50,.15); color:var(--orange); }
+.file-action.create  { background:rgba(0,255,157,.1); color:var(--green); }
+.file-action.edit    { background:rgba(0,212,255,.1); color:var(--cyan); }
+.file-action.research{ background:rgba(155,93,229,.15); color:var(--purple); }
+
+/* Task log */
+.task-entry {
+  display:flex; gap:8px; padding:5px 0;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  align-items:flex-start;
+}
+.task-time { font-size:9px; color:var(--dim); min-width:42px; }
+.task-text { font-size:10px; color:var(--text); line-height:1.5; }
+.task-text b { color:var(--cyan); }
+
+/* Chat panel */
+#chat-input-wrap {
+  padding:10px 14px;
+  border-top:1px solid rgba(255,255,255,.07);
+  display:flex; gap:8px; align-items:flex-end;
+}
+#chat-input {
+  flex:1; background:rgba(255,255,255,.05); border:1px solid var(--dim);
+  border-radius:4px; color:var(--text); padding:8px 10px;
+  font-family:'Space Mono',monospace; font-size:11px; resize:none;
+  outline:none; max-height:80px;
+}
+#chat-input:focus { border-color:var(--cyan); }
+#chat-send {
+  padding:8px 14px; background:var(--cyan); color:#000;
+  border:none; border-radius:4px; cursor:pointer;
+  font-family:'Space Mono',monospace; font-size:11px; font-weight:700;
+}
+.chat-msg {
+  padding:6px 0; font-size:10px; border-bottom:1px solid rgba(255,255,255,.04);
+}
+.chat-from { color:var(--cyan); font-size:9px; margin-bottom:3px; }
+.chat-body { color:var(--text); line-height:1.6; }
+
+/* ── NEEDS PANEL ─────────────────────────────────────────── */
+#needs-overlay {
+  position:fixed; top:44px; left:0; right:0; bottom:44px;
+  background:rgba(0,0,0,.7); z-index:80;
+  display:none; align-items:center; justify-content:center;
+}
+#needs-overlay.show { display:flex; }
+#needs-modal {
+  background:var(--panel); border:1px solid var(--yellow);
+  border-radius:8px; padding:24px; max-width:480px; width:90%;
+  max-height:70vh; overflow-y:auto;
+}
+#needs-title { font-family:'Syne',sans-serif; font-size:16px; font-weight:800; color:var(--yellow); margin-bottom:16px; }
+.need-item {
+  background:rgba(255,214,10,.05); border:1px solid rgba(255,214,10,.2);
+  border-radius:6px; padding:12px 14px; margin-bottom:10px;
+}
+.need-from { font-size:9px; color:var(--yellow); margin-bottom:5px; }
+.need-text { font-size:11px; color:var(--text); line-height:1.6; }
+.need-input {
+  margin-top:8px; width:100%;
+  background:rgba(255,255,255,.05); border:1px solid var(--dim);
+  border-radius:4px; color:var(--text); padding:6px 10px;
+  font-family:'Space Mono',monospace; font-size:10px; outline:none;
+}
+.need-input:focus { border-color:var(--yellow); }
+.need-send {
+  margin-top:6px; padding:5px 12px; background:var(--yellow); color:#000;
+  border:none; border-radius:4px; cursor:pointer; font-size:10px;
+  font-family:'Space Mono',monospace; font-weight:700;
+}
+#needs-close {
+  margin-top:16px; padding:8px 20px;
+  background:none; border:1px solid var(--dim); border-radius:4px;
+  color:var(--dim); cursor:pointer; font-size:11px; font-family:'Space Mono',monospace;
+}
+
+/* ── CHANGELOG TICKER ────────────────────────────────────── */
+#ticker {
+  position:fixed; bottom:0; left:0; right:0; height:44px;
+  background:rgba(10,10,20,.97); border-top:1px solid var(--dim);
+  display:flex; align-items:center; gap:16px; padding:0 16px;
+  z-index:100; overflow:hidden;
+}
+#ticker-label {
+  font-size:9px; color:var(--cyan); font-family:'Syne',sans-serif;
+  font-weight:600; letter-spacing:2px; white-space:nowrap; flex-shrink:0;
+}
+#ticker-track {
+  flex:1; overflow:hidden; position:relative; height:100%;
+  display:flex; align-items:center;
+}
+#ticker-items {
+  display:flex; gap:48px; white-space:nowrap;
+  animation:scroll-left 40s linear infinite;
+}
+@keyframes scroll-left { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.ticker-item { font-size:10px; color:var(--dim); display:flex; align-items:center; gap:8px; }
+.ticker-item span { color:var(--text); }
+.ticker-item b { color:var(--cyan); }
+
+#needs-btn {
+  padding:6px 14px; border-radius:4px; font-size:10px;
+  background:rgba(255,214,10,.1); border:1px solid var(--yellow);
+  color:var(--yellow); cursor:pointer; font-family:'Space Mono',monospace;
+  white-space:nowrap; flex-shrink:0; transition:background .2s;
+}
+#needs-btn:hover { background:rgba(255,214,10,.2); }
+#needs-btn.has-needs { animation:needs-pulse 2s ease-in-out infinite; }
+@keyframes needs-pulse { 0%,100%{box-shadow:none} 50%{box-shadow:0 0 12px rgba(255,214,10,.4)} }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div id="topbar">
+  <div class="logo">VidFlow <span>AI</span></div>
+  <div id="sys-pill" onclick="toggleSystem()">
+    <div class="dot pulse" id="sys-dot"></div>
+    <span id="sys-label">Cargando...</span>
+  </div>
+  <div id="topbar-time">--:--:--</div>
+  <button id="topbar-chat-btn" onclick="openChat()">💬 Chat con agente</button>
+</div>
+
+<!-- OFFICE -->
+<div id="office"></div>
+
+<!-- SIDE PANEL -->
+<div id="side-panel">
+  <div id="panel-header">
+    <div id="panel-agent-icon">🤖</div>
+    <div>
+      <div id="panel-agent-name">Agente</div>
+      <div id="panel-agent-role">—</div>
+    </div>
+    <button id="panel-close" onclick="closePanel()">✕</button>
+  </div>
+  <div id="panel-tabs">
+    <div class="ptab active" onclick="switchTab('diary')">DIARIO</div>
+    <div class="ptab" onclick="switchTab('files')">FICHEROS</div>
+    <div class="ptab" onclick="switchTab('log')">LOG</div>
+    <div class="ptab" onclick="switchTab('chat')">CHAT</div>
+  </div>
+  <div id="panel-body">
+    <div id="tab-diary">
+      <div class="section-title">Lo que está haciendo ahora</div>
+      <div id="diary-text">Selecciona un agente para ver su diario.</div>
+    </div>
+    <div id="tab-files" style="display:none">
+      <div class="section-title">Ficheros modificados hoy</div>
+      <div id="files-list"></div>
+    </div>
+    <div id="tab-log" style="display:none">
+      <div class="section-title">Registro de actividad</div>
+      <div id="log-list"></div>
+    </div>
+    <div id="tab-chat" style="display:none">
+      <div class="section-title">Conversación</div>
+      <div id="chat-messages"></div>
+    </div>
+  </div>
+  <div id="chat-input-wrap" style="display:none">
+    <textarea id="chat-input" rows="1" placeholder="Escribe al agente..."></textarea>
+    <button id="chat-send" onclick="sendChat()">→</button>
+  </div>
+</div>
+
+<!-- NEEDS OVERLAY -->
+<div id="needs-overlay">
+  <div id="needs-modal">
+    <div id="needs-title">⚠️ Los agentes necesitan tu ayuda</div>
+    <div id="needs-list"></div>
+    <button id="needs-close" onclick="closeNeeds()">Cerrar</button>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div id="ticker">
+  <div id="ticker-label">ACTIVIDAD EN VIVO</div>
+  <div id="ticker-track">
+    <div id="ticker-items"></div>
+  </div>
+  <button id="needs-btn" onclick="openNeeds()">⚠️ Ayuda requerida</button>
+</div>
+
+<script>
+// ── AGENT DATA ───────────────────────────────────────────────
+const AGENTS = [
+  { id:"00", name:"Patriarca",     role:"Director del sistema",         emoji:"👴", color:"#ffd60a",
+    deskPos:{x:580,y:80}, baseX:580, baseY:140 },
+  { id:"01", name:"Researcher",    role:"Investiga competencia",        emoji:"🔍", color:"#00d4ff",
+    deskPos:{x:60,y:90}, baseX:80, baseY:150 },
+  { id:"02", name:"ContentForge",  role:"Genera guiones",               emoji:"✍️", color:"#ff006e",
+    deskPos:{x:220,y:90}, baseX:240, baseY:150 },
+  { id:"03", name:"CodeSentinel",  role:"Revisa el código",             emoji:"💻", color:"#00ff9d",
+    deskPos:{x:380,y:90}, baseX:400, baseY:150 },
+  { id:"04", name:"SEO Engineer",  role:"Optimiza metadatos",           emoji:"📈", color:"#ffd60a",
+    deskPos:{x:60,y:270}, baseX:80, baseY:330 },
+  { id:"05", name:"QualityGate",   role:"Valida vídeos",                emoji:"🛡️", color:"#4488ff",
+    deskPos:{x:220,y:270}, baseX:240, baseY:330 },
+  { id:"06", name:"MoneyFinder",   role:"Encuentra ingresos",           emoji:"💰", color:"#ff9500",
+    deskPos:{x:380,y:270}, baseX:400, baseY:330 },
+  { id:"07", name:"DataAnalyst",   role:"Analiza métricas",             emoji:"📊", color:"#9b5de5",
+    deskPos:{x:60,y:450}, baseX:80, baseY:510 },
+  { id:"08", name:"Fixer",         role:"Arregla errores",              emoji:"🔧", color:"#ff3333",
+    deskPos:{x:220,y:450}, baseX:240, baseY:510 },
+  { id:"09", name:"TrendHunter",   role:"Detecta tendencias",           emoji:"🌊", color:"#00d4ff",
+    deskPos:{x:380,y:450}, baseX:400, baseY:510 },
+  { id:"10", name:"Scheduler",     role:"Orquesta el sistema",          emoji:"🗓️", color:"#e8e8f0",
+    deskPos:{x:560,y:270}, baseX:580, baseY:330 },
+  { id:"11", name:"VideoResearch", role:"Mejora técnicas de vídeo",     emoji:"🎬", color:"#ff3333",
+    deskPos:{x:560,y:450}, baseX:580, baseY:510 },
+  { id:"12", name:"Performance",   role:"Mejora rendimiento",           emoji:"⚙️", color:"#00ff9d",
+    deskPos:{x:740,y:90}, baseX:760, baseY:150 },
+  { id:"13", name:"AdsenseWeb",    role:"Monetiza web",                 emoji:"🧩", color:"#2dd4bf",
+    deskPos:{x:740,y:180}, baseX:760, baseY:240 },
+  { id:"14", name:"Affiliate",     role:"Gestiona afiliados",           emoji:"🔗", color:"#fb923c",
+    deskPos:{x:740,y:270}, baseX:760, baseY:330 },
+  { id:"15", name:"DigitalProd",   role:"Productos digitales",          emoji:"📦", color:"#f472b6",
+    deskPos:{x:740,y:360}, baseX:760, baseY:420 },
+  { id:"16", name:"Sponsorship",   role:"Patrocinios",                  emoji:"🤝", color:"#a3e635",
+    deskPos:{x:740,y:450}, baseX:760, baseY:510 },
+  { id:"17", name:"Newsletter",    role:"Email marketing",              emoji:"✉️", color:"#f59e0b",
+    deskPos:{x:650,y:90}, baseX:670, baseY:150 },
+  { id:"18", name:"Shorts",        role:"Clips cortos",                 emoji:"🎞️", color:"#38bdf8",
+    deskPos:{x:650,y:180}, baseX:670, baseY:240 },
+  { id:"19", name:"Distribution",  role:"Distribución",                 emoji:"🚚", color:"#22c55e",
+    deskPos:{x:650,y:270}, baseX:670, baseY:330 },
+  { id:"20", name:"SystemSeller",  role:"Oferta del sistema",           emoji:"🛒", color:"#c084fc",
+    deskPos:{x:650,y:360}, baseX:670, baseY:420 },
+  { id:"21", name:"Community",     role:"Comunidad",                    emoji:"💬", color:"#eab308",
+    deskPos:{x:650,y:450}, baseX:670, baseY:510 },
+  { id:"22", name:"ABTesting",     role:"Experimentación A/B",          emoji:"🧪", color:"#14b8a6",
+    deskPos:{x:560,y:540}, baseX:580, baseY:600 },
+  { id:"23", name:"Virality",      role:"Señales virales",              emoji:"🔥", color:"#f43f5e",
+    deskPos:{x:470,y:540}, baseX:490, baseY:600 },
+  { id:"24", name:"NetForager",    role:"Busca mejoras + coordina ayuda", emoji:"🌐", color:"#00ff9d",
+    deskPos:{x:380,y:540}, baseX:400, baseY:600 },
+  { id:"25", name:"VideoQuality",  role:"Verificador subjetivo de vídeo",  emoji:"🎯", color:"#93c5fd",
+    deskPos:{x:290,y:540}, baseX:310, baseY:600 },
+];
+
+const TASK_ROTATION = {
+  "00":["Revisando el estado de todos los agentes...","Coordinando el trabajo del día...","Escribiendo el diario del equipo...","Observando el flujo de trabajo..."],
+  "01":["Analizando competidores de Wealth Files...","Buscando programas de afiliados...","Revisando cambios en el algoritmo de YT...","Comparando RPMs por nicho..."],
+  "02":["Escribiendo el hook del guión...","Generando script de Mentes Rotas...","Creando TikTok para Mind Warp...","Revisando el ángulo del vídeo..."],
+  "03":["Revisando pipeline.py en busca de bugs...","Optimizando el comando ffmpeg...","Añadiendo manejo de errores...","Ejecutando tests automáticos..."],
+  "04":["Analizando keywords de Dark Science...","Optimizando títulos de YouTube...","Generando tags para Wealth Files...","Comparando CTR de thumbnails..."],
+  "05":["Verificando duración del vídeo...","Comprobando nivel de audio...","Escaneando contenido anti-ban...","Validando subtítulos .srt..."],
+  "06":["Buscando nuevos programas de afiliados...","Actualizando el pipeline de patrocinios...","Comparando tasas de CPA...","Trackeando conversiones..."],
+  "07":["Leyendo métricas de YouTube Analytics...","Calculando RPM por canal...","Generando scorecard semanal...","Comparando rendimiento con semana anterior..."],
+  "08":["Monitorizando logs en busca de errores...","Aplicando fix a pantalla negra...","Refrescando token OAuth de YouTube...","Añadiendo backoff a llamadas API..."],
+  "09":["Escaneando Google Trends...","Revisando Reddit r/ChatGPT...","Buscando temas virales emergentes...","Puntuando tendencias detectadas..."],
+  "10":["Coordinando el orden de los agentes...","Generando briefing del día...","Revisando la cola de vídeos...","Planificando publicaciones de mañana..."],
+  "11":["Buscando técnicas de hook viral...","Evaluando nuevas herramientas de vídeo...","Estudiando cambios del algoritmo YT...","Probando configuraciones de voz..."],
+  "12":["Midiendo tiempos de pipeline...","Analizando cuellos de botella...","Comparando rendimiento por fase...","Aplicando ajustes de performance..."],
+  "13":["Revisando páginas de monetización web...","Actualizando bloques de Adsense...","Validando métricas de ingresos web...","Preparando mejoras de conversión..."],
+  "14":["Buscando nuevos afiliados...","Actualizando enlaces afiliados...","Comparando CPA y comisiones...","Optimizando integraciones de afiliación..."],
+  "15":["Revisando catálogo de productos...","Actualizando roadmap digital...","Validando funnels de venta...","Preparando nuevos lanzamientos..."],
+  "16":["Gestionando contactos de patrocinio...","Actualizando pipeline comercial...","Revisando propuestas activas...","Preparando próximos acuerdos..."],
+  "17":["Escribiendo contenido newsletter...","Segmentando audiencias email...","Revisando aperturas y clics...","Planificando próxima campaña..."],
+  "18":["Generando ideas para shorts...","Seleccionando clips cortos...","Ajustando ritmo y subtítulos...","Preparando lote de publicación..."],
+  "19":["Planificando distribución multicanal...","Revisando calendario de publicaciones...","Ajustando canales de difusión...","Midiendo impacto por plataforma..."],
+  "20":["Refinando oferta principal...","Actualizando propuesta de valor...","Revisando pricing del sistema...","Preparando mensaje comercial..."],
+  "21":["Moderando comunidad...","Recopilando feedback de usuarios...","Detectando temas de interés...","Preparando acciones de engagement..."],
+  "22":["Diseñando experimentos A/B...","Lanzando variante de prueba...","Analizando resultados iniciales...","Aplicando ganador del test..."],
+  "23":["Detectando señales de viralidad...","Analizando hooks ganadores...","Comparando patrones virales...","Preparando recomendaciones virales..."],
+  "24":["Buscando mejoras en internet...","Revisando GitHub y Product Hunt...","Recopilando necesidades del equipo...","Asignando tareas de mejora..."],
+  "25":["Revisando hook de los primeros 3 segundos...","Validando naturalidad de la voz...","Comprobando relevancia visual del montaje...","Evaluando ritmo de edición y retención..."],
+};
+
+const AGENT_DIARIES = {
+  "00":"Llevo toda la mañana observando cómo trabaja el equipo. Agent-09 encontró algo prometedor sobre los Panama Papers — le pedí a Agent-02 que lo priorice para mañana en Wealth Files. Agent-08 arregló el bug del corte a los 15 minutos, lo que nos había bloqueado tres vídeos. Ahora mismo todo fluye bien. Mi próxima tarea es revisar el briefing de hoy y ver si Agent-12 ha encontrado nuevas mejoras para implementar.",
+  "01":"Esta mañana he estado analizando los 5 mejores canales de la competencia en el nicho de finanzas. El canal 'Coffeezilla' tiene un formato de storytelling que funciona muy bien — sus hooks siempre empiezan con un número de dinero específico. Le voy a pasar esta observación a Agent-02 para que la incorpore a los scripts de Wealth Files. También he encontrado un nuevo programa de afiliados de Seeking Alpha que paga $30 por referido.",
+  "02":"Acabo de terminar el script de hoy para Impacto Mundial — el tema es el Proyecto MKUltra y el hook me ha salido especialmente bien: 'En 1953, la CIA drogó a ciudadanos sin saberlo durante 20 años. Aquí están los documentos.' Ahora estoy trabajando en el guión de Mind Warp sobre sesgos cognitivos. Agent-09 me ha pasado que los Panama Papers están trending de nuevo — voy a crear un script para Wealth Files esta tarde.",
+  "03":"He revisado pipeline.py esta mañana y encontré un problema serio: las llamadas a la API de Pexels no tenían retry logic. Si la API fallaba una vez, el vídeo se quedaba con pantalla negra. Ya lo he corregido añadiendo backoff exponencial. También he mejorado el módulo de ffmpeg para que los vídeos largos (más de 15 min) no se corten. Agent-08 me ayudó a testear los cambios.",
+  "04":"Los títulos de esta semana para Dark Science tienen un CTR bajo — alrededor del 3.2% cuando deberíamos estar en el 5%+. He analizado los títulos que mejor funcionan en el nicho y el patrón es claro: hay que empezar con un número o una pregunta. He actualizado las plantillas de títulos para los 6 canales. Mañana veremos si mejora.",
+  "05":"He revisado los 6 vídeos de hoy. Cinco han pasado todos los checks sin problema. El sexto, de El Loco de la IA, tenía el audio demasiado bajo (-38dB) — lo he normalizado automáticamente con ffmpeg. Los subtítulos de Mentes Rotas tenían un desfase de 2 segundos — corregido. Todo listo para subir a las 9 AM.",
+  "06":"Esta semana he encontrado dos oportunidades nuevas: Masterworks, una plataforma de inversión en arte, paga $50-100 por cada usuario que invierte. Encaja perfectamente con Wealth Files. El otro es Brilliant.org, que paga 25% recurrente — ideal para Dark Science y Mind Warp. Le estoy preparando las instrucciones a Agent-02 para que mencione Masterworks de forma natural en el próximo vídeo de finanzas.",
+  "07":"Los datos de esta semana cuentan una historia clara: Mind Warp tiene la mejor retención (68% de media) pero el RPM más bajo de los canales en inglés. Wealth Files tiene el RPM más alto ($17) pero la retención cae al 55% después del minuto 7. Le he pasado esta observación al Patriarca — sugiero añadir un 'twist' al minuto 6 en los scripts de Wealth Files para retener más.",
+  "08":"Esta mañana me he levantado con 3 errores en el log. El primero era el bug del corte de vídeo a los 15 minutos — ya resuelto con Agent-03. El segundo era un token OAuth expirado para el canal de Mentes Rotas — lo he marcado como NEEDS_HUMAN porque requiere que el dueño lo refresque manualmente. El tercero era un timeout de MongoDB — añadido retry logic. Ahora mismo todo está verde.",
+  "09":"Google Trends muestra que 'Panama Papers Netflix' lleva 3 días subiendo en EEUU y UK. El documental se estrena el viernes. Tenemos una ventana de 48 horas para publicar antes de que el nicho se sature. Ya le he avisado al Patriarca y a Agent-02. También veo que 'dark psychology manipulation' está subiendo en Reddit — bueno para Mind Warp. Mañana miraré si hay algo para los canales en español.",
+  "10":"El pipeline de hoy ha corrido sin problemas. Los 6 vídeos del día están en cola para subir a las 9 AM. Le he enviado el briefing al Patriarca con los highlights: la corrección del bug de los 15 minutos fue la mejora más importante del día. Agent-06 ha encontrado dos afiliados nuevos. Mañana el ciclo empieza a las 6 AM con Agent-09 buscando tendencias.",
+  "11":"He pasado la mañana investigando el efecto 'open loop' en retención. Hay un estudio de 2024 de la Universidad de Berkeley que muestra que videos que terminan cada sección con una pregunta sin responder tienen un 23% más de retención. He actualizado las plantillas de guión de todos los canales para incluir este patrón. También he encontrado que Veo 3.1 genera clips más largos que la versión anterior — voy a probar la integración esta tarde.",
+  "12":"Esta mañana he buscado en GitHub, Reddit, Product Hunt y HackerNews mejoras para nuestro stack. He encontrado tres cosas: un modelo TTS open source llamado Kokoro que suena más natural que Google TTS, un método nuevo para detectar faces en imágenes de stock para evitar licencias restrictivas, y un estudio de Nielsen sobre los colores de thumbnail que más clics generan. Le voy a asignar a Agent-03 la integración de Kokoro, a Agent-11 el estudio de thumbnails, y a Agent-05 la detección de faces. También he recopilado que Agent-08 necesita que refresques el token OAuth de Mentes Rotas — es lo único que no puede hacer él solo.",
+  "13":"Estoy revisando los módulos web de monetización y detectando qué páginas tienen mejor conversión. He actualizado recomendaciones de bloques y el siguiente paso es validar rendimiento con más tráfico.",
+  "14":"Hoy he priorizado afiliados con mejor comisión y menor fricción. Ya dejé actualizados los enlaces y ahora voy a optimizar dónde se muestran en cada canal.",
+  "15":"He ordenado el roadmap de productos digitales y los hitos de entrega. Lo siguiente es definir qué activo publicar primero según impacto comercial.",
+  "16":"He revisado el pipeline de patrocinios y limpiado oportunidades frías. Mi siguiente paso es cerrar propuestas activas con seguimiento más corto.",
+  "17":"Estoy preparando la newsletter de esta semana y ajustando la segmentación para mejorar apertura. Después voy a probar asunto A/B.",
+  "18":"He analizado el lote de shorts y seleccioné los clips con mejor retención inicial. Ahora me toca afinar subtítulos y ritmo de corte.",
+  "19":"Estoy coordinando distribución multicanal para mantener consistencia entre plataformas. En el siguiente bloque revisaré desempeño por canal.",
+  "20":"He refinado el posicionamiento de la oferta del sistema para que sea más clara y directa. Lo siguiente será ajustar los mensajes clave.",
+  "21":"He estado recogiendo feedback de la comunidad y detecté preguntas repetidas. Ahora prepararé respuestas y contenido de soporte.",
+  "22":"Lancé nuevas variantes de test A/B y estoy comparando resultados tempranos. Cuando cierre la muestra, aplicaré la opción ganadora.",
+  "23":"He detectado señales de viralidad en temas recientes y hooks de alto rendimiento. El siguiente paso es pasar recomendaciones al equipo de guion.",
+  "24":"Estoy buscando mejoras en internet para todo el sistema y coordinando necesidades humanas pendientes. Luego consolidaré todo en NEEDS_FROM_HUMAN.md.",
+  "25":"Acabo de revisar la calidad subjetiva del último vídeo antes de Quality Gate. El gancho inicial retiene bien, pero sigo vigilando voz, relevancia visual y ritmo para evitar aprobaciones débiles.",
+};
+
+// ── STATE ──────────────────────────────────────────────────
+let agentStates = {};
+let selectedAgent = null;
+let activeTab = 'diary';
+let animFrame = 0;
+let tickerEntries = [];
+let needsList = [];
+
+AGENTS.forEach(a => {
+  agentStates[a.id] = {
+    x: a.baseX, y: a.baseY,
+    targetX: a.baseX, targetY: a.baseY,
+    state: 'idle', // idle | working | walking
+    task: TASK_ROTATION[a.id]?.[0] || 'Esperando...',
+    taskIdx: 0,
+    taskTimer: Math.random() * 80,
+    walkTimer: Math.random() * 200,
+    files: [],
+    chatHistory: [],
+  };
+});
+
+// ── BUILD OFFICE ──────────────────────────────────────────
+function buildOffice() {
+  const office = document.getElementById('office');
+  office.innerHTML = '';
+
+  // Rooms
+  const rooms = [
+    { x:20, y:20, w:520, h:200, label:'Sala de Producción' },
+    { x:20, y:240, w:520, h:200, label:'Control & SEO' },
+    { x:20, y:460, w:520, h:170, label:'Datos & Soporte' },
+    { x:560, y:20, w:280, h:620, label:'Dirección & Estrategia' },
+    { x:720, y:20, w:140, h:200, label:'Internet Lab' },
+  ];
+  rooms.forEach(r => {
+    const el = document.createElement('div');
+    el.className = 'room';
+    el.style.cssText = `left:${r.x}px;top:${r.y}px;width:${r.w}px;height:${r.h}px`;
+    el.innerHTML = `<div class="room-label">${r.label}</div>`;
+    office.appendChild(el);
+  });
+
+  // Desks & furniture
+  const furniture = [
+    // Production room desks
+    { type:'desk', x:50, y:100, w:100, h:54 },
+    { type:'desk', x:210, y:100, w:100, h:54 },
+    { type:'desk', x:370, y:100, w:100, h:54 },
+    // Control room desks
+    { type:'desk', x:50, y:280, w:100, h:54 },
+    { type:'desk', x:210, y:280, w:100, h:54 },
+    { type:'desk', x:370, y:280, w:100, h:54 },
+    // Data room desks
+    { type:'desk', x:50, y:460, w:100, h:54 },
+    { type:'desk', x:210, y:460, w:100, h:54 },
+    { type:'desk', x:370, y:460, w:100, h:54 },
+    // Strategy room desks
+    { type:'desk', x:568, y:90, w:90, h:54 },
+    { type:'desk', x:650, y:90, w:90, h:54 },
+    { type:'desk', x:730, y:90, w:90, h:54 },
+    { type:'desk', x:650, y:180, w:90, h:54 },
+    { type:'desk', x:730, y:180, w:90, h:54 },
+    { type:'desk', x:568, y:280, w:90, h:54 },
+    { type:'desk', x:650, y:280, w:90, h:54 },
+    { type:'desk', x:730, y:280, w:90, h:54 },
+    { type:'desk', x:650, y:360, w:90, h:54 },
+    { type:'desk', x:730, y:360, w:90, h:54 },
+    { type:'desk', x:568, y:460, w:90, h:54 },
+    { type:'desk', x:650, y:460, w:90, h:54 },
+    { type:'desk', x:730, y:460, w:90, h:54 },
+    // Internet lab desks
+    { type:'desk', x:730, y:100, w:90, h:54 },
+    { type:'desk', x:560, y:540, w:90, h:54 },
+    { type:'desk', x:470, y:540, w:90, h:54 },
+    { type:'desk', x:380, y:540, w:90, h:54 },
+    { type:'desk', x:290, y:540, w:90, h:54 },
+  ];
+  furniture.forEach(f => {
+    const el = document.createElement('div');
+    el.className = f.type;
+    el.style.cssText = `left:${f.x}px;top:${f.y}px;width:${f.w}px;height:${f.h}px`;
+    // Monitor
+    const mon = document.createElement('div');
+    mon.className = 'monitor on';
+    mon.style.cssText = `left:${f.w/2-24}px;top:4px;width:48px;height:32px`;
+    mon.innerHTML = `<div class="monitor-screen"><div class="monitor-text">▓▒░</div></div>`;
+    el.appendChild(mon);
+    office.appendChild(el);
+  });
+
+  // Plants
+  [[530, 30],[530, 215],[530, 430],[740, 210],[740, 400],[30,640]].forEach(([x,y]) => {
+    const el = document.createElement('div');
+    el.className = 'plant';
+    el.style.cssText = `left:${x}px;top:${y}px`;
+    el.textContent = ['🌿','🌱','🪴','🌵'][Math.floor(Math.random()*4)];
+    office.appendChild(el);
+  });
+
+  // Agents
+  AGENTS.forEach(agent => {
+    const s = agentStates[agent.id];
+    const el = document.createElement('div');
+    el.className = 'agent idle';
+    el.id = `agent-${agent.id}`;
+    el.style.cssText = `left:${s.x}px;top:${s.y}px`;
+    el.innerHTML = `
+      <div class="agent-body">
+        <div class="agent-status-icon" id="si-${agent.id}">💤</div>
+        <div class="bubble" id="bubble-${agent.id}">${s.task}</div>
+        <div class="agent-head" style="background:${agent.color}22;border:2px solid ${agent.color}">${agent.emoji}</div>
+        <div class="agent-torso" style="background:${agent.color}33;border:1px solid ${agent.color}55"></div>
+        <div class="agent-legs">
+          <div class="leg" style="background:${agent.color}22;border:1px solid ${agent.color}44"></div>
+          <div class="leg" style="background:${agent.color}22;border:1px solid ${agent.color}44"></div>
+        </div>
+      </div>
+      <div class="agent-name-tag" style="background:${agent.color}22;color:${agent.color};border:1px solid ${agent.color}44">${agent.name}</div>
+    `;
+    el.onclick = () => selectAgent(agent.id);
+    office.appendChild(el);
+  });
+}
+
+// ── ANIMATION LOOP ───────────────────────────────────────
+function animate() {
+  animFrame++;
+  const t = animFrame;
+
+  AGENTS.forEach(agent => {
+    const s = agentStates[agent.id];
+    const el = document.getElementById(`agent-${agent.id}`);
+    const si = document.getElementById(`si-${agent.id}`);
+    const bubble = document.getElementById(`bubble-${agent.id}`);
+    if (!el) return;
+
+    // Decide state randomly
+    s.walkTimer--;
+    s.taskTimer--;
+
+    if (s.walkTimer <= 0) {
+      s.walkTimer = 150 + Math.floor(Math.random() * 200);
+      // Pick a random target near the desk
+      const desk = agent.deskPos;
+      const goToDesk = Math.random() > 0.4;
+      if (goToDesk) {
+        s.targetX = desk.x + 5 + Math.random() * 30;
+        s.targetY = desk.y + 50;
+        s.state = 'walking';
+      } else {
+        // Wander a bit
+        s.targetX = agent.baseX + (Math.random() - .5) * 60;
+        s.targetY = agent.baseY + (Math.random() - .5) * 40;
+        s.state = Math.random() > .5 ? 'walking' : 'working';
+      }
+    }
+
+    if (s.taskTimer <= 0) {
+      s.taskTimer = 100 + Math.floor(Math.random() * 150);
+      const tasks = TASK_ROTATION[agent.id] || ['Trabajando...'];
+      s.taskIdx = (s.taskIdx + 1) % tasks.length;
+      s.task = tasks[s.taskIdx];
+      if (bubble) bubble.textContent = s.task;
+      addTickerEntry(agent, s.task);
+    }
+
+    // Move toward target
+    const dx = s.targetX - s.x;
+    const dy = s.targetY - s.y;
+    const dist = Math.sqrt(dx*dx + dy*dy);
+    if (dist > 2) {
+      s.x += (dx / dist) * 1.2;
+      s.y += (dy / dist) * 1.2;
+      s.state = 'walking';
+    } else {
+      if (s.state === 'walking') s.state = 'working';
+    }
+
+    // If close enough to desk, working
+    const deskDist = Math.sqrt((s.x - agent.deskPos.x)**2 + (s.y - agent.deskPos.y)**2);
+    if (deskDist < 60) s.state = 'working';
+
+    // Apply position and classes
+    el.style.left = `${Math.round(s.x)}px`;
+    el.style.top  = `${Math.round(s.y)}px`;
+    el.className  = `agent ${s.state} ${selectedAgent === agent.id ? 'selected' : ''}`;
+
+    // Status icon
+    const icons = { idle:'💤', working:'⚡', walking:'👟' };
+    if (si) si.textContent = icons[s.state] || '💤';
+  });
+
+  requestAnimationFrame(animate);
+}
+
+// ── AGENT SELECTION ──────────────────────────────────────
+function selectAgent(id) {
+  selectedAgent = id;
+  const agent = AGENTS.find(a => a.id === id);
+  if (!agent) return;
+  const s = agentStates[id];
+
+  // Update panel header
+  document.getElementById('panel-agent-icon').textContent = agent.emoji;
+  document.getElementById('panel-agent-name').textContent = `Agent-${id} · ${agent.name}`;
+  document.getElementById('panel-agent-role').textContent = agent.role;
+  document.getElementById('panel-agent-name').style.color = agent.color;
+
+  // Populate tabs
+  document.getElementById('diary-text').textContent =
+    AGENT_DIARIES[id] || 'Sin diario disponible todavía.';
+
+  populateFilesTab(id);
+  populateLogTab(id);
+
+  // Show panel
+  const panel = document.getElementById('side-panel');
+  panel.classList.add('open');
+
+  // Show chat input on chat tab
+  switchTab(activeTab);
+}
+
+function populateFilesTab(id) {
+  const fakeFiles = {
+    "00":[ {path:"diary/patriarch-diary.md",action:"edit"}, {path:"STATUS_BOARD.md",action:"edit"} ],
+    "01":[ {path:"research/daily-reports/2026-04-13.md",action:"create"}, {path:"monetization/affiliates/tracker.json",action:"edit"} ],
+    "02":[ {path:"content_calendars/wealth-files/scripts/2026-04-13-youtube.md",action:"create"}, {path:"content_calendars/mind-warp/scripts/2026-04-13-tiktok.md",action:"create"} ],
+    "03":[ {path:"pipeline/downloader_footage.py",action:"fix"}, {path:"pipeline/ensamblador_pro.py",action:"fix"}, {path:"tests/test_pipeline.py",action:"create"} ],
+    "04":[ {path:"seo/2026-04-13-optimized-metadata.json",action:"create"}, {path:"seo/winning_patterns.md",action:"edit"} ],
+    "05":[ {path:"quality-reports/2026-04-13-wealth-files.md",action:"create"}, {path:"pipeline_queue.json",action:"edit"} ],
+    "06":[ {path:"monetization/weekly-report-2026-04-13.md",action:"create"}, {path:"monetization/affiliates/recommended_links.json",action:"edit"} ],
+    "07":[ {path:"analytics/weekly-report-2026-04-13.md",action:"create"} ],
+    "08":[ {path:"logs/fixes/fix-log.md",action:"edit"}, {path:"pipeline/youtube_uploader.py",action:"fix"} ],
+    "09":[ {path:".copilot/agents/agent-09-trends/latest_trends.json",action:"create"} ],
+    "10":[ {path:"briefings/2026-04-13-briefing.md",action:"create"} ],
+    "11":[ {path:"research/video-techniques/2026-04-13-discoveries.md",action:"create"}, {path:".copilot/skills/viral-content-generator/references/mind-warp.md",action:"edit"} ],
+    "12":[ {path:"research/improvements/2026-04-13-internet-finds.md",action:"create"}, {path:"NEEDS_FROM_HUMAN.md",action:"edit"} ],
+    "13":[ {path:"marketing/web/adsense-checklist.md",action:"edit"}, {path:"marketing/web/pages-priority.md",action:"create"} ],
+    "14":[ {path:"monetization/affiliates/partner-list.md",action:"edit"}, {path:"monetization/affiliates/conversion-notes.md",action:"create"} ],
+    "15":[ {path:"marketing/products/product-roadmap.md",action:"edit"}, {path:"marketing/products/launch-plan.md",action:"create"} ],
+    "16":[ {path:"marketing/sponsors/sponsor-pipeline.md",action:"edit"}, {path:"marketing/sponsors/outreach-notes.md",action:"create"} ],
+    "17":[ {path:"marketing/newsletter/newsletter-plan.md",action:"edit"}, {path:"marketing/newsletter/campaign-draft.md",action:"create"} ],
+    "18":[ {path:"content_calendars/shorts/queue.md",action:"edit"}, {path:"content_calendars/shorts/hooks.md",action:"create"} ],
+    "19":[ {path:"marketing/distribution/distribution-checklist.md",action:"edit"}, {path:"marketing/distribution/channel-plan.md",action:"create"} ],
+    "20":[ {path:"marketing/offers/offer-positioning.md",action:"edit"}, {path:"marketing/offers/pricing-notes.md",action:"create"} ],
+    "21":[ {path:"marketing/community/community-playbook.md",action:"edit"}, {path:"marketing/community/feedback-log.md",action:"create"} ],
+    "22":[ {path:"marketing/abtests/experiments.md",action:"edit"}, {path:"marketing/abtests/results-rolling.md",action:"create"} ],
+    "23":[ {path:"research/virality/virality-signals.md",action:"edit"}, {path:"research/virality/hooks-top.md",action:"create"} ],
+    "24":[ {path:"research/improvements/2026-04-13-internet-finds.md",action:"create"}, {path:"NEEDS_FROM_HUMAN.md",action:"edit"} ],
+    "25":[ {path:"quality-reports/video-quality-2026-04-14-global.md",action:"create"}, {path:"quality-reports/video-quality-weekly-research.md",action:"edit"} ],
+  };
+  const files = fakeFiles[id] || [];
+  const icons = { fix:"🔧", create:"✨", edit:"📝", research:"🔍" };
+  document.getElementById('files-list').innerHTML = files.map(f =>
+    `<div class="file-item">
+      <span class="file-icon">${icons[f.action]||"📄"}</span>
+      <span class="file-path">${f.path}</span>
+      <span class="file-action ${f.action}">${f.action}</span>
+    </div>`
+  ).join('') || '<div style="color:var(--dim);font-size:11px">Sin ficheros modificados.</div>';
+}
+
+function populateLogTab(id) {
+  const agent = AGENTS.find(a => a.id === id);
+  const tasks = TASK_ROTATION[id] || [];
+  document.getElementById('log-list').innerHTML = tasks.map((t, i) => {
+    const h = (8 + Math.floor(i * 1.5)) % 24;
+    const m = (i * 23) % 60;
+    return `<div class="task-entry">
+      <div class="task-time">${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}</div>
+      <div class="task-text">${t}</div>
+    </div>`;
+  }).join('');
+}
+
+function closePanel() {
+  selectedAgent = null;
+  document.getElementById('side-panel').classList.remove('open');
+}
+
+function switchTab(tab) {
+  activeTab = tab;
+  document.querySelectorAll('.ptab').forEach((t,i) => {
+    const tabs = ['diary','files','log','chat'];
+    t.classList.toggle('active', tabs[i] === tab);
+  });
+  ['diary','files','log','chat'].forEach(t => {
+    const el = document.getElementById(`tab-${t}`);
+    if (el) el.style.display = t === tab ? 'block' : 'none';
+  });
+  const chatWrap = document.getElementById('chat-input-wrap');
+  if (chatWrap) chatWrap.style.display = tab === 'chat' ? 'flex' : 'none';
+}
+
+// ── CHAT ─────────────────────────────────────────────────
+function openChat() {
+  if (!selectedAgent) {
+    const a = AGENTS[Math.floor(Math.random()*AGENTS.length)];
+    selectAgent(a.id);
+  }
+  switchTab('chat');
+}
+
+function sendChat() {
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg || !selectedAgent) return;
+  input.value = '';
+
+  const agent = AGENTS.find(a => a.id === selectedAgent);
+  const msgs = document.getElementById('chat-messages');
+  msgs.innerHTML += `<div class="chat-msg"><div class="chat-from">Tú</div><div class="chat-body">${msg}</div></div>`;
+
+  // Simulate response after delay
+  setTimeout(() => {
+    const replies = {
+      "00":"Entendido. Voy a revisar el estado del equipo y te informo en el briefing de esta tarde.",
+      "01":"De acuerdo. Lo añado a la lista de investigación. Dame unos minutos para buscarlo.",
+      "02":"Perfecto, voy a ajustar el script con eso en mente. El nuevo ángulo tiene mucho potencial.",
+      "03":"Ok. Voy a revisar ese módulo ahora mismo y reporto si encuentro algo.",
+      "12":"Anotado. Lo incluyo en la lista de ayuda humana que te presentaré esta tarde junto con el resto de peticiones del equipo.",
+    };
+    const reply = replies[selectedAgent] || "Recibido. Lo tengo en cuenta para mi próxima tarea.";
+    msgs.innerHTML += `<div class="chat-msg"><div class="chat-from" style="color:${agent.color}">${agent.emoji} Agent-${agent.id} · ${agent.name}</div><div class="chat-body">${reply}</div></div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 1200);
+}
+
+// ── TICKER ───────────────────────────────────────────────
+function addTickerEntry(agent, task) {
+  const entry = { agent, task, time: new Date().toLocaleTimeString('es', {hour:'2-digit',minute:'2-digit'}) };
+  tickerEntries.unshift(entry);
+  if (tickerEntries.length > 30) tickerEntries.pop();
+  updateTicker();
+}
+
+function updateTicker() {
+  const items = tickerEntries.slice(0, 15);
+  // Duplicate for seamless loop
+  const html = [...items, ...items].map(e =>
+    `<div class="ticker-item">${e.time} <b style="color:${e.agent.color}">${e.agent.emoji} ${e.agent.name}</b> <span>${e.task}</span></div>`
+  ).join('');
+  document.getElementById('ticker-items').innerHTML = html;
+}
+
+// ── NEEDS ────────────────────────────────────────────────
+const NEEDS_FALLBACK = [
+  { agent:"Agent-08 (Fixer)", text:"El token OAuth del canal Mentes Rotas ha expirado. Necesito que vayas a YouTube Studio, accedas a la configuración de la cuenta y autorices de nuevo la aplicación. Te tomará 3 minutos. URL: studio.youtube.com → Configuración → Permisos." },
+  { agent:"Agent-12 (NetForager)", text:"Para integrar Kokoro TTS (la voz open source que encontré) necesito que instales: pip install kokoro-tts. También necesitas al menos 2GB libres en disco. ¿Puedes confirmarlo?" },
+  { agent:"Agent-01 (Researcher)", text:"El programa de afiliados de Masterworks requiere registro manual. Ve a masterworks.com/affiliate, regístrate con el email del proyecto y copia el enlace de referido en AFFILIATE_LINKS.md." },
+];
+
+function getNeedAgentId(text) {
+  const m = String(text || '').match(/agent[-\s]?(\d{2})/i);
+  return m ? m[1] : "24";
+}
+
+function getNeedAgentLabel(text) {
+  const id = getNeedAgentId(text);
+  const agent = AGENTS.find(a => a.id === id);
+  return agent ? `Agent-${id} (${agent.name})` : `Agent-${id}`;
+}
+
+async function openNeeds() {
+  const list = document.getElementById('needs-list');
+  list.innerHTML = '<div style="color:var(--dim);font-size:11px">Cargando needs...</div>';
+  try {
+    const res = await fetch('/api/needs');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    needsList = (Array.isArray(data) ? data : []).map((text, i) => ({
+      index: i,
+      text: String(text || ''),
+      agent: getNeedAgentLabel(text),
+      agentId: getNeedAgentId(text),
+    }));
+  } catch (e) {
+    needsList = NEEDS_FALLBACK.map((n, i) => ({ index: i, text: n.text, agent: n.agent, agentId: getNeedAgentId(n.agent) }));
+  }
+
+  if (!needsList.length) {
+    list.innerHTML = '<div style="color:var(--dim);font-size:11px">No hay ayudas pendientes.</div>';
+    document.getElementById('needs-overlay').classList.add('show');
+    return;
+  }
+
+  list.innerHTML = needsList.map((n, i) =>
+    `<div class="need-item">
+      <div class="need-from">De: ${n.agent}</div>
+      <div class="need-text">${n.text}</div>
+      <input class="need-input" id="need-input-${i}" placeholder="Tu respuesta o confirmación...">
+      <button class="need-send" onclick="replyNeed(${i})">Responder →</button>
+    </div>`
+  ).join('');
+  document.getElementById('needs-overlay').classList.add('show');
+}
+
+async function replyNeed(i) {
+  const input = document.getElementById(`need-input-${i}`);
+  const val = input.value.trim();
+  if (!val) return;
+  const btn = document.querySelector(`#need-input-${i} ~ button`);
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+  try {
+    const need = needsList[i];
+    const res = await fetch('/api/needs/reply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ index: need.index, reply: val }),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const agent = AGENTS.find(a => a.id === need.agentId);
+    if (agent) addTickerEntry(agent, 'Recibió respuesta humana y fue notificado');
+    input.value = '';
+    input.placeholder = '✅ Respuesta enviada al agente';
+    input.disabled = true;
+    btn.style.display = 'none';
+    setTimeout(() => openNeeds(), 500);
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = 'Responder →';
+    input.placeholder = 'Error al enviar. Intenta de nuevo.';
+  }
+}
+
+function closeNeeds() {
+  document.getElementById('needs-overlay').classList.remove('show');
+}
+
+// ── CLOCK & SYSTEM ────────────────────────────────────────
+let systemRunning = true;
+function toggleSystem() {
+  systemRunning = !systemRunning;
+  document.getElementById('sys-label').textContent = systemRunning ? 'Sistema activo' : 'Sistema parado';
+  document.getElementById('sys-pill').className = systemRunning ? 'active' : '';
+  document.getElementById('sys-dot').className = systemRunning ? 'dot pulse' : 'dot';
+}
+
+function updateClock() {
+  const now = new Date();
+  document.getElementById('topbar-time').textContent =
+    now.toLocaleTimeString('es', {hour:'2-digit',minute:'2-digit',second:'2-digit'}) +
+    ' · ' + now.toLocaleDateString('es', {day:'2-digit',month:'short'});
+}
+
+// ── INIT ──────────────────────────────────────────────────
+buildOffice();
+requestAnimationFrame(animate);
+setInterval(updateClock, 1000);
+updateClock();
+
+document.getElementById('sys-label').textContent = 'Sistema activo';
+document.getElementById('sys-pill').className = 'active';
+document.getElementById('sys-dot').className = 'dot pulse';
+
+// Initial ticker entries
+AGENTS.forEach(a => addTickerEntry(a, TASK_ROTATION[a.id][0]));
+
+// Chat enter key
+document.getElementById('chat-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChat(); }
+});
+
+// Keyboard close
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closePanel(); closeNeeds(); }
+});
+</script>
+</body>
+</html>

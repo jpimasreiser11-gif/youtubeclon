@@ -1,0 +1,80 @@
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\pipeline\__pycache__\__init__.cpython-312.pyc -- 0.18KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\pipeline\__pycache__\humanizer.cpython-312.pyc -- 2.99KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\pipeline\__pycache__\idea_engine.cpython-312.pyc -- 30.78KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\pipeline\__pycache__\metadata_writer.cpython-312.pyc -- 10.17KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\pipeline\__pycache__\orchestrator.cpython-312.pyc -- 18.31KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\pipeline\__pycache__\publisher.cpython-312.pyc -- 5.24KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\pipeline\__pycache__\runtime.cpython-312.pyc -- 3.37KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\pipeline\__pycache__\script_writer.cpython-312.pyc -- 28.37KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\pipeline\__pycache__\thumbnail_creator.cpython-312.pyc -- 14.08KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\pipeline\__pycache__\trend_finder.cpython-312.pyc -- 15.68KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\pipeline\__pycache__\video_builder.cpython-312.pyc -- 35.34KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\pipeline\__pycache__\voice_generator.cpython-312.pyc -- 17.57KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\pipeline\__pycache__\youtube_publisher.cpython-312.pyc -- 7.45KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\routes\__pycache__\__init__.cpython-312.pyc -- 0.17KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\routes\__pycache__\analytics.cpython-312.pyc -- 5.86KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\routes\__pycache__\channels.cpython-312.pyc -- 2.22KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\routes\__pycache__\ideas.cpython-312.pyc -- 7.26KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\routes\__pycache__\pipeline.cpython-312.pyc -- 6.95KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\routes\__pycache__\scheduler.cpython-312.pyc -- 4.9KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\routes\__pycache__\videos.cpython-312.pyc -- 4.61KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\__pycache__\__init__.cpython-312.pyc -- 0.17KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\__pycache__\config.cpython-312.pyc -- 5.23KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\__pycache__\database.cpython-312.pyc -- 30.28KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\__pycache__\scheduler.cpython-312.pyc -- 3.65KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\__pycache__\server.cpython-312.pyc -- 4.37KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\marketing_automation\__pycache__\__init__.cpython-312.pyc -- 0.18KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\marketing_automation\__pycache__\affiliate_tracker.cpython-312.pyc -- 10.9KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\marketing_automation\__pycache__\email_outreach.cpython-312.pyc -- 7.44KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\marketing_automation\__pycache__\seo_optimizer.cpython-312.pyc -- 11.26KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\marketing_automation\__pycache__\trend_detector.cpython-312.pyc -- 11.02KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\pipeline\__pycache__\__init__.cpython-312.pyc -- 0.18KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\pipeline\__pycache__\downloader_footage.cpython-312.pyc -- 2.89KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\pipeline\__pycache__\ensamblador_pro.cpython-312.pyc -- 5.75KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\pipeline\__pycache__\generador_guion.cpython-312.pyc -- 4.15KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\pipeline\__pycache__\quality_control.cpython-312.pyc -- 6.33KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\pipeline\__pycache__\tiktok_clipper.cpython-312.pyc -- 6.92KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\pipeline\__pycache__\youtube_uploader.cpython-312.pyc -- 3.25KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\.cache\webpack\remotion-production-4.0.448\7cfe4ec90547f00e6244a795f647bf2a\index.pack.old -- 233.92KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\tests\__pycache__\__init__.cpython-312.pyc -- 0.17KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\tests\__pycache__\test_api_smoke.cpython-312-pytest-9.0.2.pyc -- 1.96KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\tests\__pycache__\test_api_smoke.cpython-312.pyc -- 1.85KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\tests\__pycache__\test_pipeline_smoke.cpython-312-pytest-9.0.2.pyc -- 2.17KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\tests\__pycache__\test_pipeline_smoke.cpython-312.pyc -- 2.06KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\tools\pixel_agents\__pycache__\copilot_hook_bridge.cpython-312.pyc -- 3.79KB -- archivo temporal/binario regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\.pytest_cache -- 0.83KB -- cache regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\__pycache__ -- 43.71KB -- cache regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\pipeline\__pycache__ -- 189.52KB -- cache regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\backend\routes\__pycache__ -- 31.98KB -- cache regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\marketing_automation\__pycache__ -- 40.8KB -- cache regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\pipeline\__pycache__ -- 29.47KB -- cache regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\tests\__pycache__ -- 8.22KB -- cache regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\tools\pixel_agents\__pycache__ -- 3.79KB -- cache regenerable
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\briefings -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\assets\fonts -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\assets\music -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\assets\templates -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\frontend\node_modules\.vite-temp -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_2_mentes_rotas\audio -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_2_mentes_rotas\clips -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_2_mentes_rotas\scripts -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_2_mentes_rotas\thumbnails -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_2_mentes_rotas\videos -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_3_loco_ia\audio -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_3_loco_ia\clips -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_3_loco_ia\scripts -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_3_loco_ia\thumbnails -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_3_loco_ia\videos -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_4_mind_warp\audio -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_4_mind_warp\clips -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_4_mind_warp\scripts -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_4_mind_warp\thumbnails -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_4_mind_warp\videos -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_5_wealth_files\audio -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_5_wealth_files\clips -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_5_wealth_files\scripts -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_5_wealth_files\thumbnails -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\output\channel_5_wealth_files\videos -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@emnapi -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@napi-rs -- 0KB -- carpeta vacía
+[SEGURO] C:\Users\jpima\Downloads\youtube\youtube-automation-pro\remotion\node_modules\@tybys -- 0KB -- carpeta vacía
